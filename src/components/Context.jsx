@@ -115,7 +115,7 @@ const router = useRouter();
     const docRef = await addDoc(collection(db, "orders"), orderPayload);
 
     const buyerEmail = orderPayload.accountInfo?.email || '';
-    const sellerEmail = 'enitzglobal@gmail.com';
+    const sellerEmail = 'majinfotek@gmail.com';
     // const sellerEmail = 'victorndu393@gmail.com';
 
     // 3. ISOLATED EMAIL BLOCK: Ensure a failing email never blocks order cleanup
@@ -265,7 +265,7 @@ const router = useRouter();
     }
 
     const verificationNumber = `${Date.now()}E${Math.floor(Math.random() * 1000000000)}`;
-    const source = "Bees Interior Website";
+    const source = "Majinfotek Website";
     const purpose = "Purchase of Product";
 
     const initialTransaction = {

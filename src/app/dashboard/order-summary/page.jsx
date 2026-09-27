@@ -1190,8 +1190,8 @@ export default function OrderSummaryPage() {
 
     try {
       const buyerEmail = currentUser?.email || userData?.email || '';
-      const sellerEmail = 'enitzglobal@gmail.com';
-      // const sellerEmail = 'esomesther@gmail.com';
+      // const sellerEmail = 'majinfotek@gmail.com';
+      const sellerEmail = 'esomesther@gmail.com';
       const uniqueOrderNumber = `ORDER-${Date.now().toString().slice(-6)}${Math.floor(Math.random() * 900 + 100)}`;
 
       const ordersRef = collection(db, "orders");
@@ -1205,29 +1205,73 @@ export default function OrderSummaryPage() {
       // 👉 REPLACE "items: cart" WITH THIS:
       const processedItems = getProcessedCartItems();
 
-      const orderPayload = {
-        orderNumber: uniqueOrderNumber,
-        userId: currentUser ? currentUser.uid : 'guest',
-        items: processedItems,
-        deliveryAddress,
-        subtotal: cartSubtotal,
-        deliveryFee,
-        discount,
-        finalTotal,
-        promoCode: appliedPromo,
-        currency: 'NGN',
-        accountInfo: {
-          name: userData?.fullName || currentUser?.displayName || 'Valued Customer',
-          email: buyerEmail,
-          phone: userData?.phone || currentUser?.phoneNumber || 'Not provided'
-        },
-        paymentType: 'PAYMENT ON DELIVERY',
-        paymentStatus: 'Pending',
-        orderStatus: 'Pending',
-        createdAt: serverTimestamp()
-      };
+      // const orderPayload = {
+      //   orderNumber: uniqueOrderNumber,
+      //   userId: currentUser ? currentUser.uid : 'guest',
+      //   items: processedItems,
+      //   deliveryAddress,
+      //   subtotal: cartSubtotal,
+      //   deliveryFee,
+      //   discount,
+      //   finalTotal,
+      //   promoCode: appliedPromo,
+      //   currency: 'NGN',
+      //   accountInfo: {
+      //     name: userData?.fullName || currentUser?.displayName || 'Valued Customer',
+      //     email: buyerEmail,
+      //     phone: userData?.phone || currentUser?.phoneNumber || 'Not provided'
+      //   },
+      //   paymentType: 'PAYMENT ON DELIVERY',
+      //   paymentStatus: 'Pending',
+      //   orderStatus: 'Pending',
+      //   createdAt: serverTimestamp()
+      // };
 
-      const docRef = await addDoc(collection(db, "orders"), orderPayload);
+
+
+
+
+ const orderPayload = {
+  orderNumber: uniqueOrderNumber || '',
+  userId: currentUser ? currentUser.uid : 'guest',
+  items: processedItems || [],
+  deliveryAddress: deliveryAddress || {},
+  subtotal: cartSubtotal || 0,
+  deliveryFee: deliveryFee || 0,
+  discount: discount || null,         // ⚠️ Often undefined if no discount
+  finalTotal: finalTotal || 0,
+  promoCode: appliedPromo || null,    // ⚠️ Often undefined if no promo code
+  currency: 'NGN',
+  accountInfo: {
+    name: userData?.fullName || currentUser?.displayName || 'Valued Customer',
+    email: buyerEmail || '',          // ⚠️ Check if buyerEmail can be undefined
+    phone: userData?.phone || currentUser?.phoneNumber || 'Not provided'
+  },
+  paymentType: 'PAYMENT ON DELIVERY',
+  paymentStatus: 'Pending',
+  orderStatus: 'Pending',
+  createdAt: serverTimestamp()
+};
+
+// Function to remove undefined values recursively
+const removeUndefined = (obj) => {
+  if (Array.isArray(obj)) {
+    return obj.map(removeUndefined);
+  } else if (obj !== null && typeof obj === 'object') {
+    return Object.fromEntries(
+      Object.entries(obj)
+        .filter(([_, v]) => v !== undefined)
+        .map(([k, v]) => [k, removeUndefined(v)])
+    );
+  }
+  return obj;
+};
+
+// Use it before addDoc:
+const docRef = await addDoc(collection(db, "orders"), removeUndefined(orderPayload));
+ 
+ 
+      // const docRef = await addDoc(collection(db, "orders"), orderPayload);
 
       try {
         const emailPayload = {
@@ -1462,14 +1506,15 @@ export default function OrderSummaryPage() {
 
 // --- Styled Components (Theme Colors: PrimaryNavy #0B1B48, PrimaryCyan #00AEEF, Gradient) ---
 
-const PrimaryNavy = "#0B1B48";
-const PrimaryCyan = "#00AEEF";
+const PrimaryNavy = "#1c3ba4";
+const PrimaryCyan = " #8b5cf6";
+const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
 const TextMuted = "#475569";
 const LightBg = "#f8fafc";
-const ThemeGradient = "linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%)";
+
 
 const Container = styled.div`
   max-width: 1200px;

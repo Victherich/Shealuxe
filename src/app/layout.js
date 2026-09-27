@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "ENITZ",
-  description: "Quality Within Reach",
+  title: "MAJINFOTEK",
+  description: "cctv surveillance, intercom , security gadgets",
    icons: {
     icon: "/favicon.ico",
   },

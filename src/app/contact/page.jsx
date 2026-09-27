@@ -1,3 +1,7 @@
+
+
+
+
 // "use client";
 
 // import React, { useState } from "react";
@@ -13,6 +17,11 @@
 // } from "lucide-react";
 // import Swal from "sweetalert2";
 
+// // --- ENITZ THEME & STYLES ---
+// const brandCyan = '#00aeef';
+// const brandDarkNavy = '#0b1b48';
+// const brandGradient = 'linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)';
+
 // // Animations
 // const floatAnimation = keyframes`
 //   0% { transform: translateY(0px) rotate(0deg); }
@@ -20,7 +29,6 @@
 //   100% { transform: translateY(0px) rotate(0deg); }
 // `;
 
-// // Styled Components (Completely Redesigned Light Mode Split-Hero Pattern with Unsplash Craft Imagery & Generous Spacing)
 // const ContactPageWrapper = styled.div`
 //   min-height: 100vh;
 //   background-color: #f8fafc;
@@ -40,8 +48,8 @@
 //     left: 0;
 //     width: 100%;
 //     height: 100%;
-//     background: radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.05) 0%, transparent 40%),
-//                 radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 40%);
+//     background: radial-gradient(circle at 10% 20%, rgba(0, 174, 239, 0.05) 0%, transparent 40%),
+//                 radial-gradient(circle at 90% 80%, rgba(11, 27, 72, 0.05) 0%, transparent 40%);
 //     pointer-events: none;
 //     z-index: 1;
 //   }
@@ -64,11 +72,11 @@
 //   gap: 8px;
 //   padding: 8px 18px;
 //   border-radius: 9999px;
-//   background: #fdf2f8;
-//   border: 1px solid rgba(236, 72, 153, 0.3);
-//   color: #db2777;
+//   background: rgba(0, 174, 239, 0.08);
+//   border: 1px solid rgba(0, 174, 239, 0.3);
+//   color: ${brandCyan};
 //   font-size: 0.85rem;
-//   font-weight: 600;
+//   font-weight: 700;
 //   text-transform: uppercase;
 //   letter-spacing: 0.08em;
 //   margin: 0 auto;
@@ -89,7 +97,7 @@
 // `;
 
 // const HighlightSpan = styled.span`
-//   background: linear-gradient(135deg, #ec4899 0%, #f59e0b 50%, #06b6d4 100%);
+//   background: ${brandGradient};
 //   -webkit-background-clip: text;
 //   -webkit-text-fill-color: transparent;
 // `;
@@ -123,7 +131,6 @@
 //   gap: 24px;
 // `;
 
-// // Image Showcase Banner utilizing Unsplash Craft Imagery
 // const ImageShowcaseCard = styled.div`
 //   position: relative;
 //   height: 240px;
@@ -172,7 +179,7 @@
 
 //     span:first-child {
 //       font-size: 0.85rem;
-//       color: #f472b6;
+//       color: #38bdf8;
 //       font-weight: 700;
 //       text-transform: uppercase;
 //       letter-spacing: 0.05em;
@@ -208,9 +215,9 @@
 //   transition: all 0.3s ease;
 
 //   &:hover {
-//     border-color: #ec4899;
+//     border-color: ${brandCyan};
 //     transform: translateY(-4px);
-//     box-shadow: 0 15px 30px rgba(236, 72, 153, 0.08);
+//     box-shadow: 0 15px 30px rgba(0, 174, 239, 0.08);
 //   }
 // `;
 
@@ -224,7 +231,7 @@
 //   gap: 12px;
 
 //   svg {
-//     color: #ec4899;
+//     color: ${brandCyan};
 //     width: 1.25rem;
 //     height: 1.25rem;
 //   }
@@ -248,10 +255,10 @@
 //   width: 2.5rem;
 //   height: 2.5rem;
 //   border-radius: 10px;
-//   background: #fdf2f8;
-//   color: #db2777;
+//   background: rgba(0, 174, 239, 0.08);
+//   color: ${brandCyan};
 //   flex-shrink: 0;
-//   border: 1px solid rgba(236, 72, 153, 0.2);
+//   border: 1px solid rgba(0, 174, 239, 0.2);
 
 //   svg {
 //     width: 1.15rem;
@@ -339,9 +346,9 @@
 //   }
 
 //   &:focus {
-//     border-color: #ec4899;
+//     border-color: ${brandCyan};
 //     background-color: #ffffff !important;
-//     box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+//     box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
 //   }
 // `;
 
@@ -363,9 +370,9 @@
 //   }
 
 //   &:focus {
-//     border-color: #ec4899;
+//     border-color: ${brandCyan};
 //     background-color: #ffffff !important;
-//     box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+//     box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
 //   }
 // `;
 
@@ -377,20 +384,20 @@
 //   gap: 8px;
 //   padding: 14px 24px;
 //   border-radius: 12px;
-//   background: linear-gradient(135deg, #ec4899 0%, #f59e0b 50%, #06b6d4 100%);
+//   background: ${brandGradient};
 //   color: #ffffff;
 //   font-weight: 700;
 //   font-size: 1rem;
 //   border: none;
 //   cursor: pointer;
-//   box-shadow: 0 4px 16px rgba(236, 72, 153, 0.25);
+//   box-shadow: 0 4px 16px rgba(0, 174, 239, 0.25);
 //   transition: all 0.3s ease;
 //   margin-top: 8px;
 
 //   &:hover {
 //     opacity: 0.92;
 //     transform: translateY(-2px);
-//     box-shadow: 0 6px 20px rgba(236, 72, 153, 0.35);
+//     box-shadow: 0 6px 20px rgba(0, 174, 239, 0.35);
 //   }
 
 //   &:disabled {
@@ -432,10 +439,10 @@
 //       if (data.success) {
 //         Swal.fire({
 //           title: "Message Sent Successfully!",
-//           text: "Thank you for connecting with Kingsword Couture. We appreciate your interest and are dedicated to delivering exceptional craftsmanship and service, ensuring a lasting and meaningful relationship with every customer.",
+//           text: "Thank you for connecting with Enitz. We appreciate your interest and are dedicated to delivering exceptional merchandise and service, ensuring a lasting and meaningful relationship with every customer.",
 //           icon: "success",
 //           confirmButtonText: "Done",
-//           confirmButtonColor: "#ec4899",
+//           confirmButtonColor: "#00aeef",
 //           background: "#ffffff",
 //           color: "#0f172a"
 //         });
@@ -455,7 +462,7 @@
 //         text: "Something went wrong while sending your message. Please try again later.",
 //         icon: "error",
 //         confirmButtonText: "Okay",
-//         confirmButtonColor: "#ec4899",
+//         confirmButtonColor: "#00aeef",
 //         background: "#ffffff",
 //         color: "#0f172a"
 //       });
@@ -469,14 +476,14 @@
 //       {/* Page Header */}
 //       <HeaderContainer>
 //         <Badge>
-//           <Sparkles className="w-4 h-4 text-pink-600" />
+//           <Sparkles className="w-4 h-4 text-cyan-500" />
 //           <span>Get In Touch With Us</span>
 //         </Badge>
 //         <MainTitle>
 //           Contact <HighlightSpan>Us</HighlightSpan>
 //         </MainTitle>
 //         <Subtitle>
-//           We’d love to hear from you. Whether you have questions, enquiries, custom bag requests, or need assistance with an order, our team is here to help.
+//           We’d love to hear from you. Whether you have questions, enquiries, or need assistance with an order, our support team is here to help.
 //         </Subtitle>
 //       </HeaderContainer>
 
@@ -484,20 +491,20 @@
 //       <ContentGrid>
 //         {/* Left Column: Image Banner & Contact Details */}
 //         <InfoColumn>
-//           {/* Unsplash Visual Craft Card */}
+//           {/* Visual Showcase Card */}
 //           <ImageShowcaseCard>
 //             <img 
-//               src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop" 
-//               alt="Leather craftsmanship and luxury bags workshop" 
+//               src="./contact.png" 
+//               alt="Customer support and retail showroom excellence" 
 //             />
 //             <ImageOverlayText>
 //               <div>
-//                 <span>Kingsword Atelier</span>
-//                 <span>Handcrafted Excellence</span>
+//                 <span>Enitz</span>
+//                 <span>Customer Support Center</span>
 //               </div>
 //               <ImageBadgeTag>
-//                 <Camera className="w-3.5 h-3.5 text-pink-300" />
-//                 <span>Showroom</span>
+//                 <Camera className="w-3.5 h-3.5 text-cyan-300" />
+//                 <span>HQ</span>
 //               </ImageBadgeTag>
 //             </ImageOverlayText>
 //           </ImageShowcaseCard>
@@ -515,29 +522,29 @@
 //               </IconWrapper>
 //               <DetailContent>
 //                 <span>Location</span>
-//                 <span>Oluku/Ugbowo, Benin City, Edo State</span>
+//                 <span>116 Mushin Road, Isolo, Lagos, Nigeria</span>
 //               </DetailContent>
 //             </ContactDetailItem>
-
-//             <ContactDetailItem>
+// <ContactDetailItem as="a" href="tel:09047103037" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
 //               <IconWrapper>
 //                 <Phone />
 //               </IconWrapper>
 //               <DetailContent>
 //                 <span>Direct Line</span>
-//                 <span>0813 237 1949</span>
+//                 <span>09047103037 / 08160801538</span>
 //               </DetailContent>
 //             </ContactDetailItem>
 
-//             <ContactDetailItem>
+//             <ContactDetailItem as="a" href="mailto:enitzglobal@gmail.com" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
 //               <IconWrapper>
 //                 <Mail />
 //               </IconWrapper>
 //               <DetailContent>
 //                 <span>Email Support</span>
-//                 <span>admin@kingswordcraft.com</span>
+//                 <span>enitzglobal@gmail.com</span>
 //               </DetailContent>
 //             </ContactDetailItem>
+            
 //           </InfoCard>
 //         </InfoColumn>
 
@@ -598,7 +605,7 @@
 //                 required
 //                 value={formData.message}
 //                 onChange={handleChange}
-//                 placeholder="Describe your enquiry, custom bag request, or order assistance..."
+//                 placeholder="Describe your enquiry, product question, or order assistance..."
 //               />
 //             </InputGroup>
 
@@ -621,8 +628,6 @@
 
 
 
-
-
 "use client";
 
 import React, { useState } from "react";
@@ -638,10 +643,10 @@ import {
 } from "lucide-react";
 import Swal from "sweetalert2";
 
-// --- ENITZ THEME & STYLES ---
-const brandCyan = '#00aeef';
-const brandDarkNavy = '#0b1b48';
-const brandGradient = 'linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)';
+// --- MAJINFOTEK THEME & STYLES ---
+const brandCyan = '#8b5cf6';
+const brandDarkNavy = '#1c3ba4';
+const brandGradient = 'linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)';
 
 // Animations
 const floatAnimation = keyframes`
@@ -669,8 +674,8 @@ const ContactPageWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 10% 20%, rgba(0, 174, 239, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(11, 27, 72, 0.05) 0%, transparent 40%);
+    background: radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(28, 59, 164, 0.05) 0%, transparent 40%);
     pointer-events: none;
     z-index: 1;
   }
@@ -693,8 +698,8 @@ const Badge = styled.div`
   gap: 8px;
   padding: 8px 18px;
   border-radius: 9999px;
-  background: rgba(0, 174, 239, 0.08);
-  border: 1px solid rgba(0, 174, 239, 0.3);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   color: ${brandCyan};
   font-size: 0.85rem;
   font-weight: 700;
@@ -800,7 +805,7 @@ const ImageOverlayText = styled.div`
 
     span:first-child {
       font-size: 0.85rem;
-      color: #38bdf8;
+      color: #c4b5fd;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -838,7 +843,7 @@ const InfoCard = styled.div`
   &:hover {
     border-color: ${brandCyan};
     transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(0, 174, 239, 0.08);
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.08);
   }
 `;
 
@@ -876,10 +881,10 @@ const IconWrapper = styled.div`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 10px;
-  background: rgba(0, 174, 239, 0.08);
+  background: rgba(139, 92, 246, 0.08);
   color: ${brandCyan};
   flex-shrink: 0;
-  border: 1px solid rgba(0, 174, 239, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.2);
 
   svg {
     width: 1.15rem;
@@ -969,7 +974,7 @@ const Input = styled.input`
   &:focus {
     border-color: ${brandCyan};
     background-color: #ffffff !important;
-    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
   }
 `;
 
@@ -993,7 +998,7 @@ const TextArea = styled.textarea`
   &:focus {
     border-color: ${brandCyan};
     background-color: #ffffff !important;
-    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
   }
 `;
 
@@ -1011,14 +1016,14 @@ const SubmitButton = styled.button`
   font-size: 1rem;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 174, 239, 0.25);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
   transition: all 0.3s ease;
   margin-top: 8px;
 
   &:hover {
     opacity: 0.92;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 174, 239, 0.35);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35);
   }
 
   &:disabled {
@@ -1060,10 +1065,10 @@ export default function ContactUsPage() {
       if (data.success) {
         Swal.fire({
           title: "Message Sent Successfully!",
-          text: "Thank you for connecting with Enitz. We appreciate your interest and are dedicated to delivering exceptional merchandise and service, ensuring a lasting and meaningful relationship with every customer.",
+          text: "Thank you for connecting with Majinfotek. We appreciate your interest and are dedicated to delivering exceptional technology solutions and service, ensuring a lasting and meaningful relationship with every client.",
           icon: "success",
           confirmButtonText: "Done",
-          confirmButtonColor: "#00aeef",
+          confirmButtonColor: "#8b5cf6",
           background: "#ffffff",
           color: "#0f172a"
         });
@@ -1083,7 +1088,7 @@ export default function ContactUsPage() {
         text: "Something went wrong while sending your message. Please try again later.",
         icon: "error",
         confirmButtonText: "Okay",
-        confirmButtonColor: "#00aeef",
+        confirmButtonColor: "#8b5cf6",
         background: "#ffffff",
         color: "#0f172a"
       });
@@ -1097,14 +1102,14 @@ export default function ContactUsPage() {
       {/* Page Header */}
       <HeaderContainer>
         <Badge>
-          <Sparkles className="w-4 h-4 text-cyan-500" />
+          <Sparkles className="w-4 h-4 text-purple-500" />
           <span>Get In Touch With Us</span>
         </Badge>
         <MainTitle>
           Contact <HighlightSpan>Us</HighlightSpan>
         </MainTitle>
         <Subtitle>
-          We’d love to hear from you. Whether you have questions, enquiries, or need assistance with an order, our support team is here to help.
+          We’d love to hear from you. Whether you have questions about our security systems, IT infrastructure, or need assistance, our support team is here to help.
         </Subtitle>
       </HeaderContainer>
 
@@ -1115,16 +1120,16 @@ export default function ContactUsPage() {
           {/* Visual Showcase Card */}
           <ImageShowcaseCard>
             <img 
-              src="./contact.png" 
-              alt="Customer support and retail showroom excellence" 
+              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" 
+              alt="Majinfotek technical support and office excellence" 
             />
             <ImageOverlayText>
               <div>
-                <span>Enitz</span>
+                <span>Majinfotek</span>
                 <span>Customer Support Center</span>
               </div>
               <ImageBadgeTag>
-                <Camera className="w-3.5 h-3.5 text-cyan-300" />
+                <Camera className="w-3.5 h-3.5 text-purple-300" />
                 <span>HQ</span>
               </ImageBadgeTag>
             </ImageOverlayText>
@@ -1143,29 +1148,29 @@ export default function ContactUsPage() {
               </IconWrapper>
               <DetailContent>
                 <span>Location</span>
-                <span>116 Mushin Road, Isolo, Lagos, Nigeria</span>
+                <span>27 Ribadu street by Norman willams off Awolowo road ikoyi Lagos</span>
               </DetailContent>
             </ContactDetailItem>
-<ContactDetailItem as="a" href="tel:09047103037" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+
+            <ContactDetailItem as="a" href="tel:09047103037" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
               <IconWrapper>
                 <Phone />
               </IconWrapper>
               <DetailContent>
                 <span>Direct Line</span>
-                <span>09047103037 / 08160801538</span>
+                <span>+234 812 603 3123</span>
               </DetailContent>
             </ContactDetailItem>
 
-            <ContactDetailItem as="a" href="mailto:enitzglobal@gmail.com" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+            <ContactDetailItem as="a" href="mailto:majinfotek@gmail.com" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
               <IconWrapper>
                 <Mail />
               </IconWrapper>
               <DetailContent>
                 <span>Email Support</span>
-                <span>enitzglobal@gmail.com</span>
+                <span>majinfotek@gmail.com</span>
               </DetailContent>
             </ContactDetailItem>
-            
           </InfoCard>
         </InfoColumn>
 
@@ -1226,7 +1231,7 @@ export default function ContactUsPage() {
                 required
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Describe your enquiry, product question, or order assistance..."
+                placeholder="Describe your enquiry, product question, or tech assistance..."
               />
             </InputGroup>
 

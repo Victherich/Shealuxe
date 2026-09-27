@@ -388,14 +388,15 @@ import Swal from "sweetalert2";
 import { usePathname } from "next/navigation";
 
 // 🎨 ENITZ BRAND THEME COLORS
-const PrimaryNavy = "#0B1B48";
-const PrimaryCyan = "#00AEEF";
+const PrimaryNavy = "#1c3ba4";
+const PrimaryCyan = " #8b5cf6";
+const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
 const TextMuted = "#475569";
 const LightBg = "#f8fafc";
-const ThemeGradient = "linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%)";
+
 
 /* ---------------- LAYOUT WRAPPER ---------------- */
 const LayoutWrapper = styled.div`
@@ -687,7 +688,7 @@ export default function DashboardLayout({ children }) {
       <Sidebar $open={sidebarOpen}>
         <SidebarTop>
           <BrandLogo>
-            ENITZ 
+            MAJINFOTEK
             {/* <span>GLOBAL</span> */}
           </BrandLogo>
 

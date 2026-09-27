@@ -356,12 +356,15 @@ import SearchBar from "@/components/SearchBar";
 
 /* ================= THEME & COLORS ================= */
 
-const brandCyan = '#00aeef';
+
 const cardBg = '#ffffff';
 const borderColor = '#e2e8f0';
 const textMain = '#0f172a';
 const textMuted = '#475569';
 const softBg = '#f8fafc';
+const PrimaryNavy = "#1c3ba4";
+const brandCyan = " #8b5cf6";
+const brandGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
 
 /* ================= STYLED COMPONENTS ================= */
 

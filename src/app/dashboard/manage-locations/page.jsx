@@ -1,7 +1,3 @@
-
-
-
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -23,14 +19,13 @@ import Swal from "sweetalert2";
 
 // 🎨 UPDATED THEME COLORS
 const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+const PrimaryCyan = "#8b5cf6";
+const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
 const TextMuted = "#475569";
 const LightBg = "#f8fafc";
-
 const Danger = "#ef4444";
 
 // 🌟 Styled Components (Strict max 10px spacing/gaps/margins/padding rule)
@@ -118,22 +113,22 @@ const PrimaryButton = styled.button`
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
   transition: all 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 174, 239, 0.4);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
   }
 `;
 
-const CategoriesGrid = styled.div`
+const LocationsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 10px;
 `;
 
-const CategoryCard = styled.div`
+const LocationCard = styled.div`
   background: ${White};
   border-radius: 10px;
   padding: 10px;
@@ -146,7 +141,7 @@ const CategoryCard = styled.div`
   transition: all 0.25s ease;
 
   &:hover {
-    border-color: rgba(0, 174, 239, 0.3);
+    border-color: rgba(139, 92, 246, 0.3);
     box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
     transform: translateY(-2px);
   }
@@ -158,14 +153,14 @@ const CardHeader = styled.div`
   align-items: center;
 `;
 
-const CategoryName = styled.h3`
+const LocationName = styled.h3`
   margin: 0;
   font-size: 1rem;
   font-weight: 800;
   color: ${Dark};
 `;
 
-const CategoryDesc = styled.p`
+const LocationDesc = styled.p`
   margin: 0;
   font-size: 0.85rem;
   color: ${TextMuted};
@@ -181,9 +176,9 @@ const ButtonGroup = styled.div`
 `;
 
 const EditButton = styled.button`
-  background: rgba(0, 174, 239, 0.1);
+  background: rgba(139, 92, 246, 0.1);
   color: ${PrimaryCyan};
-  border: 1px solid rgba(0, 174, 239, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 6px;
   padding: 6px 10px;
   font-size: 0.8rem;
@@ -192,7 +187,7 @@ const EditButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(0, 174, 239, 0.2);
+    background: rgba(139, 92, 246, 0.2);
   }
 `;
 
@@ -274,7 +269,7 @@ const StyledInput = styled.input`
 
   &:focus {
     border-color: ${PrimaryCyan};
-    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
   }
 `;
 
@@ -294,7 +289,7 @@ const StyledTextarea = styled.textarea`
 
   &:focus {
     border-color: ${PrimaryCyan};
-    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
   }
 `;
 
@@ -330,13 +325,12 @@ const SaveButton = styled.button`
   font-size: 0.85rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 174, 239, 0.2);
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2);
 
   &:hover {
     opacity: 0.95;
   }
 `;
-
 
 // 🔹 Compression utility function
 const compressImage = (file, maxSizeKB = 100) => {
@@ -391,8 +385,8 @@ const compressImage = (file, maxSizeKB = 100) => {
   });
 };
 
-export default function CategoriesCrudPage() {
-  const [categories, setCategories] = useState([]);
+export default function LocationsCrudPage() {
+  const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Modal State Controls
@@ -401,33 +395,30 @@ export default function CategoriesCrudPage() {
   const [titleInput, setTitleInput] = useState("");
   const [descInput, setDescInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-// Image States for Category
+  
+  // Image States for Location
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [existingImageUrl, setExistingImageUrl] = useState("");
 
-
-
-
-
-  const fetchCategories = async () => {
+  const fetchLocations = async () => {
     try {
       setLoading(true);
-      const querySnapshot = await getDocs(collection(db, "categories"));
+      const querySnapshot = await getDocs(collection(db, "locations"));
       const list = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      setCategories(list);
+      setLocations(list);
     } catch (error) {
-      Swal.fire("Error", "Failed to fetch categories.", "error");
+      Swal.fire("Error", "Failed to fetch locations.", "error");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchCategories();
+    fetchLocations();
   }, []);
 
   const openAddModal = () => {
@@ -440,12 +431,12 @@ export default function CategoriesCrudPage() {
     setIsModalOpen(true);
   };
 
-  const openEditModal = (cat) => {
-    setEditingId(cat.id);
-    setTitleInput(cat.title);
-    setDescInput(cat.description || "");
-    setExistingImageUrl(cat.image || "");
-    setImagePreview(cat.image || "");
+  const openEditModal = (loc) => {
+    setEditingId(loc.id);
+    setTitleInput(loc.title);
+    setDescInput(loc.description || "");
+    setExistingImageUrl(loc.image || "");
+    setImagePreview(loc.image || "");
     setImageFile(null);
     setIsModalOpen(true);
   };
@@ -457,14 +448,10 @@ export default function CategoriesCrudPage() {
     setImageFile(null);
     setImagePreview("");
     setExistingImageUrl("");
-    setIsModalOpen(false);
     setEditingId(null);
   };
 
-
-
-
-const handleFileChange = (e) => {
+  const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
@@ -480,13 +467,10 @@ const handleFileChange = (e) => {
     setExistingImageUrl("");
   };
 
-
-
-
-const handleSaveCategory = async (e) => {
+  const handleSaveLocation = async (e) => {
     e.preventDefault();
     if (!titleInput.trim()) {
-      return Swal.fire("Validation", "Please enter a category title.", "warning");
+      return Swal.fire("Validation", "Please enter a location title.", "warning");
     }
 
     try {
@@ -502,9 +486,9 @@ const handleSaveCategory = async (e) => {
         const compressedBlob = await compressImage(imageFile, 100);
 
         const data = new FormData();
-        data.append("file", compressedBlob, "category.jpg");
+        data.append("file", compressedBlob, "location.jpg");
         data.append("upload_preset", "bees_interior");
-        data.append("folder", "categories_majinfotek");
+        data.append("folder", "locations_majinfotek");
 
         const res = await fetch(
           "https://api.cloudinary.com/v1_1/aqxyleoh/image/upload",
@@ -530,57 +514,56 @@ const handleSaveCategory = async (e) => {
       };
 
       if (editingId) {
-        const docRef = doc(db, "categories", editingId);
+        const docRef = doc(db, "locations", editingId);
         await updateDoc(docRef, payload);
         Swal.close();
-        Swal.fire("Updated!", "Category updated successfully.", "success");
+        Swal.fire("Updated!", "Location updated successfully.", "success");
       } else {
-        await addDoc(collection(db, "categories"), {
+        await addDoc(collection(db, "locations"), {
           ...payload,
           createdAt: serverTimestamp(),
         });
         Swal.close();
-        Swal.fire("Success!", "Category added successfully.", "success");
+        Swal.fire("Success!", "Location added successfully.", "success");
       }
       closeModal();
-      fetchCategories();
+      fetchLocations();
     } catch (error) {
       Swal.close();
-      Swal.fire("Error", error.message || "Could not save category.", "error");
+      Swal.fire("Error", error.message || "Could not save location.", "error");
     }
   };
 
- 
- const handleDeleteCategory = async (categoryToDelete) => {
+  const handleDeleteLocation = async (locationToDelete) => {
     try {
-      // Prevent deletion if the category has a fixed type field
-      if (categoryToDelete.type === "fixed") {
+      // Prevent deletion if the location has a fixed type field
+      if (locationToDelete.type === "fixed") {
         await Swal.fire({
           title: "Cannot Delete",
-          text: `"${categoryToDelete.title}" is a protected fixed category and cannot be deleted.`,
+          text: `"${locationToDelete.title}" is a protected fixed location and cannot be deleted.`,
           icon: "error",
           confirmButtonColor: PrimaryCyan,
         });
         return;
       }
 
-      const productsQuery = query(collection(db, "products"), where("categoryId", "==", categoryToDelete.id));
+      const productsQuery = query(collection(db, "products"), where("locationId", "==", locationToDelete.id));
       const productsSnapshot = await getDocs(productsQuery);
 
       if (!productsSnapshot.empty) {
-        const categoryOptions = categories
-          .filter(cat => cat.id !== categoryToDelete.id)
-          .reduce((acc, cat) => {
-            acc[cat.id] = cat.title;
+        const locationOptions = locations
+          .filter(loc => loc.id !== locationToDelete.id)
+          .reduce((acc, loc) => {
+            acc[loc.id] = loc.title;
             return acc;
-          }, { "uncategorized": "Move to Uncategorized" });
+          }, { "unassigned": "Move to Unassigned" });
 
         const { value: targetChoice } = await Swal.fire({
-          title: "Category Contains Products!",
-          text: `There are ${productsSnapshot.size} product(s) in "${categoryToDelete.title}". Where should these products go before deletion?`,
+          title: "Location Contains Products!",
+          text: `There are ${productsSnapshot.size} product(s) in "${locationToDelete.title}". Where should these products go before deletion?`,
           input: "select",
-          inputOptions: categoryOptions,
-          inputPlaceholder: "Select a fallback category",
+          inputOptions: locationOptions,
+          inputPlaceholder: "Select a fallback location",
           showCancelButton: true,
           confirmButtonText: "Proceed & Reassign",
           confirmButtonColor: PrimaryCyan,
@@ -593,17 +576,17 @@ const handleSaveCategory = async (e) => {
 
         productsSnapshot.forEach((productDoc) => {
           batch.update(productDoc.ref, { 
-            categoryId: targetChoice === "uncategorized" ? null : targetChoice,
-            categoryName: targetChoice === "uncategorized" ? "Uncategorized" : categoryOptions[targetChoice]
+            locationId: targetChoice === "unassigned" ? null : targetChoice,
+            locationName: targetChoice === "unassigned" ? "Unassigned" : locationOptions[targetChoice]
           });
         });
 
-        const categoryRef = doc(db, "categories", categoryToDelete.id);
-        batch.delete(categoryRef);
+        const locationRef = doc(db, "locations", locationToDelete.id);
+        batch.delete(locationRef);
 
         await batch.commit();
-        Swal.fire("Success!", "Category deleted and products safely reassigned.", "success");
-        fetchCategories();
+        Swal.fire("Success!", "Location deleted and products safely reassigned.", "success");
+        fetchLocations();
         return;
       }
 
@@ -618,101 +601,100 @@ const handleSaveCategory = async (e) => {
       });
 
       if (result.isConfirmed) {
-        await deleteDoc(doc(db, "categories", categoryToDelete.id));
-        Swal.fire("Deleted!", "Category has been removed.", "success");
-        fetchCategories();
+        await deleteDoc(doc(db, "locations", locationToDelete.id));
+        Swal.fire("Deleted!", "Location has been removed.", "success");
+        fetchLocations();
       }
     } catch (error) {
-      Swal.fire("Error", "Could not delete category.", "error");
+      Swal.fire("Error", "Could not delete location.", "error");
     }
   };
- 
- 
-  const filteredCategories = categories.filter((cat) =>
-    cat.title.toLowerCase().includes(searchQuery.toLowerCase())
+
+  const filteredLocations = locations.filter((loc) =>
+    loc.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   if (loading) {
-    return <LoadingContainer>Loading categories...</LoadingContainer>;
+    return <LoadingContainer>Loading locations...</LoadingContainer>;
   }
 
   return (
     <Container>
       <HeaderBanner>
-        <ColorfulTitle>Product Categories Management 👜</ColorfulTitle>
-        <ColorfulSub>Organize your luxury bag collections, add new artisanal categories, and manage inventory layouts.</ColorfulSub>
+        <ColorfulTitle>Locations Management 📍</ColorfulTitle>
+        <ColorfulSub>Organize your physical or storage locations, add new zones, and manage inventory layouts.</ColorfulSub>
       </HeaderBanner>
 
       <ActionRow>
-        <ColorfulSectionTitle>All Categories ({categories.length})</ColorfulSectionTitle>
+        <ColorfulSectionTitle>All Locations ({locations.length})</ColorfulSectionTitle>
      
         <StyledInput 
           type="text" 
-          placeholder="Search categories by name..." 
+          placeholder="Search locations by name..." 
           value={searchQuery} 
           onChange={(e) => setSearchQuery(e.target.value)} 
           style={{ maxWidth: "250px", marginRight: "10px" }}
         />
 
         <PrimaryButton onClick={openAddModal}>
-          <span>+ Add Category</span>
+          <span>+ Add Location</span>
         </PrimaryButton>
       </ActionRow>
 
-      {filteredCategories.length === 0 ? (
-        <LoadingContainer>No categories found. Click "+ Add Category" to create one.</LoadingContainer>
+      {filteredLocations.length === 0 ? (
+        <LoadingContainer>No locations found. Click "+ Add Location" to create one.</LoadingContainer>
       ) : (
-       <CategoriesGrid>
-          {filteredCategories.map((cat) => (
-            <CategoryCard key={cat.id}>
-              {cat.image && (
+       <LocationsGrid>
+          {filteredLocations.map((loc) => (
+            <LocationCard key={loc.id}>
+              {loc.image && (
                 <div style={{ width: "100%", height: "140px", overflow: "hidden", borderRadius: "8px 8px 0 0" }}>
-                  <img src={cat.image} alt={cat.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img src={loc.image} alt={loc.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
               )}
               <CardHeader>
-                <CategoryName>
-                  {cat.title ? cat.title.charAt(0).toUpperCase() + cat.title.slice(1) : ""}
-                </CategoryName>
+                <LocationName>
+                  {loc.title ? loc.title.charAt(0).toUpperCase() + loc.title.slice(1) : ""}
+                </LocationName>
               </CardHeader>
-              <CategoryDesc>
+              <LocationDesc>
                 {(() => {
-                  const desc = cat.description || "No description provided.";
+                  const desc = loc.description || "No description provided.";
                   return desc ? desc.charAt(0).toUpperCase() + desc.slice(1) : "";
                 })()}
-              </CategoryDesc>
+              </LocationDesc>
               <ButtonGroup>
-                <EditButton onClick={() => openEditModal(cat)}>Edit</EditButton>
-                <DeleteButton onClick={() => handleDeleteCategory(cat)}>Delete</DeleteButton>
+                <EditButton onClick={() => openEditModal(loc)}>Edit</EditButton>
+                <DeleteButton onClick={() => handleDeleteLocation(loc)}>Delete</DeleteButton>
               </ButtonGroup>
-            </CategoryCard>
+            </LocationCard>
           ))}
-        </CategoriesGrid>
+        </LocationsGrid>
       )}
 
-     {/* 🌟 Custom Form Modal */}
+      {/* 🌟 Custom Form Modal */}
       {isModalOpen && (
         <ModalOverlay onClick={closeModal}>
           <ModalContainer onClick={(e) => e.stopPropagation()}>
-            <ModalTitle>{editingId ? "Edit Category" : "Create New Category"}</ModalTitle>
-            <form onSubmit={handleSaveCategory} style={{ display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
+            <ModalTitle>{editingId ? "Edit Location" : "Create New Location"}</ModalTitle>
+            <form onSubmit={handleSaveLocation} style={{ display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
               <StyledInput 
                 type="text" 
-                placeholder="Category Title" 
+                placeholder="Location Title" 
                 value={titleInput} 
                 onChange={(e) => setTitleInput(e.target.value)} 
                 required 
               />
               <StyledTextarea 
-                placeholder="Category Description" 
+                placeholder="Location Description" 
                 value={descInput} 
                 onChange={(e) => setDescInput(e.target.value)} 
               />
 
-              {/* 🌟 Category Image Upload & Preview Field */}
+              {/* 🌟 Location Image Upload & Preview Field */}
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <label style={{ fontSize: "0.85rem", fontWeight: "700", color: "#333" }}>
-                  Category Image
+                  Location Image
                 </label>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
                   <input 
@@ -738,7 +720,7 @@ const handleSaveCategory = async (e) => {
 
               <ModalActions>
                 <CancelButton type="button" onClick={closeModal}>Cancel</CancelButton>
-                <SaveButton type="submit">{editingId ? "Save Changes" : "Create Category"}</SaveButton>
+                <SaveButton type="submit">{editingId ? "Save Changes" : "Create Location"}</SaveButton>
               </ModalActions>
             </form>
           </ModalContainer>

@@ -572,19 +572,24 @@ import { onAuthStateChanged } from "firebase/auth";
 import Swal from "sweetalert2";
 import ProductCard from "@/components/ProductCard";
 import SearchBar from "./SearchBar";
+import ShopByCategory from "./ShopByCategory";
+import ShopByLocation from "./ShopByLocation";
+import FeaturedProducts from "./FeaturedProducts";
 
-/* ================= THEME & COLORS ================= */
 
-const brandCyan = '#00aeef';
-const brandDarkNavy = '#0b1b48';
-const brandGradient = 'linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)';
-const cardBg = '#ffffff';
-const borderColor = '#e2e8f0';
-const textMain = '#0f172a';
-const textMuted = '#475569';
-const softBg = '#f8fafc';
-const successGreen = '#10b981';
-const dangerRed = '#ef4444';
+
+
+/* ================= THEME STYLES (MAJINFOTEK) ================= */
+const primaryBlue = "#1c3ba4";
+const richPurple = "#8b5cf6";
+const brandGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
+const cardBg = "#ffffff";
+const borderColor = "rgba(226, 232, 240, 0.9)";
+const textMain = "#0f172a";
+const textMuted = "#475569";
+const softBg = "#f8fafc";
+const successGreen = "#10b981";
+const dangerRed = "#ef4444";
 
 const floatAnimation = keyframes`
   0% { transform: translateY(0px) rotate(0deg); }
@@ -619,7 +624,7 @@ const StoreHero = styled.section`
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(11, 27, 72, 0.75);
+    background: rgba(15, 23, 42, 0.85);
     z-index: 1;
   }
 `;
@@ -680,28 +685,10 @@ const SearchInput = styled.input`
   }
 
   &:focus {
-    border-color: ${brandCyan};
-    box-shadow: 0 10px 35px rgba(0, 174, 239, 0.2);
+    border-color: ${richPurple};
+    box-shadow: 0 10px 35px rgba(139, 92, 246, 0.25);
   }
 `;
-
-// const StoreLayout = styled.div`
-//   max-width: 1200px;
-//   margin: auto;
-//   padding: 24px 16px;
-//   display: grid;
-//   grid-template-columns: 260px 1fr;
-//   gap: 32px;
-//   align-items: start;
-//   width: 100%;
-//   box-sizing: border-box;
-
-//   @media (max-width: 968px) {
-//     grid-template-columns: 1fr;
-//     gap: 20px;
-//   }
-// `;
-
 
 const StoreLayout = styled.div`
   max-width: 1200px;
@@ -758,23 +745,23 @@ const CategoryList = styled.div`
 `;
 
 const CategoryButton = styled.button`
-  background: ${(props) => (props.$active ? brandGradient : 'transparent')};
-  color: ${(props) => (props.$active ? '#ffffff' : textMain)};
-  border: 1px solid ${(props) => (props.$active ? 'transparent' : borderColor)};
+  background: ${(props) => (props.$active ? brandGradient : "transparent")};
+  color: ${(props) => (props.$active ? "#ffffff" : textMain)};
+  border: 1px solid ${(props) => (props.$active ? "transparent" : borderColor)};
   padding: 12px 16px;
   border-radius: 10px;
   text-align: left;
   font-size: 0.95rem;
-  font-weight: ${(props) => (props.$active ? '700' : '600')};
+  font-weight: ${(props) => (props.$active ? "700" : "600")};
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
-  box-shadow: ${(props) => (props.$active ? '0 4px 15px rgba(0, 174, 239, 0.25)' : 'none')};
+  box-shadow: ${(props) => (props.$active ? "0 4px 15px rgba(139, 92, 246, 0.3)" : "none")};
 
   &:hover {
     background: ${(props) => (props.$active ? brandGradient : softBg)};
-    border-color: ${(props) => (props.$active ? 'transparent' : brandCyan)};
-    color: ${(props) => (props.$active ? '#ffffff' : brandCyan)};
+    border-color: ${(props) => (props.$active ? "transparent" : richPurple)};
+    color: ${(props) => (props.$active ? "#ffffff" : richPurple)};
   }
 `;
 
@@ -828,7 +815,7 @@ const SortSelect = styled.select`
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 
   &:focus {
-    border-color: ${brandCyan};
+    border-color: ${richPurple};
   }
 `;
 
@@ -859,12 +846,11 @@ const MobileCategorySelect = styled.select`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 
   &:focus {
-    border-color: ${brandCyan};
+    border-color: ${richPurple};
   }
 
   @media (max-width: 968px) {
     display: block;
-   
   }
 `;
 
@@ -877,23 +863,23 @@ const TopCategoriesContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 
-  @media(max-width:1200px){
-  display:none;
+  @media (max-width: 1200px) {
+    display: none;
   }
 `;
 
 const CategoriesScrollWrapper = styled.div`
   display: flex;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
   overflow-x: auto;
   padding-bottom: 8px;
   scrollbar-width: thin;
-  scrollbar-color: ${brandCyan} transparent;
-  flex-wrap:wrap;
+  scrollbar-color: ${richPurple} transparent;
+  flex-wrap: wrap;
 
   &::-webkit-scrollbar {
     height: 6px;
@@ -906,24 +892,25 @@ const CategoriesScrollWrapper = styled.div`
 
 const TopCategoryButton = styled.button`
   background: ${(props) => (props.$active ? brandGradient : softBg)};
-  color: ${(props) => (props.$active ? '#ffffff' : textMain)};
-  border: 1px solid ${(props) => (props.$active ? 'transparent' : borderColor)};
+  color: ${(props) => (props.$active ? "#ffffff" : textMain)};
+  border: 1px solid ${(props) => (props.$active ? "transparent" : borderColor)};
   padding: 5px 10px;
   border-radius: 30px;
   font-size: 0.8rem;
-  font-weight: ${(props) => (props.$active ? '700' : '600')};
+  font-weight: ${(props) => (props.$active ? "700" : "600")};
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
   flex-shrink: 0;
-  box-shadow: ${(props) => (props.$active ? '0 4px 15px rgba(0, 174, 239, 0.25)' : 'none')};
+  box-shadow: ${(props) => (props.$active ? "0 4px 15px rgba(139, 92, 246, 0.3)" : "none")};
 
   &:hover {
-    background: ${(props) => (props.$active ? brandGradient : '#f1f5f9')};
-    border-color: ${(props) => (props.$active ? 'transparent' : brandCyan)};
-    color: ${(props) => (props.$active ? '#ffffff' : brandCyan)};
+    background: ${(props) => (props.$active ? brandGradient : "#f1f5f9")};
+    border-color: ${(props) => (props.$active ? "transparent" : richPurple)};
+    color: ${(props) => (props.$active ? "#ffffff" : richPurple)};
   }
 `;
+
 
 
 /* ================= COMPONENT ================= */
@@ -1122,15 +1109,7 @@ export default function MainStoreComponent() {
         <HeroImage src="./shop.png" alt="Store Hero Banner" />
         <HeroContent>
           <HeroTitle>Shop Our Products</HeroTitle>
-          {/* <HeroSubtitle>
-            Explore premium accessories, bespoke products, and quality items designed to elevate your lifestyle.
-          </HeroSubtitle> */}
-          {/* <SearchInput
-            type="text"
-            placeholder="Search products by name..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          /> */}
+     
         </HeroContent>
       </StoreHero>
      {/* <div style={{ paddingTop: "5px", display: "flex", flexDirection: "column", gap: "20px", paddingLeft:"10px", paddingRight:'10px' }}> */}
@@ -1170,8 +1149,10 @@ export default function MainStoreComponent() {
         {/* Search Bar Component */}
         <SearchBar />
       {/* </div> */}
-
+      <FeaturedProducts/>
+<ShopByLocation/>
       <StoreLayout>
+
         <Sidebar>
           <SidebarTitle>Categories</SidebarTitle>
 

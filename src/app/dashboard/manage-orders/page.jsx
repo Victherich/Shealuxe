@@ -449,14 +449,14 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
 // 🎨 NEW THEME COLORS & GRADIENTS (Navy & Cyan Theme)
-const PrimaryNavy = "#0B1B48";
-const PrimaryCyan = "#00AEEF";
+const PrimaryNavy = "#1c3ba4";
+const PrimaryCyan = " #8b5cf6";
+const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
 const TextMuted = "#475569";
 const LightBg = "#f8fafc";
-const ThemeGradient = "linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%)";
 const Danger = "#ef4444";
 const Success = "#10b981";
 const Warning = "#f59e0b";

@@ -523,10 +523,9 @@ import { auth, db } from '@/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 
-// --- ENITZ OFFICIAL BRAND THEME & STYLES ---
-const primaryNavy = '#0B1B48';
-const primaryCyan = '#00AEEF';
-const brandGradient = 'linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%)';
+const primaryNavy = '#1c3ba4';
+const primaryCyan = '#8b5cf6';
+const brandGradient = 'linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)';
 const cardBg = '#ffffff';
 const borderColor = '#e2e8f0';
 const textMain = '#0f172a';

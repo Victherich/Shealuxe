@@ -145,7 +145,7 @@ export async function POST(request) {
         <body>
           <div class="container">
             <div class="header">
-              <h1>ENITZ</h1>
+              <h1>MAJINFOTEK</h1>
               <p>New Newsletter Subscription</p>
             </div>
             <div class="content">
@@ -168,7 +168,7 @@ export async function POST(request) {
     const mailOptions = {
       from: `"Newsletter Signup via Enitz" <${process.env.SMTP_USER}>`,
     //   to: 'victherich@gmail.com', // The inbox receiving the leads (change to enitzglobal@gmail.com when ready)
-        to: 'enitzglobal@gmail.com',
+        to: 'majinfotek@gmail.com',
       replyTo: email,              // Clicking "Reply" will reply straight to the subscriber
       subject: `New Newsletter Subscriber: ${name} (${email})`,
       html: htmlContent,

@@ -446,9 +446,9 @@ import Swal from "sweetalert2";
 // 🎨 Theme Colors
 // const Primary = "#6366f1";
 // const Secondary = "#a855f7";
-const Secondary = "#00AEEF"; // Bright Cyan / Teal Blue from the logo
-const AccentGradient = "linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%)"; // Dark Navy -> Bright Cyan
-const Primary = "#0B1B48";
+const Primary = "#1c3ba4";
+const Secondary = " #8b5cf6";
+const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
 const Dark = "#0f172a";
 const Border = "#e5eaf2";
 const White = "#ffffff";

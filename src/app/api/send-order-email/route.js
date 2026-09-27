@@ -351,30 +351,120 @@ export async function POST(request) {
       ? `${deliveryAddress.fullName || accountInfo.name}<br/>${deliveryAddress.street || deliveryAddress.address || ''}, ${deliveryAddress.city || ''}, ${deliveryAddress.state || ''}<br/>Phone: ${deliveryAddress.phone || accountInfo.phone}`
       : deliveryAddress;
 
-    const htmlContent = `
+    // const htmlContent = `
+    //   <!DOCTYPE html>
+    //   <html>
+    //     <head>
+    //       <meta charset="utf-8">
+    //       <style>
+    //         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
+    //         .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+    //         .header { background: linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%); padding: 25px; text-align: center; color: #ffffff; }
+    //         .header h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+    //         .header p { margin: 5px 0 0; font-size: 13px; color: #e2e8f0; opacity: 0.95; }
+    //         .content { padding: 20px; }
+    //         .info-box { background: #f8fafc; border-left: 4px solid #00AEEF; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
+    //         .table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    //         .table th { background: #f8fafc; padding: 10px; text-align: left; font-size: 12px; font-weight: 700; color: #475569; border-bottom: 2px solid #cbd5e1; }
+    //         .totals { width: 100%; font-size: 13px; margin-bottom: 20px; }
+    //         .totals td { padding: 6px 10px; }
+    //         .footer { background: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #475569; border-top: 1px solid #cbd5e1; }
+    //       </style>
+    //     </head>
+    //     <body>
+    //       <div class="container">
+    //         <div class="header">
+    //           <h1>MAJINFOTEK</h1>
+    //           <p>Order Confirmation & Summary</p>
+    //         </div>
+    //         <div class="content">
+    //           <div class="info-box">
+    //             <strong>Order Number:</strong> ${orderNumber} <br/>
+    //             <strong>Payment Type:</strong> ${paymentType} <br/>
+    //             <strong>Payment Status:</strong> ${paymentStatus} <br/>
+    //             <strong>Order Status:</strong> ${orderStatus}
+    //           </div>
+
+    //           <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Customer Information</h3>
+    //           <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
+    //             <strong>Name:</strong> ${accountInfo.name}<br/>
+    //             <strong>Email:</strong> ${accountInfo.email}<br/>
+    //             <strong>Phone:</strong> ${accountInfo.phone}
+    //           </p>
+
+    //           <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Delivery Address</h3>
+    //           <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
+    //             ${addressHtml}
+    //           </p>
+
+    //           <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Order Items</h3>
+    //           <table class="table">
+    //             <thead>
+    //               <tr>
+    //                 <th style="width: 64px;">Image</th>
+    //                 <th>Product Details</th>
+    //               </tr>
+    //             </thead>
+    //             <tbody>
+    //               ${itemsHtml}
+    //             </tbody>
+    //           </table>
+              
+    //           <table class="totals">
+    //             <tr>
+    //               <td style="color: #475569;">Subtotal:</td>
+    //               <td style="text-align: right; font-weight: 600;">₦${Number(subtotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+    //             </tr>
+    //             <tr>
+    //               <td style="color: #475569;">Delivery Fee:</td>
+    //               <td style="text-align: right; font-weight: 600;">₦${Number(deliveryFee || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+    //             </tr>
+    //             ${discount ? `
+    //             <tr>
+    //               <td style="color: #10b981;">Discount ${promoCode ? `(${promoCode})` : ''}:</td>
+    //               <td style="text-align: right; font-weight: 600; color: #10b981;">-₦${Number(discount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+    //             </tr>` : ''}
+    //             <tr>
+    //               <td style="font-size: 15px; font-weight: 800; color: #0f172a; border-top: 1px solid #cbd5e1; padding-top: 10px;">Final Total:</td>
+    //               <td style="text-align: right; font-size: 15px; font-weight: 800; color: #0B1B48; border-top: 1px solid #cbd5e1; padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+    //             </tr>
+    //           </table>
+    //         </div>
+    //         <div class="footer">
+    //           &copy; ${new Date().getFullYear()} Majinfotek. All rights reserved.
+    //         </div>
+    //       </div>
+    //     </body>
+    //   </html>
+    // `;
+
+    // Loop through each recipient and send individually to prevent delivery drops or SMTP provider blocks
+  
+  
+  const htmlContent = `
       <!DOCTYPE html>
       <html>
         <head>
           <meta charset="utf-8">
           <style>
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
-            .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-            .header { background: linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%); padding: 25px; text-align: center; color: #ffffff; }
+            .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid rgba(226, 232, 240, 0.9); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+            .header { background: linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%); padding: 25px; text-align: center; color: #ffffff; }
             .header h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
             .header p { margin: 5px 0 0; font-size: 13px; color: #e2e8f0; opacity: 0.95; }
             .content { padding: 20px; }
-            .info-box { background: #f8fafc; border-left: 4px solid #00AEEF; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
+            .info-box { background: #f8fafc; border-left: 4px solid #1c3ba4; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
             .table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-            .table th { background: #f8fafc; padding: 10px; text-align: left; font-size: 12px; font-weight: 700; color: #475569; border-bottom: 2px solid #cbd5e1; }
+            .table th { background: #f8fafc; padding: 10px; text-align: left; font-size: 12px; font-weight: 700; color: #475569; border-bottom: 2px solid rgba(226, 232, 240, 0.9); }
             .totals { width: 100%; font-size: 13px; margin-bottom: 20px; }
             .totals td { padding: 6px 10px; }
-            .footer { background: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #475569; border-top: 1px solid #cbd5e1; }
+            .footer { background: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #475569; border-top: 1px solid rgba(226, 232, 240, 0.9); }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h1>ENITZ</h1>
+              <h1>MAJINFOTEK</h1>
               <p>Order Confirmation & Summary</p>
             </div>
             <div class="content">
@@ -385,19 +475,19 @@ export async function POST(request) {
                 <strong>Order Status:</strong> ${orderStatus}
               </div>
 
-              <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Customer Information</h3>
+              <h3 style="font-size: 14px; color: #1c3ba4; margin-bottom: 8px;">Customer Information</h3>
               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
                 <strong>Name:</strong> ${accountInfo.name}<br/>
                 <strong>Email:</strong> ${accountInfo.email}<br/>
                 <strong>Phone:</strong> ${accountInfo.phone}
               </p>
 
-              <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Delivery Address</h3>
+              <h3 style="font-size: 14px; color: #1c3ba4; margin-bottom: 8px;">Delivery Address</h3>
               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
                 ${addressHtml}
               </p>
 
-              <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Order Items</h3>
+              <h3 style="font-size: 14px; color: #1c3ba4; margin-bottom: 8px;">Order Items</h3>
               <table class="table">
                 <thead>
                   <tr>
@@ -425,25 +515,25 @@ export async function POST(request) {
                   <td style="text-align: right; font-weight: 600; color: #10b981;">-₦${Number(discount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>` : ''}
                 <tr>
-                  <td style="font-size: 15px; font-weight: 800; color: #0f172a; border-top: 1px solid #cbd5e1; padding-top: 10px;">Final Total:</td>
-                  <td style="text-align: right; font-size: 15px; font-weight: 800; color: #0B1B48; border-top: 1px solid #cbd5e1; padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                  <td style="font-size: 15px; font-weight: 800; color: #0f172a; border-top: 1px solid rgba(226, 232, 240, 0.9); padding-top: 10px;">Final Total:</td>
+                  <td style="text-align: right; font-size: 15px; font-weight: 800; color: #1c3ba4; border-top: 1px solid rgba(226, 232, 240, 0.9); padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>
               </table>
             </div>
             <div class="footer">
-              &copy; ${new Date().getFullYear()} Enitz Global Limited. All rights reserved.
+              &copy; ${new Date().getFullYear()} Majinfotek. All rights reserved.
             </div>
           </div>
         </body>
       </html>
     `;
-
-    // Loop through each recipient and send individually to prevent delivery drops or SMTP provider blocks
+  
+  
     const emailPromises = recipients.map(async (recipientEmail) => {
       const mailOptions = {
-        from: `"Enitz" <${process.env.SMTP_USER}>`,
+        from: `"Majinfotek" <${process.env.SMTP_USER}>`,
         to: recipientEmail,
-        subject: `Order Confirmation #${orderNumber} - Enitz`,
+        subject: `Order Confirmation #${orderNumber} - Majinfotek`,
         html: htmlContent,
       };
       return transporter.sendMail(mailOptions);

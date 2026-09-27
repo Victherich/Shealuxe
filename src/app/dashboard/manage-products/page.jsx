@@ -17,8 +17,9 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
 // 🎨 UPDATED THEME COLORS
-const PrimaryNavy = "#0B1B48";
-const PrimaryCyan = "#00AEEF";
+const PrimaryNavy = "#1c3ba4";
+const PrimaryCyan = " #8b5cf6";
+const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
@@ -26,7 +27,7 @@ const TextMuted = "#475569";
 const LightBg = "#f8fafc";
 const Danger = "#ef4444";
 const Success = "#22c55e";
-const ThemeGradient = "linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%)";
+
 
 // 🌟 Styled Components (Strict max 10px spacing/gaps/margins/padding rule)
 const Container = styled.div`
@@ -201,7 +202,7 @@ const ProductInfo = styled.div`
 
 const ProductName = styled.h3`
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: ${Dark};
 `;
@@ -582,722 +583,6 @@ const compressImage = (file, maxSizeKB = 100) => {
   });
 };
 
-// export default function ProductsCrudPage() {
-//   const [products, setProducts] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [search, setSearch] = useState("");
-//   const router = useRouter();
-
-//   // Modal State Controls
-//   const [showModal, setShowModal] = useState(false);
-//   const [editingId, setEditingId] = useState(null);
-  
-//   // Form states
-//   const [form, setForm] = useState({
-//     name: "",
-//     description: "",
-//     amount: "",
-//     quantity: "",
-//     neverFinishes: false,
-//     categoryIds: [],
-//     isLive: true,
-//   });
-
-//   // 4 individual slots for files and previews
-//   const [imageFiles, setImageFiles] = useState([null, null, null, null]);
-//   const [imagePreviews, setImagePreviews] = useState(["", "", "", ""]);
-//   const [existingImageUrls, setExistingImageUrls] = useState(["", "", "", ""]);
-
-//   // Categories state
-//   const [categories, setCategories] = useState([]);
-//   const [selectedCategory, setSelectedCategory] = useState("");
-//   const [sortOrder, setSortOrder] = useState("");
-
-//   // Variations and Features Textarea
-//   const [variations, setVariations] = useState([]); 
-//   const [featuresText, setFeaturesText] = useState(""); 
-
-//   // Fetch categories from Firestore
-//   const fetchCategories = async () => {
-//     try {
-//       const querySnapshot = await getDocs(collection(db, "categories"));
-//       const list = querySnapshot.docs.map((doc) => ({
-//         id: doc.id,
-//         ...doc.data(),
-//       }));
-//       setCategories(list);
-//     } catch (error) {
-//       console.error("Failed to fetch categories:", error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchProducts();
-//     fetchCategories();
-//   }, []);
-
-//   const fetchProducts = async () => {
-//     try {
-//       setLoading(true);
-//       const querySnapshot = await getDocs(collection(db, "products"));
-//       const list = querySnapshot.docs.map((doc) => ({
-//         id: doc.id,
-//         ...doc.data(),
-//       }));
-//       setProducts(list);
-//     } catch (error) {
-//       Swal.fire("Error", "Failed to fetch products.", "error");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const handleSlotFileChange = (index, e) => {
-//     const file = e.target.files[0];
-//     if (!file) return;
-
-//     const newFiles = [...imageFiles];
-//     newFiles[index] = file;
-//     setImageFiles(newFiles);
-
-//     const newPreviews = [...imagePreviews];
-//     newPreviews[index] = URL.createObjectURL(file);
-//     setImagePreviews(newPreviews);
-
-//     const newExisting = [...existingImageUrls];
-//     newExisting[index] = "";
-//     setExistingImageUrls(newExisting);
-
-//     e.target.value = "";
-//   };
-
-//   const handleRemoveSlot = (index) => {
-//     const newFiles = [...imageFiles];
-//     newFiles[index] = null;
-//     setImageFiles(newFiles);
-
-//     const newPreviews = [...imagePreviews];
-//     newPreviews[index] = "";
-//     setImagePreviews(newPreviews);
-
-//     const newExisting = [...existingImageUrls];
-//     newExisting[index] = "";
-//     setExistingImageUrls(newExisting);
-//   };
-
-//   const handleSave = async (e) => {
-//     e.preventDefault();
-//     try {
-//       if (!form.name || !form.amount) {
-//         return Swal.fire({
-//           icon: "warning",
-//           text: "Please provide product name and amount.",
-//         });
-//       }
-
-//       if (!form.categoryIds || form.categoryIds.length === 0) {
-//         return Swal.fire({
-//           icon: "warning",
-//           text: "Please select at least one category for this product.",
-//         });
-//       }
-
-//       if (!imageFiles[0] && !existingImageUrls[0]) {
-//         return Swal.fire({
-//           icon: "warning",
-//           text: "The first image is compulsory. Please select an image for Slot 1.",
-//         });
-//       }
-
-//       Swal.fire({
-//         text: "Processing...",
-//         allowOutsideClick: false,
-//         didOpen: () => Swal.showLoading(),
-//       });
-
-//       let finalImageUrls = [];
-
-//       for (let i = 0; i < 4; i++) {
-//         if (imageFiles[i]) {
-//           const compressedBlob = await compressImage(imageFiles[i], 100);
-
-//           const data = new FormData();
-//           data.append("file", compressedBlob, `product_${i}.jpg`);
-//           data.append("upload_preset", "bees_interior");
-//           data.append("folder", "products_enitz_global");
-
-//           const res = await fetch(
-//             "https://api.cloudinary.com/v1_1/aqxyleoh/image/upload",
-//             {
-//               method: "POST",
-//               body: data,
-//             }
-//           );
-
-//           const result = await res.json();
-
-//           if (!res.ok) {
-//             throw new Error(result.error?.message || `Image upload failed for slot ${i + 1}`);
-//           }
-
-//           finalImageUrls.push(result.secure_url);
-//         } else if (existingImageUrls[i]) {
-//           finalImageUrls.push(existingImageUrls[i]);
-//         }
-//       }
-
-//       const featuresList = featuresText
-//         .split("\n")
-//         .map((item) => item.trim())
-//         .filter((item) => item.length > 0);
-
-//       const payload = {
-//         name: form.name,
-//         description: form.description,
-//         amount: Number(form.amount),
-//         quantity: form.neverFinishes ? 0 : Number(form.quantity || 0),
-//         neverFinishes: form.neverFinishes,
-//         images: finalImageUrls,
-//         image: finalImageUrls[0] || "",
-//         // categoryId: form.categoryId,
-//         categoryIds: form.categoryIds, // Saved as an array of IDs
-//         categoryId: form.categoryIds[0] || "", // Backward compatibility fallback
-//         isLive: form.isLive,
-//         variations: variations.filter((v) => v.name.trim() !== "" && v.options.trim() !== ""),
-//         features: featuresList,
-//       };
-
-//       if (editingId) {
-//         await updateDoc(doc(db, "products", editingId), payload);
-//       } else {
-//         await addDoc(collection(db, "products"), {
-//           ...payload,
-//           createdAt: serverTimestamp(),
-//         });
-//       }
-
-//       Swal.close();
-//       Swal.fire({
-//         icon: "success",
-//         title: "Saved!",
-//         timer: 1500,
-//         showConfirmButton: false,
-//       });
-
-//       setShowModal(false);
-//       setForm({ name: "", description: "", amount: "", quantity: "", neverFinishes: false, categoryIds: [], isLive: true });
-//       setImageFiles([null, null, null, null]);
-//       setImagePreviews(["", "", "", ""]);
-//       setExistingImageUrls(["", "", "", ""]);
-//       setEditingId(null);
-//       setVariations([]);
-//       setFeaturesText("");
-//       fetchProducts();
-
-//     } catch (error) {
-//       Swal.close();
-//       Swal.fire({
-//         icon: "error",
-//         title: "Save Failed",
-//         text: error.message || "Try again.",
-//       });
-//     }
-//   };
-
-//   const handleEdit = (item, e) => {
-//     e.stopPropagation();
-//     const itemImages = item.images || (item.image ? [item.image] : []);
-
-//     // Fallback support for older single categoryId items
-//     let loadedCategories = item.categoryIds || [];
-//     if (loadedCategories.length === 0 && (item.categoryId || item.category)) {
-//       loadedCategories = [item.categoryId || item.category];
-//     }
-    
-//  setForm({
-//       name: item.name || "",
-//       description: item.description || "",
-//       amount: item.amount || "",
-//       quantity: item.quantity || "",
-//       neverFinishes: item.neverFinishes || false,
-//       categoryIds: loadedCategories,
-//       isLive: item.isLive ?? true,
-//     });
-//     setEditingId(item.id);
-
-//     const slotUrls = ["", "", "", ""];
-//     const slotPreviews = ["", "", "", ""];
-//     itemImages.forEach((url, idx) => {
-//       if (idx < 4) {
-//         slotUrls[idx] = url;
-//         slotPreviews[idx] = url;
-//       }
-//     });
-
-//     setExistingImageUrls(slotUrls);
-//     setImagePreviews(slotPreviews);
-//     setImageFiles([null, null, null, null]);
-//     setShowModal(true);
-//     setVariations(item.variations || []);
-//     setFeaturesText(item.features ? item.features.join("\n") : "");
-//   };
-
-//   const handleAddVariation = () => {
-//     setVariations([...variations, { name: "", options: "" }]);
-//   };
-
-//   const handleVariationChange = (index, field, value) => {
-//     const updated = [...variations];
-//     updated[index][field] = value;
-//     setVariations(updated);
-//   };
-
-//   const handleRemoveVariation = (index) => {
-//     setVariations(variations.filter((_, i) => i !== index));
-//   };
-
-//   const handleDelete = async (id, e) => {
-//     e.stopPropagation();
-//     const result = await Swal.fire({
-//       title: "Are you sure?",
-//       text: "This product will be deleted permanently.",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: Danger,
-//       cancelButtonColor: TextMuted,
-//       confirmButtonText: "Yes, delete it!",
-//     });
-
-//     if (!result.isConfirmed) return;
-
-//     try {
-//       await deleteDoc(doc(db, "products", id));
-//       Swal.fire("Deleted!", "", "success");
-//       fetchProducts();
-//     } catch (error) {
-//       Swal.fire("Error", "Could not delete product.", "error");
-//     }
-//   };
-
-//   const handleToggleLive = async (item, e) => {
-//     e.stopPropagation();
-//     const updatedStatus = !item.isLive;
-    
-//     setProducts(products.map(p => p.id === item.id ? { ...p, isLive: updatedStatus } : p));
-
-//     try {
-//       await updateDoc(doc(db, "products", item.id), {
-//         isLive: updatedStatus
-//       });
-//     } catch (error) {
-//       setProducts(products.map(p => p.id === item.id ? { ...p, isLive: item.isLive } : p));
-//       Swal.fire("Error", "Could not update product status.", "error");
-//     }
-//   };
-
-//   // const filteredData = products
-//   //   .filter((item) => {
-//   //     const matchesSearch = item.name?.toLowerCase().includes(search.toLowerCase());
-//   //     const matchesCategory = selectedCategory === "" || item.categoryId === selectedCategory;
-//   //     return matchesSearch && matchesCategory;
-//   //   })
-//   //   .sort((a, b) => {
-//   //     if (sortOrder === "low-high") return Number(a.amount || 0) - Number(b.amount || 0);
-//   //     if (sortOrder === "high-low") return Number(b.amount || 0) - Number(a.amount || 0);
-//   //     return 0;
-//   //   });
-
-
-
-//   const filteredData = products
-//     .filter((item) => {
-//       const matchesSearch = item.name?.toLowerCase().includes(search.toLowerCase());
-      
-//       // Check if product contains the selected category ID in its categoryIds array (with fallback)
-//       const itemCats = item.categoryIds || (item.categoryId ? [item.categoryId] : []);
-//       const matchesCategory = selectedCategory === "" || itemCats.includes(selectedCategory);
-      
-//       return matchesSearch && matchesCategory;
-//     })
-//     .sort((a, b) => {
-//       if (sortOrder === "low-high") return Number(a.amount || 0) - Number(b.amount || 0);
-//       if (sortOrder === "high-low") return Number(b.amount || 0) - Number(a.amount || 0);
-//       return 0;
-//     });
-
-
-
-//   const getCategoryName = (catId) => {
-//     const found = categories.find((cat) => cat.id === catId);
-//     return found ? (found.name || found.title) : "Uncategorized";
-//   };
-
-//   if (loading) {
-//     return <LoadingContainer>Loading products...</LoadingContainer>;
-//   }
-
-//   return (
-//     <Container>
-//       <HeaderBanner>
-//         <ColorfulTitle>Product Management 🛍️</ColorfulTitle>
-//         <ColorfulSub>Manage inventory items, upload compressed product visuals, and track quantities.</ColorfulSub>
-//       </HeaderBanner>
-
-//       <ActionRow>
-//         <ColorfulSectionTitle>Inventory ({filteredData.length})</ColorfulSectionTitle>
-//         <div style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
-//           <SearchInput
-//             type="text"
-//             placeholder="Search by product name..."
-//             value={search}
-//             onChange={(e) => setSearch(e.target.value)}
-//           />
-//           <select
-//             value={selectedCategory}
-//             onChange={(e) => setSelectedCategory(e.target.value)}
-//             style={{
-//               border: `1px solid ${Border}`,
-//               borderRadius: "8px",
-//               padding: "8px 10px",
-//               fontSize: "0.9rem",
-//               outline: "none",
-//               color: Dark,
-//               background: White,
-//               boxSizing: "border-box",
-//               margin: 0,
-//             }}
-//           >
-//             <option value="">All Categories</option>
-//             {categories.map((cat) => (
-//               <option key={cat.id} value={cat.id}>
-//                 {cat.name || cat.title}
-//               </option>
-//             ))}
-//           </select>
-//           <select
-//             value={sortOrder}
-//             onChange={(e) => setSortOrder(e.target.value)}
-//             style={{
-//               border: `1px solid ${Border}`,
-//               borderRadius: "8px",
-//               padding: "8px 10px",
-//               fontSize: "0.9rem",
-//               outline: "none",
-//               color: Dark,
-//               background: White,
-//               boxSizing: "border-box",
-//               margin: 0,
-//             }}
-//           >
-//             <option value="">Sort by Price</option>
-//             <option value="low-high">Price: Low to High</option>
-//             <option value="high-low">Price: High to Low</option>
-//           </select>
-//           <PrimaryButton onClick={() => {
-//             setEditingId(null);
-//             setForm({ name: "", description: "", amount: "", quantity: "", neverFinishes: false, categoryId: "", isLive: true });
-//             setImageFiles([null, null, null, null]);
-//             setImagePreviews(["", "", "", ""]);
-//             setExistingImageUrls(["", "", "", ""]);
-//             setVariations([]);
-//             setFeaturesText("");
-//             setShowModal(true);
-//           }}>
-//             <span>+ Add Product</span>
-//           </PrimaryButton>
-//         </div>
-//       </ActionRow>
-
-//       {filteredData.length === 0 ? (
-//         <LoadingContainer>No products found.</LoadingContainer>
-//       ) : (
-//         <ProductsGrid>
-//           {filteredData.map((item) => {
-//             const displayImg = item.images?.[0] || item.image || "https://placehold.co/400x300?text=No+Image";
-//             return (
-//               <ProductCard key={item.id} onClick={() => router.push(`/productdetail/${item.id}`)}>
-//                 <ProductImageContainer>
-//                   <ProductImage src={displayImg} alt={item.name} />
-//                 </ProductImageContainer>
-//                 <ProductInfo>
-//                   <ProductName>
-//                     {item.name ? item.name.charAt(0).toUpperCase() + item.name.slice(1) : ""}
-//                   </ProductName>
-                  
-//                   {/* <ProductcategoryBadge>
-//                     {(() => {
-//                       const name = getCategoryName(item.categoryId);
-//                       return name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
-//                     })()}
-//                   </ProductcategoryBadge> */}
-
-//                   <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
-//   {(() => {
-//     const itemCats = item.categoryIds || (item.categoryId ? [item.categoryId] : []);
-//     if (itemCats.length === 0) return <ProductcategoryBadge>Uncategorized</ProductcategoryBadge>;
-    
-//     return itemCats.map((catId, idx) => {
-//       const name = getCategoryName(catId);
-//       return (
-//         <ProductcategoryBadge key={idx}>
-//           {name ? name.charAt(0).toUpperCase() + name.slice(1) : ""}
-//         </ProductcategoryBadge>
-//       );
-//     });
-//   })()}
-// </div>
-//                   {item.variations && item.variations.length > 0 && (
-//                     <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-//                       {item.variations.map((v, idx) => (
-//                         <div key={idx} style={{ fontSize: "0.8rem", color: TextMuted, fontWeight: "600" }}>
-//                           <span style={{ color: PrimaryNavy }}>{v.name}:</span> {v.options}
-//                         </div>
-//                       ))}
-//                     </div>
-//                   )}
-//                   <ProductAmount>₦{Number(item.amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</ProductAmount>
-//                   <ProductStock>
-//                     {item.neverFinishes ? "∞ In Unlimited Stock" : `Stock: ${item.quantity ?? 0}`}
-//                   </ProductStock>
-//                 </ProductInfo>
-
-//                 <ButtonGroup>
-//                   <ToggleContainer onClick={(e) => handleToggleLive(item, e)} title="Toggle Public Visibility">
-//                     <ToggleSwitchBox $isChecked={item.isLive}>
-//                       <ToggleThumb $isChecked={item.isLive} />
-//                     </ToggleSwitchBox>
-//                     <ToggleLabel>{item.isLive ? "On" : "Off"}</ToggleLabel>
-//                   </ToggleContainer>
-//                   <EditButton onClick={(e) => handleEdit(item, e)}>Edit</EditButton>
-//                   <DeleteButton onClick={(e) => handleDelete(item.id, e)}>Delete</DeleteButton>
-//                 </ButtonGroup>
-//               </ProductCard>
-//             );
-//           })}
-//         </ProductsGrid>
-//       )}
-
-//       {/* 🌟 Add/Edit Product Modal */}
-//       {showModal && (
-//         <ModalOverlay onClick={() => setShowModal(false)}>
-//           <ModalContainer onClick={(e) => e.stopPropagation()}>
-//             <ModalTitle>{editingId ? "Edit Product" : "Create New Product"}</ModalTitle>
-//             <form onSubmit={handleSave} style={{ display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
-//               <StyledInput
-//                 type="text"
-//                 placeholder="Product Name"
-//                 value={form.name}
-//                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-//                 required
-//               />
-
-//               {/* <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-//                 <label style={{ fontSize: "0.85rem", fontWeight: "700", color: Dark }}>
-//                   Product Category (Required)
-//                 </label>
-//                 <select
-//                   value={form.categoryId}
-//                   onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
-//                   required
-//                   style={{
-//                     border: `1px solid ${Border}`,
-//                     borderRadius: "6px",
-//                     padding: "8px 10px",
-//                     fontSize: "0.9rem",
-//                     outline: "none",
-//                     color: Dark,
-//                     background: White,
-//                     width: "100%",
-//                     boxSizing: "border-box",
-//                     margin: 0,
-//                   }}
-//                 >
-//                   <option value="">Select a category...</option>
-//                   {categories.map((cat) => (
-//                     <option key={cat.id} value={cat.id}>
-//                       {cat.name || cat.title}
-//                     </option>
-//                   ))}
-//                 </select>
-//               </div> */}
-
-//               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-//     <label style={{ fontSize: "0.85rem", fontWeight: "700", color: Dark }}>
-//       Product Categories (Select at least one)
-//     </label>
-//     <div style={{ 
-//       border: `1px solid ${Border}`, 
-//       borderRadius: "6px", 
-//       padding: "8px", 
-//       maxHeight: "120px", 
-//       overflowY: "auto",
-//       background: White,
-//       display: "flex",
-//       flexDirection: "column",
-//       gap: "6px"
-//     }}>
-//       {categories.map((cat) => {
-//         const isChecked = form.categoryIds.includes(cat.id);
-//         return (
-//           <CheckboxRow key={cat.id}>
-//             <input
-//               type="checkbox"
-//               checked={isChecked}
-//               onChange={(e) => {
-//                 const updatedIds = e.target.value; // or toggle logic below
-//                 const current = [...form.categoryIds];
-//                 if (e.target.checked) {
-//                   current.push(cat.id);
-//                 } else {
-//                   const index = current.indexOf(cat.id);
-//                   if (index > -1) current.splice(index, 1);
-//                 }
-//                 setForm({ ...form, categoryIds: current });
-//               }}
-//             />
-//             <span>{cat.name || cat.title}</span>
-//           </CheckboxRow>
-//         );
-//       })}
-//     </div>
-//   </div>
-
-//               <StyledTextarea
-//                 placeholder="Product Description"
-//                 value={form.description}
-//                 onChange={(e) => setForm({ ...form, description: e.target.value })}
-//               />
-//               <StyledInput
-//                 type="number"
-//                 placeholder="Amount (₦)"
-//                 value={form.amount}
-//                 onChange={(e) => setForm({ ...form, amount: e.target.value })}
-//                 required
-//               />
-
-//               {/* Stock Management Row */}
-//               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-//                 {!form.neverFinishes && (
-//                   <StyledInput
-//                     type="number"
-//                     placeholder="Stock Quantity"
-//                     value={form.quantity}
-//                     onChange={(e) => setForm({ ...form, quantity: e.target.value })}
-//                   />
-//                 )}
-//                 <CheckboxRow>
-//                   <input
-//                     type="checkbox"
-//                     checked={form.neverFinishes}
-//                     onChange={(e) => setForm({ ...form, neverFinishes: e.target.checked })}
-//                   />
-//                   <span>Unlimited Stock (Never finishes)</span>
-//                 </CheckboxRow>
-//               </div>
-
-//               {/* Live Status Toggle in Form */}
-//               <ToggleContainer onClick={() => setForm({ ...form, isLive: !form.isLive })}>
-//                 <ToggleSwitchBox $isChecked={form.isLive}>
-//                   <ToggleThumb $isChecked={form.isLive} />
-//                 </ToggleSwitchBox>
-//                 <ToggleLabel>Product is {form.isLive ? "Live (Visible)" : "Hidden"}</ToggleLabel>
-//               </ToggleContainer>
-
-//               {/* 🌟 Features Textarea */}
-//               <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-//                 <label style={{ fontSize: "0.85rem", fontWeight: "700", color: Dark }}>
-//                   Product Features (Each line separated by Enter becomes a bullet point)
-//                 </label>
-//                 <StyledTextarea
-//                   placeholder="e.g. Waterproof material&#10;Easy to install&#10;Durable build"
-//                   value={featuresText}
-//                   onChange={(e) => setFeaturesText(e.target.value)}
-//                   style={{ minHeight: "80px" }}
-//                 />
-//               </div>
-
-//               {/* 🌟 Product Variations Section */}
-//               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-//                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-//                   <span style={{ fontSize: "0.85rem", fontWeight: "700", color: Dark }}>
-//                     Product Variations (e.g., Size, Color)
-//                   </span>
-//                   <PrimaryButton type="button" onClick={handleAddVariation} style={{ padding: "4px 8px", fontSize: "0.75rem" }}>
-//                     + Add Variation
-//                   </PrimaryButton>
-//                 </div>
-
-//                 {variations.map((v, index) => (
-//                   <div key={index} style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-//                     <StyledInput
-//                       type="text"
-//                       placeholder="Attribute (e.g. Size)"
-//                       value={v.name}
-//                       onChange={(e) => handleVariationChange(index, "name", e.target.value)}
-//                     />
-//                     <StyledInput
-//                       type="text"
-//                       placeholder="Options (e.g. S, M, L)"
-//                       value={v.options}
-//                       onChange={(e) => handleVariationChange(index, "options", e.target.value)}
-//                     />
-//                     <DeleteButton type="button" onClick={() => handleRemoveVariation(index)} style={{ padding: "8px 10px" }}>
-//                       ✕
-//                     </DeleteButton>
-//                   </div>
-//                 ))}
-//               </div>
-
-//               {/* 🌟 4-Slot Image Upload Grid */}
-//               <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-//                 <label style={{ fontSize: "0.85rem", fontWeight: "700", color: Dark }}>
-//                   Product Images (Slot 1 is Compulsory)
-//                 </label>
-//                 <ImageSlotsGrid>
-//                   {[0, 1, 2, 3].map((slotIdx) => (
-//                     <ImageSlotCard key={slotIdx}>
-//                       <SlotLabel>Slot {slotIdx + 1} {slotIdx === 0 && "*"}</SlotLabel>
-//                       {imagePreviews[slotIdx] ? (
-//                         <SlotPreviewWrapper>
-//                           <img 
-//                             src={imagePreviews[slotIdx]} 
-//                             alt={`Preview ${slotIdx + 1}`} 
-//                             style={{ width: "100%", height: "100%", objectFit: "cover" }}
-//                           />
-//                           <RemoveSlotButton type="button" onClick={() => handleRemoveSlot(slotIdx)}>
-//                             ✕
-//                           </RemoveSlotButton>
-//                         </SlotPreviewWrapper>
-//                       ) : (
-//                         <UploadButtonLabel>
-//                           Choose File
-//                           <HiddenFileInput 
-//                             type="file" 
-//                             accept="image/*"
-//                             onChange={(e) => handleSlotFileChange(slotIdx, e)}
-//                           />
-//                         </UploadButtonLabel>
-//                       )}
-//                     </ImageSlotCard>
-//                   ))}
-//                 </ImageSlotsGrid>
-//               </div>
-
-//               <ModalActions>
-//                 <CancelButton type="button" onClick={() => setShowModal(false)}>
-//                   Cancel
-//                 </CancelButton>
-//                 <SaveButton type="submit">
-//                   {editingId ? "Update Product" : "Save Product"}
-//                 </SaveButton>
-//               </ModalActions>
-//             </form>
-//           </ModalContainer>
-//         </ModalOverlay>
-//       )}
-//     </Container>
-//   );
-// }
 
 // --- HELPER FUNCTION ---
 const createSlug = (name, id) => {
@@ -1316,6 +601,7 @@ export default function ProductsCrudPage() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const router = useRouter();
+  const [selectedLocation, setSelectedLocation] = useState("");
 
   // Modal State Controls
   const [showModal, setShowModal] = useState(false);
@@ -1332,6 +618,7 @@ export default function ProductsCrudPage() {
     categoryIds: [],
     isLive: true,
     pricingType: "single", // "single" or "tiered"
+   locationIds: [],
   });
 
   // 4 individual slots for files and previews
@@ -1349,6 +636,7 @@ export default function ProductsCrudPage() {
   const [featuresText, setFeaturesText] = useState(""); 
   const [priceTiers, setPriceTiers] = useState([{ minQty: 1, maxQty: 1, price: "" }]);
   const [youtubeLinksText, setYoutubeLinksText] = useState("");
+  const [locations, setLocations] = useState([]);
 
   // Fetch categories from Firestore
   const fetchCategories = async () => {
@@ -1364,9 +652,26 @@ export default function ProductsCrudPage() {
     }
   };
 
+  // Fetch locations from Firestore
+  const fetchLocations = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "locations"));
+      const list = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setLocations(list);
+    } catch (error) {
+      console.error("Failed to fetch locations:", error);
+    }
+  };
+
+
+
   useEffect(() => {
     fetchProducts();
     fetchCategories();
+      fetchLocations(); 
   }, []);
 
   const fetchProducts = async () => {
@@ -1449,6 +754,14 @@ export default function ProductsCrudPage() {
         });
       }
 
+// 🌟 Validation: Ensure at least one location is selected
+if (!form.locationIds || form.locationIds.length === 0) {
+  return Swal.fire({
+    icon: "warning",
+    text: "Please select at least one location for this product.",
+  });
+}
+
       if (!imageFiles[0] && !existingImageUrls[0]) {
         return Swal.fire({
           icon: "warning",
@@ -1471,7 +784,7 @@ export default function ProductsCrudPage() {
           const data = new FormData();
           data.append("file", compressedBlob, `product_${i}.jpg`);
           data.append("upload_preset", "bees_interior");
-          data.append("folder", "products_enitz_global");
+          data.append("folder", "products_majinfotek");
 
           const res = await fetch(
             "https://api.cloudinary.com/v1_1/aqxyleoh/image/upload",
@@ -1542,6 +855,8 @@ export default function ProductsCrudPage() {
         variations: variations.filter((v) => v.name.trim() !== "" && v.options.trim() !== ""),
         features: featuresList,
         youtubeLinks: youtubeLinksList,
+        locationIds: form.locationIds, // 🌟 Save multiple location IDs array
+  locationId: form.locationIds[0] || "", // Optional fallback for single location dependencies
       };
 
       if (editingId) {
@@ -1562,7 +877,7 @@ export default function ProductsCrudPage() {
       });
 
       setShowModal(false);
-      setForm({ name: "", description: "", amount: "", quantity: "", neverFinishes: false, categoryIds: [], isLive: true, pricingType: "single" });
+      setForm({ name: "", description: "", amount: "", quantity: "", neverFinishes: false, categoryIds: [], isLive: true, pricingType: "single", locationIds: [], });
       setImageFiles([null, null, null, null]);
       setImagePreviews(["", "", "", ""]);
       setExistingImageUrls(["", "", "", ""]);
@@ -1591,6 +906,12 @@ export default function ProductsCrudPage() {
     if (loadedCategories.length === 0 && (item.categoryId || item.category)) {
       loadedCategories = [item.categoryId || item.category];
     }
+
+    // 🌟 Load locations with backward compatibility fallback
+  let loadedLocations = item.locationIds || [];
+  if (loadedLocations.length === 0 && (item.locationId || item.location)) {
+    loadedLocations = [item.locationId || item.location];
+  }
     
     setForm({
       name: item.name || "",
@@ -1602,6 +923,7 @@ export default function ProductsCrudPage() {
       categoryIds: loadedCategories,
       isLive: item.isLive ?? true,
       pricingType: item.pricingType || "single",
+    locationIds: loadedLocations, 
     });
     setEditingId(item.id);
 
@@ -1696,14 +1018,26 @@ export default function ProductsCrudPage() {
     }
   };
 
+  // const filteredData = products
+  //   .filter((item) => {
+  //     const matchesSearch = item.name?.toLowerCase().includes(search.toLowerCase());
+  //     const itemCats = item.categoryIds || (item.categoryId ? [item.categoryId] : []);
+  //     const matchesCategory = selectedCategory === "" || itemCats.includes(selectedCategory);
+  //     return matchesSearch && matchesCategory;
+  //   })
   const filteredData = products
-    .filter((item) => {
-      const matchesSearch = item.name?.toLowerCase().includes(search.toLowerCase());
-      const itemCats = item.categoryIds || (item.categoryId ? [item.categoryId] : []);
-      const matchesCategory = selectedCategory === "" || itemCats.includes(selectedCategory);
-      return matchesSearch && matchesCategory;
-    })
-    .sort((a, b) => {
+  .filter((item) => {
+    const matchesSearch = item.name?.toLowerCase().includes(search.toLowerCase());
+    
+    const itemCats = item.categoryIds || (item.categoryId ? [item.categoryId] : []);
+    const matchesCategory = selectedCategory === "" || itemCats.includes(selectedCategory);
+    
+    // 🌟 Check if product's locationIds array includes the selected filter location
+    const itemLocs = item.locationIds || (item.locationId ? [item.locationId] : item.location ? [item.location] : []);
+    const matchesLocation = selectedLocation === "" || itemLocs.includes(selectedLocation);
+
+    return matchesSearch && matchesCategory && matchesLocation;
+  }).sort((a, b) => {
       if (sortOrder === "low-high") return Number(a.amount || 0) - Number(b.amount || 0);
       if (sortOrder === "high-low") return Number(b.amount || 0) - Number(a.amount || 0);
       return 0;
@@ -1712,6 +1046,12 @@ export default function ProductsCrudPage() {
   const getCategoryName = (catId) => {
     const found = categories.find((cat) => cat.id === catId);
     return found ? (found.name || found.title) : "Uncategorized";
+  };
+
+
+  const getLocationName = (locId) => {
+    const found = locations.find((loc) => loc.id === locId);
+    return found ? (found.name || found.title) : "Unknown Location";
   };
 
   if (loading) {
@@ -1777,7 +1117,7 @@ export default function ProductsCrudPage() {
           </select>
           <PrimaryButton onClick={() => {
             setEditingId(null);
-            setForm({ name: "", description: "", amount: "", quantity: "", neverFinishes: false, categoryIds: [], isLive: true, pricingType: "single" });
+            setForm({ name: "", description: "", amount: "", quantity: "", neverFinishes: false, categoryIds: [], isLive: true, pricingType: "single", locationIds: [], });
             setImageFiles([null, null, null, null]);
             setImagePreviews(["", "", "", ""]);
             setExistingImageUrls(["", "", "", ""]);
@@ -1823,6 +1163,20 @@ export default function ProductsCrudPage() {
                       });
                     })()}
                   </div>
+
+                  {/* 🌟 Display Multiple Locations on Product Card */}
+<div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginTop: "4px" }}>
+  {(() => {
+    const itemLocs = item.locationIds || (item.locationId ? [item.locationId] : item.location ? [item.location] : []);
+    if (itemLocs.length === 0) return <span style={{ fontSize: "0.75rem", color: TextMuted, fontWeight: "600" }}>📍 No Location</span>;
+    
+    return itemLocs.map((locId, idx) => (
+      <span key={idx} style={{ fontSize: "0.75rem", color: TextMuted, fontWeight: "600", background: "#f1f5f9", padding: "2px 6px", borderRadius: "4px" }}>
+        📍 {getLocationName(locId)}
+      </span>
+    ));
+  })()}
+</div>
 
                   {item.variations && item.variations.length > 0 && (
                     <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -1950,6 +1304,48 @@ export default function ProductsCrudPage() {
                   })}
                 </div>
               </div>
+
+            
+{/* 🌟 Product Locations Checkboxes (Multiple selection matching categories) */}
+<div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+  <label style={{ fontSize: "0.85rem", fontWeight: "700", color: Dark }}>
+    Product Locations (Select at least one) <span style={{ color: Danger }}>*</span>
+  </label>
+  <div style={{ 
+    border: `1px solid ${Border}`, 
+    borderRadius: "6px", 
+    padding: "8px", 
+    maxHeight: "120px", 
+    overflowY: "auto",
+    background: White,
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px"
+  }}>
+    {locations.map((loc) => {
+      const isChecked = form.locationIds.includes(loc.id);
+      return (
+        <CheckboxRow key={loc.id}>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={(e) => {
+              const current = [...form.locationIds];
+              if (e.target.checked) {
+                current.push(loc.id);
+              } else {
+                const index = current.indexOf(loc.id);
+                if (index > -1) current.splice(index, 1);
+              }
+              setForm({ ...form, locationIds: current });
+            }}
+          />
+          <span>{loc.name || loc.title}</span>
+        </CheckboxRow>
+      );
+    })}
+  </div>
+</div>
 
               <StyledTextarea
                 placeholder="Product Description"

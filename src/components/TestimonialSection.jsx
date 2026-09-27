@@ -1,9 +1,13 @@
+
+
+
 // "use client";
 
-// import React, { useState } from "react";
+// import React from "react";
 // import styled, { keyframes } from "styled-components";
 // import { Star, Quote, CheckCircle2, Heart, ArrowRight } from "lucide-react";
 // import Link from "next/link";
+// import ProofAndTestimonials from "./ProofAndTestimonials";
 
 // /* ================= THEME STYLES (ENITZ RETAIL) ================= */
 // const ThemeGradient = "linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)";
@@ -144,12 +148,19 @@
 //   border-top: 1px solid ${BorderColor};
 //   padding-top: 1.25rem;
 
-//   img {
+//   .avatar-initials {
 //     width: 50px;
 //     height: 50px;
 //     border-radius: 50%;
-//     object-fit: cover;
+//     background: ${ThemeGradient};
+//     color: #ffffff;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     font-weight: 800;
+//     font-size: 1.1rem;
 //     border: 2px solid #00aeef;
+//     flex-shrink: 0;
 //   }
 
 //   .details {
@@ -175,7 +186,7 @@
 //   }
 // `;
 
-// /* --- HERITAGE BANNER SECTION (IMMERSIVE GRADIENT) --- */
+// /* --- HERITAGE BANNER SECTION --- */
 // const HeritageBanner = styled.div`
 //   padding: 5rem 2rem;
 //   background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 50%, #fdf2f8 100%);
@@ -254,44 +265,46 @@
 //   }
 // `;
 
+// /* Updated Real Testimonials from WhatsApp & Facebook logs */
 // const testimonialsData = [
 //   {
 //     id: 1,
-//     name: "Amina Bello",
-//     role: "Verified Shopper",
-//     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+//     name: "Mrs. Zainab",
+//     role: "Verified Wholesaler",
+//     initials: "MZ",
 //     rating: 5,
-//     text: "Enitz has completely changed how I shop for household essentials. The product quality is amazing, and delivery was exceptionally fast!"
+//     text: "My dear Enitz, don't know how to write this review but just know that I am really happy with all items I got from you The tabs were lovely, the kiddies stuffs I got are so beautiful, my cutomers love them. U have always delivered 💯 💯 from years of transactions that we've shared. U were my first online plug and you've always stand out. Always giving me reasons to come back again."
 //   },
 //   {
 //     id: 2,
-//     name: "Chukwudi Okafor",
-//     role: "Homeowner",
-//     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+//     name: "Mrs. Abubakar",
+//     role: "Regular Customer",
+//     initials: "UA",
 //     rating: 5,
-//     text: "I was looking for reliable everyday merchandise and found exactly what I needed. Transparent pricing and top-tier customer service throughout."
+//     text: "Wellwell 😂.Salam Alaykum ma. Wa aleykum Salam warahmotullahi wabarakahtu ma. In fact my husband just dey bounce"
 //   },
 //   {
 //     id: 3,
-//     name: "Sarah Jenkins",
-//     role: "Regular Customer",
-//     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
+//     name: "Mrs. Alebiosu",
+//     role: "Verified Buyer",
+//     initials: "MA",
 //     rating: 5,
-//     text: "Immaculate ordering experience! Their catalog features practical items that add real value to modern living. Highly recommended!"
+//     text: "Wow, this charcoal stove is amazing. I've stopped using my kerosene stove since I bought it. In fact, I feel like dancing. Thank you for helping me with it!"
 //   }
 // ];
 
 // export default function TestimonialsSection() {
 //   return (
-//     <SectionWrapper>
+// <>
+//     <SectionWrapper id='testimonials'>
 //       <Container>
 //         <SectionHeader>
 //           <div className="badge-pill">
 //             <Quote className="w-4 h-4 text-cyan-500" /> Customer Testimonials
 //           </div>
-//           <h2>Loved By Our Shoppers</h2>
+//           <h2>Trusted By Real Shoppers & Wholesalers</h2>
 //           <p>
-//             Read what our valued customers have to say about their retail shopping experience with Enitz.
+//             Read genuine feedback from our valued customers and wholesale partners who rely on Enitz for top-tier quality.
 //           </p>
 //         </SectionHeader>
 
@@ -309,7 +322,7 @@
 //               </div>
 
 //               <ClientInfo>
-//                 <img src={item.image} alt={item.name} />
+//                 <div className="avatar-initials">{item.initials}</div>
 //                 <div className="details">
 //                   <h4>{item.name}</h4>
 //                   <p>{item.role}</p>
@@ -321,7 +334,7 @@
 //             </TestimonialCard>
 //           ))}
 //         </TestimonialGrid>
-
+//   <ProofAndTestimonials />
 //         <HeritageBanner>
 //           <div className="banner-content">
 //             <div className="badge-pill" style={{ margin: '0 auto 1.5rem auto', display: 'inline-flex' }}>
@@ -339,9 +352,10 @@
 //         </HeritageBanner>
 //       </Container>
 //     </SectionWrapper>
+  
+// </>
 //   );
 // }
-
 
 
 
@@ -353,8 +367,10 @@ import { Star, Quote, CheckCircle2, Heart, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import ProofAndTestimonials from "./ProofAndTestimonials";
 
-/* ================= THEME STYLES (ENITZ RETAIL) ================= */
-const ThemeGradient = "linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)";
+/* ================= THEME STYLES (MAJINFOTEK) ================= */
+const primaryBlue = "#1c3ba4";
+const richPurple = "#8b5cf6";
+const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
 const LightBg = "#ffffff";
 const CardBg = "#f8fafc";
 const TextPrimary = "#0f172a";
@@ -373,9 +389,9 @@ const fadeIn = keyframes`
 `;
 
 const pulseGlow = keyframes`
-  0% { box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.4); }
-  70% { box-shadow: 0 0 0 22px rgba(0, 174, 239, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 174, 239, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+  70% { box-shadow: 0 0 0 22px rgba(139, 92, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
 `;
 
 /* ================= COMPONENTS ================= */
@@ -403,10 +419,10 @@ const SectionHeader = styled.div`
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1.25rem;
-    background: linear-gradient(135deg, rgba(0, 174, 239, 0.1), rgba(11, 27, 72, 0.1));
-    border: 1px solid rgba(0, 174, 239, 0.2);
+    background: linear-gradient(135deg, rgba(28, 59, 164, 0.1), rgba(139, 92, 246, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.25);
     border-radius: 9999px;
-    color: #00aeef;
+    color: ${richPurple};
     font-weight: 700;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -456,15 +472,15 @@ const TestimonialCard = styled.div`
 
   &:hover {
     transform: translateY(-8px);
-    border-color: rgba(0, 174, 239, 0.4);
-    box-shadow: 0 30px 60px -15px rgba(0, 174, 239, 0.12);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 30px 60px -15px rgba(139, 92, 246, 0.18);
   }
 
   .quote-icon {
     position: absolute;
     top: 1.75rem;
     right: 2rem;
-    color: rgba(0, 174, 239, 0.15);
+    color: rgba(139, 92, 246, 0.15);
     width: 48px;
     height: 48px;
   }
@@ -503,7 +519,7 @@ const ClientInfo = styled.div`
     justify-content: center;
     font-weight: 800;
     font-size: 1.1rem;
-    border: 2px solid #00aeef;
+    border: 2px solid ${richPurple};
     flex-shrink: 0;
   }
 
@@ -526,7 +542,7 @@ const ClientInfo = styled.div`
     margin-left: auto;
     display: flex;
     align-items: center;
-    color: #00aeef;
+    color: ${richPurple};
   }
 `;
 
@@ -544,7 +560,7 @@ const HeritageBanner = styled.div`
     position: absolute;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(0, 174, 239, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(28, 59, 164, 0.12) 0%, transparent 70%);
     top: -200px;
     left: -200px;
     border-radius: 50%;
@@ -555,7 +571,7 @@ const HeritageBanner = styled.div`
     position: absolute;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(11, 27, 72, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
     bottom: -200px;
     right: -200px;
     border-radius: 50%;
@@ -597,106 +613,107 @@ const PrimaryButton = styled(Link)`
   color: #ffffff;
   font-weight: 700;
   font-size: 1.05rem;
-  box-shadow: 0 14px 30px -5px rgba(0, 174, 239, 0.45);
+  box-shadow: 0 14px 30px -5px rgba(139, 92, 246, 0.45);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   animation: ${pulseGlow} 3s infinite;
 
   &:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 20px 40px -5px rgba(0, 174, 239, 0.65);
+    box-shadow: 0 20px 40px -5px rgba(139, 92, 246, 0.65);
     animation: none;
   }
 `;
 
-/* Updated Real Testimonials from WhatsApp & Facebook logs */
+/* Testimonials Data */
 const testimonialsData = [
   {
     id: 1,
-    name: "Mrs. Zainab",
-    role: "Verified Wholesaler",
-    initials: "MZ",
+    name: "Engr. Adebayo",
+    role: "Corporate Partner",
+    initials: "EA",
     rating: 5,
-    text: "My dear Enitz, don't know how to write this review but just know that I am really happy with all items I got from you The tabs were lovely, the kiddies stuffs I got are so beautiful, my cutomers love them. U have always delivered 💯 💯 from years of transactions that we've shared. U were my first online plug and you've always stand out. Always giving me reasons to come back again."
+    text: "The surveillance and access control infrastructure deployed by Majinfotek has completely transformed our corporate security operations. Their technical expertise and seamless delivery are truly world-class."
   },
   {
     id: 2,
-    name: "Mrs. Abubakar",
-    role: "Regular Customer",
+    name: "Mrs. Umu Alli",
+    role: "Residential Client",
     initials: "UA",
     rating: 5,
-    text: "Wellwell 😂.Salam Alaykum ma. Wa aleykum Salam warahmotullahi wabarakahtu ma. In fact my husband just dey bounce"
+    text: "Top-notch smart home integration and automated intercom systems! The installation team was extremely professional, and the remote monitoring setup gives our family total peace of mind."
   },
   {
     id: 3,
-    name: "Mrs. Alebiosu",
-    role: "Verified Buyer",
-    initials: "MA",
+    name: "Mr. Chukwudi",
+    role: "Industrial Facility Manager",
+    initials: "MC",
     rating: 5,
-    text: "Wow, this charcoal stove is amazing. I've stopped using my kerosene stove since I bought it. In fact, I feel like dancing. Thank you for helping me with it!"
+    text: "Reliable, efficient, and exceptionally professional. Their biometric security gates and perimeter defense systems handle our heavy industrial traffic effortlessly. Highly recommended!"
   }
 ];
 
 export default function TestimonialsSection() {
   return (
-<>
-    <SectionWrapper id='testimonials'>
-      <Container>
-        <SectionHeader>
-          <div className="badge-pill">
-            <Quote className="w-4 h-4 text-cyan-500" /> Customer Testimonials
-          </div>
-          <h2>Trusted By Real Shoppers & Wholesalers</h2>
-          <p>
-            Read genuine feedback from our valued customers and wholesale partners who rely on Enitz for top-tier quality.
-          </p>
-        </SectionHeader>
-
-        <TestimonialGrid>
-          {testimonialsData.map((item) => (
-            <TestimonialCard key={item.id}>
-              <Quote className="quote-icon" />
-              <div>
-                <div className="stars">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
-                  ))}
-                </div>
-                <p className="review-text">"{item.text}"</p>
-              </div>
-
-              <ClientInfo>
-                <div className="avatar-initials">{item.initials}</div>
-                <div className="details">
-                  <h4>{item.name}</h4>
-                  <p>{item.role}</p>
-                </div>
-                <div className="verified-badge" title="Verified Customer">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-              </ClientInfo>
-            </TestimonialCard>
-          ))}
-        </TestimonialGrid>
-  <ProofAndTestimonials />
-        <HeritageBanner>
-          <div className="banner-content">
-            <div className="badge-pill" style={{ margin: '0 auto 1.5rem auto', display: 'inline-flex' }}>
-              <Heart className="w-4 h-4 text-cyan-500" /> Customer First
+    <>
+      <SectionWrapper id='testimonials'>
+        <Container>
+          <SectionHeader>
+            <div className="badge-pill">
+              <Quote className="w-4 h-4 text-purple-600" /> Customer Testimonials
             </div>
-            <h2>Ready to Experience Seamless Shopping?</h2>
+            <h2>Trusted By Industry Leaders & Homeowners</h2>
             <p>
-              Join thousands of satisfied shoppers who trust Enitz for exceptional product quality, great pricing, and reliable service.
+              Read genuine feedback from our valued corporate clients and partners who rely on Majinfotek for top-tier security and technology solutions.
             </p>
-            <PrimaryButton href="/store">
-              Browse All Products
-              <ArrowRight className="w-5 h-5" />
-            </PrimaryButton>
-          </div>
-        </HeritageBanner>
-      </Container>
-    </SectionWrapper>
-  
-</>
+          </SectionHeader>
+
+          <TestimonialGrid>
+            {testimonialsData.map((item) => (
+              <TestimonialCard key={item.id}>
+                <Quote className="quote-icon" />
+                <div>
+                  <div className="stars">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="review-text">"{item.text}"</p>
+                </div>
+
+                <ClientInfo>
+                  <div className="avatar-initials">{item.initials}</div>
+                  <div className="details">
+                    <h4>{item.name}</h4>
+                    <p>{item.role}</p>
+                  </div>
+                  <div className="verified-badge" title="Verified Customer">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                </ClientInfo>
+              </TestimonialCard>
+            ))}
+          </TestimonialGrid>
+
+          <ProofAndTestimonials />
+
+          <HeritageBanner>
+            <div className="banner-content">
+              <div className="badge-pill" style={{ margin: '0 auto 1.5rem auto', display: 'inline-flex' }}>
+                <Heart className="w-4 h-4 text-purple-600" /> Secure Your Infrastructure
+              </div>
+              <h2>Ready to Elevate Your Security Standards?</h2>
+              <p>
+                Join hundreds of satisfied organizations and homeowners who trust Majinfotek for advanced security integration, expert deployment, and reliable support.
+              </p>
+              <PrimaryButton href="/contact">
+                Get a Consultation
+                <ArrowRight className="w-5 h-5" />
+              </PrimaryButton>
+            </div>
+          </HeritageBanner>
+        </Container>
+      </SectionWrapper>
+    </>
   );
 }

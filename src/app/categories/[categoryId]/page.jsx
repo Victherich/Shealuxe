@@ -220,7 +220,7 @@ export default function DynamicCategoryPage() {
         title: "Please Login",
         text: "Please log in to manage your wishlist.",
         icon: "warning",
-        confirmButtonColor: "#00aeef",
+        confirmButtonColor: "#1c3ba4",
         background: "#ffffff",
         color: "#0f172a"
       });
@@ -267,7 +267,7 @@ export default function DynamicCategoryPage() {
           {currentCategoryName}
            {/* <span>Products</span> */}
         </SectionTitle>
-        <ResultsCount style={{ color: "#00aeef", cursor: "pointer", display: "flex", alignItems: "center", gap: "1px" }} onClick={() => router.push('/store')}>
+        <ResultsCount style={{ color: "#1c3ba4", cursor: "pointer", display: "flex", alignItems: "center", gap: "1px" }} onClick={() => router.push('/store')}>
         All Products<FaArrowRight />
         </ResultsCount>
       </SectionHeader>

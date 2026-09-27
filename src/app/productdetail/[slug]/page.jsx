@@ -752,9 +752,9 @@ import Swal from 'sweetalert2';
 import { useCart } from '@/components/CartContext';
 
 // --- ENITZ LIMITED THEME & STYLES ---
-const brandCyan = '#00aeef';
+// const brandCyan = '#00aeef';
 const brandDarkNavy = '#0b1b48';
-const brandGradient = 'linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)';
+// const brandGradient = 'linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)';
 const cardBg = '#ffffff';
 const borderColor = '#e2e8f0';
 const textMain = '#0f172a';
@@ -763,6 +763,9 @@ const softBg = '#f8fafc';
 const successGreen = '#10b981';
 const dangerRed = '#ef4444';
 const brandAmber = '#f59e0b';
+const PrimaryNavy = "#1c3ba4";
+const brandCyan = " #8b5cf6";
+const brandGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
 
 const floatAnimation = keyframes`
   0% { transform: translateY(0px) rotate(0deg); }
@@ -1242,6 +1245,10 @@ export default function ProductDetailPage({ params }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const { addToCart } = useCart();
+  // Add location state near your other states
+const [locations, setLocations] = useState([]);
+
+console.log(product)
 
 
   // console.log(product)
@@ -1357,8 +1364,10 @@ export default function ProductDetailPage({ params }) {
             variations: data.variations || [],
             features: data.features || [],
             strikeAmount:data.strikeAmount,
+            locationIds: data.locationIds || (data.locationId ? [data.locationId] : []),
           };
           setProduct(fetchedProduct);
+          
 
           // Set default selected tier if tiered pricing exists
           if (tiers.length > 0) {
@@ -1383,6 +1392,26 @@ export default function ProductDetailPage({ params }) {
           } else {
             setCategories(["Signature Collection"]);
           }
+
+// 🌟 2. Fetch multiple locations from Firestore (assuming collection name is "locations")
+          if (fetchedProduct.locationIds.length > 0) {
+            const locationPromises = fetchedProduct.locationIds.map(async (locId) => {
+              const locRef = doc(db, "locations", locId);
+              const locSnap = await getDoc(locRef);
+              if (locSnap.exists()) {
+                const locData = locSnap.data();
+                const rawName = locData.name || locData.title || locData.location || "Location";
+                return rawName.charAt(0).toUpperCase() + rawName.slice(1);
+              }
+              return null;
+            });
+
+            const resolvedLocations = (await Promise.all(locationPromises)).filter(Boolean);
+            setLocations(resolvedLocations); // Make sure you have `const [locations, setLocations] = useState([]);` declared at the top component level
+          } else {
+            setLocations([]);
+          }
+
         } else {
           setProduct(null);
         }
@@ -1419,15 +1448,7 @@ export default function ProductDetailPage({ params }) {
       }
     }
 
-    // addToCart({
-    //   id: product.id,
-    //   name: product.name,
-    //   price: currentActivePrice,
-    //   tier: selectedTier ? selectedTier.name || selectedTier.label : null,
-    //   image: product.images[0] || "",
-    //   variations: selectedVariations,
-    //   quantity: 1,
-    // });
+
 
     addToCart({
       id: product.id,
@@ -1463,47 +1484,6 @@ export default function ProductDetailPage({ params }) {
     setTimeout(() => setFeedback(""), 3000);
   };
 
-//   const handleWhatsAppOrder = (e) => {
-//     if (!product) return;
-
-//     if (product.variations && product.variations.length > 0) {
-//       for (const v of product.variations) {
-//         if (!selectedVariations[v.name] || selectedVariations[v.name].trim() === "") {
-//           e.preventDefault();
-//           Swal.fire({
-//             title: "Selection Required",
-//             text: `Please select a value for "${v.name}" before ordering via WhatsApp.`,
-//             icon: "warning",
-//             confirmButtonColor: brandCyan,
-//             background: "#ffffff",
-//             color: "#0f172a"
-//           });
-//           return;
-//         }
-//       }
-//     }
-
-//     const variationsText = Object.entries(selectedVariations)
-//       .map(([key, val]) => `*${key}*: ${val}`)
-//       .join(', ');
-
-//     // const tierText = selectedTier ? `\n*Pricing Tier:* ${selectedTier.name || selectedTier.label} (₦${currentActivePrice.toLocaleString()})` : '';
-
-// const tierLabel = selectedTier 
-//       ? (product.pricingType === "singleqtytiered" ? `Exact Qty: ${selectedTier.minQty}` : `${selectedTier.minQty} - ${selectedTier.maxQty}`)
-//       : '';
-//     const tierText = selectedTier ? `\n*Pricing Option:* ${tierLabel} (₦${currentActivePrice.toLocaleString()})` : '';
-
-
-//     const message = encodeURIComponent(
-//       // `Hello Enitz, I would like to order this item:\n\n*Product:* ${product.name}\n*ID:* ${product.id}\n*Price:* ₦${currentActivePrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}${tierText}${variationsText ? `\n*Variations:* ${variationsText}` : ''}`
-//      `Hello Enitz, I would like to order this item:\n\n*Product:* ${product.name}\n*ID:* ${product.id}\n${variationsText ? `\n*Variations:* ${variationsText}` : ''}`
-   
-//     );
-
-//     const phoneNumber = "2349047103037"; 
-//     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-//   };
 
 
 const handleWhatsAppOrder = (e) => {
@@ -1541,13 +1521,13 @@ const handleWhatsAppOrder = (e) => {
       .replace(/[^a-z0-9 ]/g, "")
       .trim()
       .replace(/\s+/g, "-");
-    const productUrl = `https://enitzglobal.vercel.app/productdetail/${cleanSlug}-${product.id}`;
+    const productUrl = `https://majinfotek.vercel.app/productdetail/${cleanSlug}-${product.id}`;
 
     const message = encodeURIComponent(
-      `Hello Enitz, I would like to order this item:\n\n*Product:* ${product.name}\n*Link:* ${productUrl}\n*Price:* ₦${currentActivePrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}${tierText}${variationsText ? `\n*Variations:* ${variationsText}` : ''}`
+      `Hello, I would like to order this item:\n\n*Product:* ${product.name}\n*Link:* ${productUrl}\n*Price:* ₦${currentActivePrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}${tierText}${variationsText ? `\n*Variations:* ${variationsText}` : ''}`
     );
 
-    const phoneNumber = "2349047103037"; 
+    const phoneNumber = "2348126033123"; 
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -1630,11 +1610,31 @@ const activePrice = product.amount;
 
           <InfoContainer>
             {/* 🌟 Multiple Categories Badges */}
-            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "8px" }}>
+            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "1px" }}>
               {categories.map((cat, idx) => (
                 <CategoryBadge key={idx}>{cat}</CategoryBadge>
               ))}
             </div>
+
+            {locations.length > 0 && (
+              <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "1px", alignItems: "center" }}>
+                <span style={{ fontSize: "0.8rem", color: textMuted }}>📍</span>
+                {locations.map((loc, idx) => (
+                  <span
+                    key={idx}
+                    style={{
+                      fontSize: "0.75rem",
+                      padding: "2px 8px",
+                      borderRadius: "4px",
+                      background: "rgba(0, 0, 0, 0.05)",
+                      color: textMuted,
+                    }}
+                  >
+                    {loc}
+                  </span>
+                ))}
+              </div>
+            )}
 
             <ProductTitle>
               {product.name.charAt(0).toUpperCase() + product.name.slice(1)}
