@@ -447,11 +447,12 @@ import {
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
-// 🎨 NEW THEME COLORS & GRADIENTS (Navy & Cyan Theme)
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+// 🎨 ENITZ BRAND THEME COLORS
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";

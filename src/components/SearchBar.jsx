@@ -166,20 +166,21 @@ import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import { Search } from "lucide-react";
 import { FaSearch } from "react-icons/fa";
+import { primaryColoring, secondaryColoring } from "./Context";
 
 // Updated with Majinfotek Theme: Deep Royal Blue #1c3ba4 & Rich Purple #8b5cf6
-const primaryBlue = '#1c3ba4';
-const richPurple = '#8b5cf6';
-const brandGradient = 'linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)';
+const primaryBlue = primaryColoring;
+const richPurple = secondaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 const borderColor = '#cbd5e1';
 const textMain = '#0f172a';
 const textMuted = '#475569';
 const softBg = '#f8fafc';
 
 export default function SearchBar({ 
-  title = "Secure Your Space", 
+  title = "Shop Our Collections", 
   subtitle = "Search our catalog of CCTV cameras, intercom systems, and security gadgets instantly.",
-  placeholder = "Search CCTV, intercoms, gadgets..." 
+  placeholder = "Search Products by Name" 
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
@@ -193,10 +194,10 @@ export default function SearchBar({
   return (
     <SearchSection>
       <SearchContentWrapper>
-        {/* <SearchHeader>
+        <SearchHeader>
           <SearchTitle>{title}</SearchTitle>
-          <SearchSubtitle>{subtitle}</SearchSubtitle>
-        </SearchHeader> */}
+          {/* <SearchSubtitle>{subtitle}</SearchSubtitle> */}
+        </SearchHeader>
 
         <SearchForm onSubmit={handleSearch}>
           <SearchInputWrapper>
@@ -316,8 +317,8 @@ const SearchButton = styled.button`
   background: ${brandGradient};
   color: #ffffff;
   border: none;
-  padding: 0 28px;
-  font-size: 0.95rem;
+  padding: 0 10px;
+  font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.2s ease;

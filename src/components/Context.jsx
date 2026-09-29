@@ -7,7 +7,8 @@ import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { auth, db, paymentDb } from "@/firebaseConfig";
 import {useRouter} from "next/navigation";
 import { useCart } from "@/components/CartContext";
-
+ export const primaryColoring = "#3D1B17"
+ export const secondaryColoring = "#E2B04A"
 export const Context = createContext(null);
 
 export function ContextProvider({ children }) {
@@ -37,6 +38,9 @@ const router = useRouter();
       localStorage.setItem("paymentSession", JSON.stringify(paymentSession));
     }
   }, [paymentSession]);
+
+
+
 
 
 
@@ -115,8 +119,8 @@ const router = useRouter();
     const docRef = await addDoc(collection(db, "orders"), orderPayload);
 
     const buyerEmail = orderPayload.accountInfo?.email || '';
-    const sellerEmail = 'majinfotek@gmail.com';
-    // const sellerEmail = 'victorndu393@gmail.com';
+    // const sellerEmail = 'majinfotek@gmail.com';
+    const sellerEmail = 'victorndu393@gmail.com';
 
     // 3. ISOLATED EMAIL BLOCK: Ensure a failing email never blocks order cleanup
     try {
@@ -386,7 +390,9 @@ const router = useRouter();
       paymentSession,
       setPaymentSession,
       payWithPaystack,
-      startPaymentPolling1
+      startPaymentPolling1,
+      primaryColoring,
+      secondaryColoring
     }),
     [showSubscriptionReminder, user, sidebarOpen, theme, paymentSession]
   );

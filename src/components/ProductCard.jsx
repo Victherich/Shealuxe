@@ -8,6 +8,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
+import { primaryColoring, secondaryColoring } from "./Context";
 
 
 
@@ -124,13 +125,10 @@ export default function ProductCard({ product, isWishlisted, onToggleWishlist, g
 
 /* ================= THEME & COLORS (MAJINFOTEK) ================= */
 
-const primaryBlue = '#1c3ba4';
-const richPurple = '#8b5cf6';
-const brandGradient = 'linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)';
+
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 const borderColor = '#e2e8f0';
 const textMain = '#0f172a';
-const softBg = '#f8fafc';
-const brandCyan = '#8b5cf6'; // Updated variable mapping for accent consistency
 const dangerRed = '#ef4444';
 
 /* ================= STYLED COMPONENTS ================= */

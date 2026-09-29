@@ -386,11 +386,12 @@ import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { usePathname } from "next/navigation";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 // 🎨 ENITZ BRAND THEME COLORS
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
@@ -688,7 +689,7 @@ export default function DashboardLayout({ children }) {
       <Sidebar $open={sidebarOpen}>
         <SidebarTop>
           <BrandLogo>
-            MAJINFOTEK
+            SHEALUXE
             {/* <span>GLOBAL</span> */}
           </BrandLogo>
 

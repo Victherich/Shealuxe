@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "MAJINFOTEK",
-  description: "cctv surveillance, intercom , security gadgets",
+  title: "SHEALUXE LIMITED",
+  description: "Your go-to destination for natural, luxurious skin and hair care products.",
    icons: {
     icon: "/favicon.ico",
   },

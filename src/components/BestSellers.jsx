@@ -9,94 +9,16 @@ import Swal from "sweetalert2";
 import ProductCard from "@/components/ProductCard";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-
-// /* ================= THEME & COLORS ================= */
-
-// const softBg = '#f8fafc';
-// const borderColor = '#e2e8f0';
-// const textMain = '#0f172a';
-// const textMuted = '#475569';
-
-// /* ================= STYLED COMPONENTS ================= */
-
-// const SectionContainer = styled.section`
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   padding: 5px 8px;
-//   width: 100%;
-//   box-sizing: border-box;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-// `;
-
-// const SectionHeader = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   background: ${softBg};
-//   border: 1px solid ${borderColor};
-//   border-radius: 14px;
-//   padding: 20px 5px;
-//   box-sizing: border-box;
-// `;
-
-// const SectionTitle = styled.h2`
-//   font-size: 1.25rem;
-//   font-weight: 800;
-//   color: ${textMain};
-//   margin: 0;
-
-//   span {
-//     color: #00aeef;
-//   }
-// `;
-
-// const ResultsCount = styled.p`
-//   font-size: 1rem;
-//   color: ${textMuted};
-//   font-weight: 600;
-//   margin: 0;
-
-//   span {
-//     color: ${textMain};
-//     font-weight: 800;
-//   }
-// `;
-
-// const ProductsGrid = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(220px, 240px));
-//   gap: 20px;
-//   width: 100%;
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   box-sizing: border-box;
-//   justify-content: center;
-
-//   @media (max-width: 768px) {
-//     grid-template-columns: repeat(2, 1fr);
-//     gap: 12px;
-//   }
-// `;
-
-// const MessageState = styled.div`
-//   grid-column: 1 / -1;
-//   text-align: center;
-//   padding: 40px;
-//   color: ${textMuted};
-//   font-size: 1rem;
-//   font-weight: 500;
-// `;
+import { primaryColoring, secondaryColoring } from "./Context";
 
 
 /* ================= THEME & COLORS (MAJINFOTEK) ================= */
-const primaryBlue = '#1c3ba4';
+const primaryBlue = primaryColoring;
 const softBg = '#f8fafc';
 const borderColor = '#e2e8f0';
 const textMain = '#0f172a';
 const textMuted = '#475569';
-const accentPurple = '#8b5cf6';
+const accentPurple = secondaryColoring;
 
 /* ================= STYLED COMPONENTS ================= */
 
@@ -174,7 +96,7 @@ const MessageState = styled.div`
 /* ================= COMPONENT ================= */
 
 export default function BestSellers() {
-  const TARGET_CATEGORY_ID = "r0EcdsyXrHGuBYyfSRIR";
+  const TARGET_CATEGORY_ID = "93nK8gGthAwQ5U7jq5sZ";
   
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);

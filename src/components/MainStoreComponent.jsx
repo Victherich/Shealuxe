@@ -575,14 +575,15 @@ import SearchBar from "./SearchBar";
 import ShopByCategory from "./ShopByCategory";
 import ShopByLocation from "./ShopByLocation";
 import FeaturedProducts from "./FeaturedProducts";
+import { primaryColoring, secondaryColoring } from "./Context";
 
 
 
 
 /* ================= THEME STYLES (MAJINFOTEK) ================= */
-const primaryBlue = "#1c3ba4";
-const richPurple = "#8b5cf6";
-const brandGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
+const primaryBlue = primaryColoring;
+const richPurple = secondaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 const cardBg = "#ffffff";
 const borderColor = "rgba(226, 232, 240, 0.9)";
 const textMain = "#0f172a";
@@ -1149,8 +1150,8 @@ export default function MainStoreComponent() {
         {/* Search Bar Component */}
         <SearchBar />
       {/* </div> */}
-      <FeaturedProducts/>
-<ShopByLocation/>
+      {/* <FeaturedProducts/> */}
+{/* <ShopByLocation/> */}
       <StoreLayout>
 
         <Sidebar>

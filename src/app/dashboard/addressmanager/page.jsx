@@ -664,15 +664,20 @@ import {
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 
+
 // 🎨 NAVY & CYAN THEME COLORS & GRADIENTS
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+
 const Dark = "#0f172a";
 const Border = "#e5eaf2";
 const White = "#ffffff";
 const TextMuted = "#475569";
 const Danger = "#ef4444";
+
+import { primaryColoring, secondaryColoring } from '@/components/Context';
+
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 
 export default function AddressManager({ onSelectAddress }) {
   const [currentUser, setCurrentUser] = useState(null);

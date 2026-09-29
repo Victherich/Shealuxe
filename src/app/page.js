@@ -10,6 +10,7 @@ import BestSellers from '@/components/BestSellers';
 import GallerySection from '@/components/GallerySection';
 import ShopByCategory from '@/components/ShopByCategory';
 import ShopByLocation from '@/components/ShopByLocation';
+import SheaLuxeWelcome from '@/components/ShealuxeWelcome';
 
 
 
@@ -25,11 +26,12 @@ export default function CompleteLandingPage() {
   return (
     <>
     <HeroSection2/>
+    <SheaLuxeWelcome/>
     <SearchBar/>
     <FeaturedProducts/>
     <GallerySection/>
     <ShopByCategory/>
-    <ShopByLocation/>
+    {/* <ShopByLocation/> */}
     <NewArrivals/>
     <br/>
     <br/>

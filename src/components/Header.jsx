@@ -16,16 +16,30 @@ import PaymentInProgressModal from "./PaymentInProgressModal";
 import  { useAppContext } from "./Context";
 import { useCart } from "@/components/CartContext";
 import HostingExpiryGuard from "./HostingExpiryGuard";
+import { primaryColoring, secondaryColoring } from "./Context";
 
 
-/* ================= COLORS ================= */
-const PrimaryColor = "#1c3ba4"; // Logo Deep Royal Blue
-const ComplementaryPurple = "#8b5cf6"; // Rich Purple to complement the blue
-const AccentGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)"; // Royal Blue -> Purple
-const Dark = "#0f172a"; // Deep Slate for readable text
+
+// /* ================= COLORS ================= */
+// const PrimaryColor = primaryColoring; // Logo Deep Royal Blue
+// const ComplementaryPurple = "#E2B04A"; // Rich Purple to complement the blue
+// const AccentGradient = "linear-gradient(135deg, primaryColoring 0%, secondaryColoring 100%)"; // Royal Blue -> Purple
+// const Dark = "#0f172a"; // Deep Slate for readable text
+// const Border = "#e2e8f0";
+// const White = "#ffffff";
+// const Turquoise = primaryColoring; // Updated hamburger active accent to match purple
+
+
+const PrimaryColor = primaryColoring; 
+const ComplementaryPurple = "#E2B04A"; 
+
+// Corrected: Use backticks and ${} to interpolate the variables
+const AccentGradient = `linear-gradient(135deg, ${primaryColoring} 0\%,${secondaryColoring} 100%)`; 
+
+const Dark = "#0f172a"; 
 const Border = "#e2e8f0";
 const White = "#ffffff";
-const Turquoise = "#8b5cf6"; // Updated hamburger active accent to match purple
+const Turquoise = primaryColoring;
 
 /* ================= HEADER ================= */
 const HeaderContainer = styled.header`
@@ -272,8 +286,8 @@ export default function Header() {
         <Inner>
           <Link href="/" onClick={() => setOpen(false)} style={{ textDecoration: 'none' }}> 
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <img src="/logo.png" alt="Logo" style={{ height: "45px", borderRadius: "8px" }} />    
-            <span style={{color:`${AccentGradient}`}}>MAJINFOTEK</span>
+              <img src="/logo.jpeg" alt="Logo" style={{ height: "45px", borderRadius: "8px" }} />    
+            <span style={{color:`${AccentGradient}`}}>SHEALUXE</span>
             </div>
           </Link>
 

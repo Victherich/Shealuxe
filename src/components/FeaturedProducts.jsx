@@ -310,11 +310,12 @@ import Swal from "sweetalert2";
 import ProductCard from "@/components/ProductCard";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { primaryColoring, secondaryColoring } from "./Context";
 
 /* ================= THEME & COLORS ================= */
 
-const primaryBlue = '#1c3ba4';
-const richPurple = '#8b5cf6';
+const primaryBlue = primaryColoring;
+const richPurple = secondaryColoring;
 const softBg = '#f8fafc';
 const borderColor = '#e2e8f0';
 const textMain = '#0f172a';
@@ -398,7 +399,7 @@ const MessageState = styled.div`
 /* ================= COMPONENT ================= */
 
 export default function FeaturedProducts() {
-  const TARGET_CATEGORY_ID = "jqfkzmcP5nKeVvLZb5F6";
+  const TARGET_CATEGORY_ID = "bg9chcpX210IL5v5vqpa";
   
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);

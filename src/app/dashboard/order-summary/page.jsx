@@ -999,6 +999,7 @@ import { doc, getDoc, getDocs, serverTimestamp, addDoc, collection, query, where
 import { useCart } from '@/components/CartContext'; // Import your Cart Context
 import Swal from 'sweetalert2';
 import { useAppContext } from '@/components/Context';
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 export default function OrderSummaryPage() {
   const router = useRouter();
@@ -1506,9 +1507,11 @@ const docRef = await addDoc(collection(db, "orders"), removeUndefined(orderPaylo
 
 // --- Styled Components (Theme Colors: PrimaryNavy #0B1B48, PrimaryCyan #00AEEF, Gradient) ---
 
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";;
+
+// 🎨 ENITZ BRAND THEME COLORS
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";

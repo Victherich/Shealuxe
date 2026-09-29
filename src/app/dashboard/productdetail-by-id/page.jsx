@@ -8,6 +8,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import { useCart } from '@/components/CartContext';
+import { primaryColoring, secondaryColoring } from "@/components/Context";
+
+// 🎨 ENITZ BRAND THEME COLORS
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 
 // --- ENITZ LIMITED THEME & STYLES ---
 const cardBg = '#ffffff';
@@ -17,9 +23,8 @@ const textMuted = '#475569';
 const softBg = '#f8fafc';
 const successGreen = '#10b981';
 const dangerRed = '#ef4444';
-const PrimaryNavy = "#1c3ba4";
-const brandCyan = "#8b5cf6";
-const brandGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
+const brandCyan =secondaryColoring;
+
 
 const floatAnimation = keyframes`
   0% { transform: translateY(0px) rotate(0deg); }

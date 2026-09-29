@@ -7,7 +7,7 @@
 // import React, { useState, useEffect } from "react";
 // import Link from "next/link";
 // import styled, { keyframes } from "styled-components";
-// import { Sparkles, ArrowRight, ShoppingBag, ShieldCheck, Heart, Star, Compass, Award, Zap, CheckCircle2 } from "lucide-react";
+// import { Sparkles, ArrowRight, ShieldCheck, Camera, Cpu, Lock, Bell, CheckCircle2 } from "lucide-react";
 
 // /* ================= ANIMATIONS ================= */
 // const floatSlow = keyframes`
@@ -17,14 +17,16 @@
 // `;
 
 // const pulseGlow = keyframes`
-//   0% { box-shadow: 0 0 0 0 rgba(0, 174, 239, 0.4); }
-//   70% { box-shadow: 0 0 0 22px rgba(0, 174, 239, 0); }
-//   100% { box-shadow: 0 0 0 0 rgba(0, 174, 239, 0); }
+//   0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+//   70% { box-shadow: 0 0 0 22px rgba(139, 92, 246, 0); }
+//   100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
 // `;
 
-// /* ================= THEME STYLES (ENITZ RETAIL) ================= */
-// const ThemeGradient = "linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)";
-// const SoftGradientBg = "linear-gradient(135deg, rgba(0, 174, 239, 0.05) 0%, rgba(11, 27, 72, 0.05) 100%)";
+// /* ================= THEME STYLES (MAJINFOTEK) ================= */
+// const primaryBlue = '#1c3ba4';
+// const richPurple = '#8b5cf6';
+// const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
+// const SoftGradientBg = "linear-gradient(135deg, rgba(28, 59, 164, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%)";
 // const LightBg = "#f8fafc";
 // const CardBg = "#ffffff";
 // const TextPrimary = "#0f172a";
@@ -52,14 +54,14 @@
 //   color: #ffffff;
 //   font-weight: 700;
 //   font-size: 1.05rem;
-//   box-shadow: 0 14px 30px -5px rgba(0, 174, 239, 0.45);
+//   box-shadow: 0 14px 30px -5px rgba(139, 92, 246, 0.45);
 //   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 //   text-decoration: none;
 //   animation: ${pulseGlow} 3s infinite;
 
 //   &:hover {
 //     transform: translateY(-3px) scale(1.02);
-//     box-shadow: 0 20px 40px -5px rgba(0, 174, 239, 0.65);
+//     box-shadow: 0 20px 40px -5px rgba(139, 92, 246, 0.65);
 //     animation: none;
 //   }
 // `;
@@ -68,8 +70,8 @@
 // const HeroSection = styled.section`
 //   position: relative;
 //   padding: 8rem 1.5rem 6rem 1.5rem;
-//   background: radial-gradient(circle at top right, rgba(0, 174, 239, 0.08), transparent 40%),
-//               radial-gradient(circle at bottom left, rgba(11, 27, 72, 0.08), transparent 40%),
+//   background: radial-gradient(circle at top right, rgba(28, 59, 164, 0.08), transparent 40%),
+//               radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.08), transparent 40%),
 //               ${LightBg};
 //   overflow: hidden;
 //   border-bottom: 1px solid ${BorderColor};
@@ -98,16 +100,16 @@
 //     align-items: center;
 //     gap: 0.5rem;
 //     padding: 0.5rem 1.25rem;
-//     background: linear-gradient(135deg, rgba(0, 174, 239, 0.1), rgba(11, 27, 72, 0.1));
-//     border: 1px solid rgba(0, 174, 239, 0.25);
+//     background: linear-gradient(135deg, rgba(28, 59, 164, 0.1), rgba(139, 92, 246, 0.1));
+//     border: 1px solid rgba(139, 92, 246, 0.25);
 //     border-radius: 9999px;
-//     color: #00aeef;
+//     color: ${primaryBlue};
 //     font-weight: 700;
 //     font-size: 0.85rem;
 //     text-transform: uppercase;
 //     letter-spacing: 0.08em;
 //     width: fit-content;
-//     box-shadow: 0 4px 15px rgba(0, 174, 239, 0.1);
+//     box-shadow: 0 4px 15px rgba(28, 59, 164, 0.1);
 //   }
 
 //   h1 {
@@ -216,10 +218,10 @@
 //     align-items: center;
 //     gap: 0.5rem;
 //     padding: 0.5rem 1.25rem;
-//     background: linear-gradient(135deg, rgba(0, 174, 239, 0.1), rgba(11, 27, 72, 0.1));
-//     border: 1px solid rgba(0, 174, 239, 0.2);
+//     background: linear-gradient(135deg, rgba(28, 59, 164, 0.1), rgba(139, 92, 246, 0.1));
+//     border: 1px solid rgba(139, 92, 246, 0.2);
 //     border-radius: 9999px;
-//     color: #00aeef;
+//     color: ${primaryBlue};
 //     font-weight: 700;
 //     font-size: 0.85rem;
 //     text-transform: uppercase;
@@ -268,8 +270,8 @@
 
 //   &:hover {
 //     transform: translateY(-8px);
-//     border-color: rgba(0, 174, 239, 0.4);
-//     box-shadow: 0 30px 60px -15px rgba(0, 174, 239, 0.15);
+//     border-color: rgba(139, 92, 246, 0.4);
+//     box-shadow: 0 30px 60px -15px rgba(139, 92, 246, 0.15);
 
 //     .icon-box {
 //       transform: scale(1.1) rotate(6deg);
@@ -287,9 +289,9 @@
 //     align-items: center;
 //     justify-content: center;
 //     margin-bottom: 2rem;
-//     color: #00aeef;
+//     color: ${primaryBlue};
 //     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-//     border: 1px solid rgba(0, 174, 239, 0.15);
+//     border: 1px solid rgba(139, 92, 246, 0.15);
 //   }
 
 //   h3 {
@@ -309,6 +311,7 @@
 // /* --- FEATURED PRODUCT SHOWCASE (SPLIT BANNER) --- */
 // const ProductShowcaseSection = styled.section`
 //   background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+//   padding: 2rem 1.5rem 7rem 1.5rem;
 // `;
 
 // const ProductContainer = styled.div`
@@ -358,8 +361,8 @@
 //     border-radius: 9999px;
 //     font-size: 0.85rem;
 //     font-weight: 700;
-//     color: #0b1b48;
-//     border: 1px solid rgba(11, 27, 72, 0.2);
+//     color: ${primaryBlue};
+//     border: 1px solid rgba(28, 59, 164, 0.2);
 //     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 //     display: flex;
 //     align-items: center;
@@ -406,74 +409,6 @@
 //   }
 // `;
 
-// /* --- GALLERY GRID SECTION (ASYMMETRIC MODERN) --- */
-// const GallerySection = styled.section`
-//   padding: 7rem 1.5rem;
-//   max-width: 1280px;
-//   margin: 0 auto;
-// `;
-
-// const GalleryGrid = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(1, 1fr);
-//   gap: 2rem;
-
-//   @media (min-width: 768px) {
-//     grid-template-columns: repeat(3, 1fr);
-//   }
-// `;
-
-// const GalleryCard = styled.div`
-//   position: relative;
-//   border-radius: 2rem;
-//   overflow: hidden;
-//   height: 450px;
-//   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-//   border: 1px solid ${BorderColor};
-//   cursor: pointer;
-
-//   img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-//   }
-
-//   .overlay {
-//     position: absolute;
-//     inset: 0;
-//     background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.15) 60%, transparent 100%);
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-end;
-//     padding: 2.5rem;
-//     transition: background 0.4s ease;
-//   }
-
-//   h4 {
-//     color: #ffffff;
-//     font-size: 1.5rem;
-//     font-weight: 800;
-//     margin-bottom: 0.5rem;
-//     letter-spacing: -0.01em;
-//   }
-
-//   p {
-//     color: #cbd5e1;
-//     font-size: 1rem;
-//     font-weight: 500;
-//   }
-
-//   &:hover {
-//     img {
-//       transform: scale(1.12);
-//     }
-//     .overlay {
-//       background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(0, 174, 239, 0.35) 100%);
-//     }
-//   }
-// `;
-
 // export default function LandingPage() {
 //   return (
 //     <PageWrapper>
@@ -482,18 +417,18 @@
 //         <HeroGrid>
 //           <HeroContent>
 //             <div className="badge-pill">
-//               <Sparkles className="w-4 h-4 text-cyan-500" /> Quality Within Reach
+//               <Sparkles className="w-4 h-4 text-purple-600" /> Advanced Security & Tech
 //             </div>
 //             <h1>
-//               Shop Carefully Selected Products with <span>ENITZ</span>
+//               Secure Your Space with <span>MAJINFOTEK</span>
 //             </h1>
 //             <p>
-//               Shop carefully selected personal, household and lifestyle products from ENITZ, with convenient ordering and reliable delivery.
+//               Explore cutting-edge CCTV surveillance systems, crystal-clear intercom solutions, and premium tech gadgets engineered to protect and optimize your premises.
 //             </p>
 //             <HeroActions>
 //               <PrimaryButton href="/store">
-//                 <ShoppingBag className="w-5 h-5" />
-//                 Shop the Collection
+//                 <Camera className="w-5 h-5" />
+//                 Explore Security Systems
 //               </PrimaryButton>
 //             </HeroActions>
 //           </HeroContent>
@@ -501,16 +436,16 @@
 //           <HeroVisual>
 //             <img 
 //               className="main-hero-img"
-//               src='./shop5.jpg'
-//               alt="Quality Retail Shopping Experience" 
+//               src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=1000"
+//               alt="Majinfotek Security Tech Experience" 
 //             />
 //             <div className="floating-badge">
 //               <div className="icon-wrap">
 //                 <CheckCircle2 className="w-6 h-6 text-white" />
 //               </div>
 //               <div>
-//                 <h4>Reliable Delivery</h4>
-//                 <p>Convenient Ordering</p>
+//                 <h4>Pro Installation</h4>
+//                 <p>Reliable Support</p>
 //               </div>
 //             </div>
 //           </HeroVisual>
@@ -521,32 +456,32 @@
 //       <FeaturesSection>
 //         <SectionHeader>
 //           <div className="badge-pill">
-//             <Sparkles className="w-4 h-4" /> Everyday Value
+//             <Sparkles className="w-4 h-4" /> Next-Gen Protection
 //           </div>
-//           <h2>Quality Within Reach</h2>
+//           <h2>Smart Security Solutions</h2>
 //           <p>
-//             Shop carefully selected personal, household and lifestyle products from ENITZ, with convenient ordering and reliable delivery.
+//             Equip your residential and commercial properties with state-of-the-art surveillance and robust communication equipment built for ultimate peace of mind.
 //           </p>
 //         </SectionHeader>
 
 //         <BentoGrid>
 //           <BentoCard>
 //             <div className="icon-box">
-//               <Award className="w-8 h-8" />
+//               <Camera className="w-8 h-8" />
 //             </div>
 //             <div>
-//               <h3>Personal Products</h3>
-//               <p>Carefully selected items for your personal care and daily routines, designed to offer genuine everyday value.</p>
+//               <h3>CCTV Surveillance</h3>
+//               <p>High-definition security cameras with crystal-clear night vision, remote smartphone viewing, and reliable threat detection.</p>
 //             </div>
 //           </BentoCard>
 
 //           <BentoCard>
 //             <div className="icon-box">
-//               <Compass className="w-8 h-8" />
+//               <Bell className="w-8 h-8" />
 //             </div>
 //             <div>
-//               <h3>Household Essentials</h3>
-//               <p>Practical goods chosen to make managing and elevating your living spaces simple, smooth, and stress-free.</p>
+//               <h3>Intercom Systems</h3>
+//               <p>Seamless audio and video communication setups designed to control access and secure building entry points effortlessly.</p>
 //             </div>
 //           </BentoCard>
 
@@ -555,8 +490,8 @@
 //               <ShieldCheck className="w-8 h-8" />
 //             </div>
 //             <div>
-//               <h3>Reliable Delivery</h3>
-//               <p>Experience convenient ordering paired with prompt, dependable delivery straight from our door to yours.</p>
+//               <h3>Smart Tech Gadgets</h3>
+//               <p>Modern electronic accessories and smart hardware engineered to elevate your security infrastructure and automation.</p>
 //             </div>
 //           </BentoCard>
 //         </BentoGrid>
@@ -567,25 +502,25 @@
 //         <ProductContainer>
 //           <ImageWrapper>
 //             <div className="badge-tag">
-//               <Sparkles className="w-4 h-4 text-cyan-600" /> Featured Selection
+//               <Sparkles className="w-4 h-4 text-purple-600" /> Featured Hardware
 //             </div>
 //             <img 
-//               src='./shop4.jpg'
-//               alt="Featured Retail Product" 
+//               src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&q=80&w=1000"
+//               alt="Featured Security Product" 
 //             />
 //           </ImageWrapper>
 
 //           <ProductDetails>
-//             <span className="category">Curated Catalog Spotlight</span>
-//             <h3>Lifestyle & Household Favorites</h3>
-//             <div className="price">Quality Within Reach</div>
+//             <span className="category">Catalog Spotlight</span>
+//             <h3>HD Surveillance & Intercom Kits</h3>
+//             <div className="price">Top-Tier Protection</div>
 //             <p>
-//               Browse our handpicked assortment of trusted lifestyle essentials. Built for modern homes and everyday living, ensuring you never have to compromise on quality or convenience.
+//               Discover our handpicked collection of advanced surveillance cameras and automated security systems. Expertly curated to ensure robust defense for your homes and offices without compromise.
 //             </p>
 //             <div>
 //               <PrimaryButton href="/store">
-//                 <ShoppingBag className="w-5 h-5" />
-//                 Explore Products
+//                 <Lock className="w-5 h-5" />
+//                 Browse Catalog
 //               </PrimaryButton>
 //             </div>
 //           </ProductDetails>
@@ -597,14 +532,24 @@
 // }
 
 
-
-
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import styled, { keyframes } from "styled-components";
-import { Sparkles, ArrowRight, ShieldCheck, Camera, Cpu, Lock, Bell, CheckCircle2 } from "lucide-react";
+import { Sparkles, ArrowRight, BookOpen, ShoppingBag, Leaf, Award, CheckCircle2 } from "lucide-react";
+import { primaryColoring, secondaryColoring } from "./Context";
+
+/* ================= THEME STYLES (SHEALUXE) ================= */
+const primaryColor = primaryColoring; // #3D1B17 (Deep Brown)
+const secondaryColor = secondaryColoring; // #E2B04A (Gold)
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
+const SoftGradientBg = "linear-gradient(135deg, rgba(61, 27, 23, 0.05) 0%, rgba(226, 176, 74, 0.08) 100%)";
+const LightBg = "#fdfbf9";
+const CardBg = "#ffffff";
+const TextPrimary = "#0f172a";
+const TextMuted = "#475569";
+const BorderColor = "rgba(226, 232, 240, 0.9)";
 
 /* ================= ANIMATIONS ================= */
 const floatSlow = keyframes`
@@ -614,21 +559,10 @@ const floatSlow = keyframes`
 `;
 
 const pulseGlow = keyframes`
-  0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
-  70% { box-shadow: 0 0 0 22px rgba(139, 92, 246, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(226, 176, 74, 0.4); }
+  70% { box-shadow: 0 0 0 22px rgba(226, 176, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(226, 176, 74, 0); }
 `;
-
-/* ================= THEME STYLES (MAJINFOTEK) ================= */
-const primaryBlue = '#1c3ba4';
-const richPurple = '#8b5cf6';
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
-const SoftGradientBg = "linear-gradient(135deg, rgba(28, 59, 164, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%)";
-const LightBg = "#f8fafc";
-const CardBg = "#ffffff";
-const TextPrimary = "#0f172a";
-const TextMuted = "#475569";
-const BorderColor = "rgba(226, 232, 240, 0.9)";
 
 /* ================= COMPONENTS ================= */
 
@@ -651,14 +585,14 @@ const PrimaryButton = styled(Link)`
   color: #ffffff;
   font-weight: 700;
   font-size: 1.05rem;
-  box-shadow: 0 14px 30px -5px rgba(139, 92, 246, 0.45);
+  box-shadow: 0 14px 30px -5px rgba(226, 176, 74, 0.45);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   animation: ${pulseGlow} 3s infinite;
 
   &:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 20px 40px -5px rgba(139, 92, 246, 0.65);
+    box-shadow: 0 20px 40px -5px rgba(226, 176, 74, 0.65);
     animation: none;
   }
 `;
@@ -667,8 +601,8 @@ const PrimaryButton = styled(Link)`
 const HeroSection = styled.section`
   position: relative;
   padding: 8rem 1.5rem 6rem 1.5rem;
-  background: radial-gradient(circle at top right, rgba(28, 59, 164, 0.08), transparent 40%),
-              radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.08), transparent 40%),
+  background: radial-gradient(circle at top right, rgba(61, 27, 23, 0.08), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(226, 176, 74, 0.1), transparent 40%),
               ${LightBg};
   overflow: hidden;
   border-bottom: 1px solid ${BorderColor};
@@ -697,16 +631,16 @@ const HeroContent = styled.div`
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1.25rem;
-    background: linear-gradient(135deg, rgba(28, 59, 164, 0.1), rgba(139, 92, 246, 0.1));
-    border: 1px solid rgba(139, 92, 246, 0.25);
+    background: linear-gradient(135deg, rgba(61, 27, 23, 0.08), rgba(226, 176, 74, 0.15));
+    border: 1px solid rgba(226, 176, 74, 0.3);
     border-radius: 9999px;
-    color: ${primaryBlue};
+    color: ${primaryColor};
     font-weight: 700;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     width: fit-content;
-    box-shadow: 0 4px 15px rgba(28, 59, 164, 0.1);
+    box-shadow: 0 4px 15px rgba(61, 27, 23, 0.08);
   }
 
   h1 {
@@ -749,7 +683,7 @@ const HeroVisual = styled.div`
     height: 520px;
     object-fit: cover;
     border-radius: 2.5rem;
-    box-shadow: 0 35px 70px -15px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 35px 70px -15px rgba(61, 27, 23, 0.25);
     border: 4px solid #ffffff;
     animation: ${floatSlow} 6s ease-in-out infinite;
   }
@@ -815,10 +749,10 @@ const SectionHeader = styled.div`
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1.25rem;
-    background: linear-gradient(135deg, rgba(28, 59, 164, 0.1), rgba(139, 92, 246, 0.1));
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    background: linear-gradient(135deg, rgba(61, 27, 23, 0.08), rgba(226, 176, 74, 0.15));
+    border: 1px solid rgba(226, 176, 74, 0.3);
     border-radius: 9999px;
-    color: ${primaryBlue};
+    color: ${primaryColor};
     font-weight: 700;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -867,8 +801,8 @@ const BentoCard = styled.div`
 
   &:hover {
     transform: translateY(-8px);
-    border-color: rgba(139, 92, 246, 0.4);
-    box-shadow: 0 30px 60px -15px rgba(139, 92, 246, 0.15);
+    border-color: rgba(226, 176, 74, 0.5);
+    box-shadow: 0 30px 60px -15px rgba(226, 176, 74, 0.18);
 
     .icon-box {
       transform: scale(1.1) rotate(6deg);
@@ -886,9 +820,9 @@ const BentoCard = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
-    color: ${primaryBlue};
+    color: ${primaryColor};
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(226, 176, 74, 0.25);
   }
 
   h3 {
@@ -907,8 +841,12 @@ const BentoCard = styled.div`
 
 /* --- FEATURED PRODUCT SHOWCASE (SPLIT BANNER) --- */
 const ProductShowcaseSection = styled.section`
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  background: linear-gradient(180deg, #fdfbf9 0%, #f4eee9 100%);
   padding: 2rem 1.5rem 7rem 1.5rem;
+
+  @media(max-width:720px){
+  padding:2rem 0rem;
+  }
 `;
 
 const ProductContainer = styled.div`
@@ -918,7 +856,7 @@ const ProductContainer = styled.div`
   border: 1px solid ${BorderColor};
   border-radius: 2.5rem;
   padding: 1rem;
-  box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 30px 60px -20px rgba(61, 27, 23, 0.08);
   display: grid;
   grid-template-columns: 1fr;
   gap: 3.5rem;
@@ -934,7 +872,7 @@ const ImageWrapper = styled.div`
   position: relative;
   border-radius: 2rem;
   overflow: hidden;
-  box-shadow: 0 25px 50px -15px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 25px 50px -15px rgba(61, 27, 23, 0.18);
   border: 2px solid #ffffff;
 
   img {
@@ -958,8 +896,8 @@ const ImageWrapper = styled.div`
     border-radius: 9999px;
     font-size: 0.85rem;
     font-weight: 700;
-    color: ${primaryBlue};
-    border: 1px solid rgba(28, 59, 164, 0.2);
+    color: ${primaryColor};
+    border: 1px solid rgba(226, 176, 74, 0.3);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     align-items: center;
@@ -1014,18 +952,18 @@ export default function LandingPage() {
         <HeroGrid>
           <HeroContent>
             <div className="badge-pill">
-              <Sparkles className="w-4 h-4 text-purple-600" /> Advanced Security & Tech
+              <Sparkles className="w-4 h-4 text-amber-600" /> Pure African Botanicals
             </div>
             <h1>
-              Secure Your Space with <span>MAJINFOTEK</span>
+              Experience Natural Luxury with <span>SHEALUXE</span>
             </h1>
             <p>
-              Explore cutting-edge CCTV surveillance systems, crystal-clear intercom solutions, and premium tech gadgets engineered to protect and optimize your premises.
+              Transform your skin and hair with premium wellness products crafted from Africa’s rich indigenous botanicals, combining tradition with modern scientific excellence.
             </p>
             <HeroActions>
               <PrimaryButton href="/store">
-                <Camera className="w-5 h-5" />
-                Explore Security Systems
+                <ShoppingBag className="w-5 h-5" />
+                Shop Now
               </PrimaryButton>
             </HeroActions>
           </HeroContent>
@@ -1033,16 +971,16 @@ export default function LandingPage() {
           <HeroVisual>
             <img 
               className="main-hero-img"
-              src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=1000"
-              alt="Majinfotek Security Tech Experience" 
+              src="/h5.png"
+              alt="Shealuxe Natural Skincare Experience" 
             />
             <div className="floating-badge">
               <div className="icon-wrap">
                 <CheckCircle2 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h4>Pro Installation</h4>
-                <p>Reliable Support</p>
+                <h4>Ethically Sourced</h4>
+                <p>100% Organic Quality</p>
               </div>
             </div>
           </HeroVisual>
@@ -1053,42 +991,42 @@ export default function LandingPage() {
       <FeaturesSection>
         <SectionHeader>
           <div className="badge-pill">
-            <Sparkles className="w-4 h-4" /> Next-Gen Protection
+            <Leaf className="w-4 h-4 text-amber-600" /> Holistic Wellness
           </div>
-          <h2>Smart Security Solutions</h2>
+          <h2>Our Core Offerings</h2>
           <p>
-            Equip your residential and commercial properties with state-of-the-art surveillance and robust communication equipment built for ultimate peace of mind.
+            Discover results-driven body care, luxurious hair treatments, and expert-led formulation classes designed to inspire healthier living.
           </p>
         </SectionHeader>
 
         <BentoGrid>
           <BentoCard>
             <div className="icon-box">
-              <Camera className="w-8 h-8" />
+              <Sparkles className="w-8 h-8" />
             </div>
             <div>
-              <h3>CCTV Surveillance</h3>
-              <p>High-definition security cameras with crystal-clear night vision, remote smartphone viewing, and reliable threat detection.</p>
+              <h3>Body Collection</h3>
+              <p>Indulge your skin with our nourishing body lotions and butters formulated for radiant, healthy skin care.</p>
             </div>
           </BentoCard>
 
           <BentoCard>
             <div className="icon-box">
-              <Bell className="w-8 h-8" />
+              <Leaf className="w-8 h-8" />
             </div>
             <div>
-              <h3>Intercom Systems</h3>
-              <p>Seamless audio and video communication setups designed to control access and secure building entry points effortlessly.</p>
+              <h3>Hair Collection</h3>
+              <p>Revitalize your hair with our trusted organic hair creams and growth serums designed for ultimate strength and shine.</p>
             </div>
           </BentoCard>
 
           <BentoCard>
             <div className="icon-box">
-              <ShieldCheck className="w-8 h-8" />
+              <BookOpen className="w-8 h-8" />
             </div>
             <div>
-              <h3>Smart Tech Gadgets</h3>
-              <p>Modern electronic accessories and smart hardware engineered to elevate your security infrastructure and automation.</p>
+              <h3>Expert Classes</h3>
+              <p>Master the art of natural formulation. Learn how to craft cleansers, serums, and masks from industry experts.</p>
             </div>
           </BentoCard>
         </BentoGrid>
@@ -1099,25 +1037,25 @@ export default function LandingPage() {
         <ProductContainer>
           <ImageWrapper>
             <div className="badge-tag">
-              <Sparkles className="w-4 h-4 text-purple-600" /> Featured Hardware
+              <Award className="w-4 h-4 text-amber-600" /> Signature Collection
             </div>
             <img 
-              src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&q=80&w=1000"
-              alt="Featured Security Product" 
+              src="/h6.png"
+              alt="Shealuxe Featured Product" 
             />
           </ImageWrapper>
 
           <ProductDetails>
-            <span className="category">Catalog Spotlight</span>
-            <h3>HD Surveillance & Intercom Kits</h3>
-            <div className="price">Top-Tier Protection</div>
+            <span className="category">Transformative Power of Nature</span>
+            <h3>Luxurious Skin & Hair Care</h3>
+            <div className="price">Premium Quality</div>
             <p>
-              Discover our handpicked collection of advanced surveillance cameras and automated security systems. Expertly curated to ensure robust defense for your homes and offices without compromise.
+              Whether you are looking to establish a new custom skincare routine or trying to address specific beauty goals, our ethically sourced botanical solutions deliver unmatched results for consumers worldwide.
             </p>
             <div>
               <PrimaryButton href="/store">
-                <Lock className="w-5 h-5" />
-                Browse Catalog
+                <ShoppingBag className="w-5 h-5" />
+                Explore Collection
               </PrimaryButton>
             </div>
           </ProductDetails>

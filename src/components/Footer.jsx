@@ -1,6 +1,9 @@
 
 
 
+
+
+
 // "use client";
 
 // import { useState } from "react";
@@ -8,14 +11,17 @@
 // import Link from "next/link";
 // import Image from "next/image";
 
-// /* ================= COLORS (ENITZ THEME) ================= */
+// /* ================= COLORS (MAJINFOTEK THEME) ================= */
 
-// const ThemeGradient = "linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%)";
-// const Dark = "#0f172a";
-// const Border = "#334155";
+// const primaryBlue = "#1c3ba4";
+// const richPurple = "#8b5cf6";
+// const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
+// // const Dark = "#0f172a";
+// const Dark = "#161616";
+// const Border = "rgba(226, 232, 240, 0.15)";
 // const White = "#ffffff";
 // const TextMuted = "#94a3b8";
-// const PrimaryAccent = "#00AEEF";
+// const PrimaryAccent = "#8b5cf6";
 
 // /* ================= FOOTER STYLES ================= */
 
@@ -30,7 +36,7 @@
 // const FooterInner = styled.div`
 //   max-width: 1200px;
 //   margin: auto;
-//   padding: 3rem 1.5rem 1.5rem 1.5rem;
+//   padding: 4rem 1.5rem 2rem 1.5rem;
 
 //   display: grid;
 //   grid-template-columns: 2fr 1fr 1fr 1.5fr;
@@ -240,7 +246,7 @@
 //   left: 0;
 //   width: 100vw;
 //   height: 100vh;
-//   background: rgba(11, 27, 72, 0.7);
+//   background: rgba(15, 23, 42, 0.8);
 //   backdrop-filter: blur(4px);
 //   display: flex;
 //   align-items: center;
@@ -343,7 +349,7 @@
 // export default function Footer() {
 //   const currentYear = new Date().getFullYear();
 //   const whatsappMessage = encodeURIComponent(
-//     "Hello Enitz, I just visited your website. I would love to order some products from your website."
+//     "Hello Majinfotek, I just visited your website. I would like to inquire about your security and technology solutions."
 //   );
 
 //   // Modal and Form state
@@ -394,15 +400,16 @@
 //         <FooterInner>
 //           {/* Col 1: Brand Info */}
 //           <FooterCol>
-//             <Link href="/" style={{ textDecoration: 'none' }}>
-//               <img src='./logo.jpeg' alt='Enitz Limited Logo' style={{width:'50px', borderRadius:"10px"}}/>
+//             <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
 //               <Logo>
-//                 Enitz
+//                 <img src='/logo.png' alt='Enitz Limited Logo' style={{width:'50px', borderRadius:"10px"}}/>
+
+//                 <span>Majinfotek</span>
 //               </Logo>
-//               <p style={{fontStyle:"italic", fontSize:"0.9rem"}}>Quality Within Reach</p>
 //             </Link>
+//             <p style={{ fontStyle: "italic", fontSize: "0.9rem", color: TextMuted, margin: 0 }}>Advanced Security & Technology Solutions</p>
 //             <FooterText>
-//               Enitz Global Limited offers quality personal and household products at affordable prices, making everyday living easy with convenient ordering and delivery.
+//               Majinfotek delivers world-class surveillance, access control, smart home integration, and enterprise IT infrastructure tailored for modern homes and businesses.
 //             </FooterText>
 //           </FooterCol>
 
@@ -411,22 +418,20 @@
 //             <ColTitle>Quick Links</ColTitle>
 //             <FooterLink href="/">Home</FooterLink>
 //             <FooterLink href="/about">About Us</FooterLink>
-//             <FooterLink href="/store">Store</FooterLink>
-            
-//             <FooterLink href="/terms-conditions">Terms & Conditions</FooterLink>
-//             <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
-//             <FooterLink href="/delivery-policy">Delivery Policy</FooterLink>
-//             <FooterLink href="/return-refund-policy">Return/Refund Policy</FooterLink>
+//             <FooterLink href="/store">Shop</FooterLink>
+//             <FooterLink href="/cart">Cart</FooterLink>
 //             <FooterLink href="/contact">Contact Us</FooterLink>
+//             <FooterLink href="/terms-conditions">Terms and Conditions</FooterLink>
+//             <FooterLink href="/privacy-policy">Privacy Policy</FooterLink>
 //           </FooterCol>
 
 //           {/* Col 3: Contact & Support */}
 //           <FooterCol>
 //             <ColTitle>Get in Touch</ColTitle>
 //             <ContactInfo>
-//               <p>Email: <span>enitzglobal@gmail.com</span></p>
-//               <p>Phone: <span>09047103037 / 08160801538</span></p>
-//               <p>Location: <span>116 Mushin Road, Isolo, Lagos, Nigeria</span></p>
+//               <p>Email: Majinfotek@gmail.com</p>
+//               <p>Phone: +234 812 603 3123</p>
+//               <p>Location: 27 Ribadu street by Norman willams off Awolowo road ikoyi Lagos</p>
 //             </ContactInfo>
 //           </FooterCol>
 
@@ -434,12 +439,24 @@
 //           <FooterCol>
 //             <ColTitle>Connect With Us</ColTitle>
 //             <FooterText>
-//               Follow us on Instagram and Facebook for updates on new product arrivals and special offers.
+//               Follow our channels for updates on cutting-edge security deployments and smart technology tips.
 //             </FooterText>
 //             <SocialIconsContainer>
+//               {/* LinkedIn / Social placeholder */}
+//               {/* <SocialIconLink 
+//                 href="https://linkedin.com" 
+//                 target="_blank" 
+//                 rel="noopener noreferrer"
+//                 aria-label="LinkedIn"
+//               >
+//                 <svg viewBox="0 0 24 24">
+//                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+//                 </svg>
+//               </SocialIconLink> */}
+
 //               {/* Instagram */}
 //               <SocialIconLink 
-//                 href="https://www.instagram.com/enitzglobalconcept/" 
+//                 href="https://www.instagram.com/majinfotek_ng?stkn=MmlqcHVycDdqYzF1" 
 //                 target="_blank" 
 //                 rel="noopener noreferrer"
 //                 aria-label="Instagram"
@@ -449,23 +466,23 @@
 //                 </svg>
 //               </SocialIconLink>
 
-//               {/* Facebook */}
+//               {/* Twitter / X */}
 //               <SocialIconLink 
-//                 href="https://www.facebook.com/share/1H5LuogNcg/" 
+//                 href="https://twitter.com" 
 //                 target="_blank" 
 //                 rel="noopener noreferrer"
-//                 aria-label="Facebook"
+//                 aria-label="Twitter"
 //               >
 //                 <svg viewBox="0 0 24 24">
-//                   <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+//                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
 //                 </svg>
 //               </SocialIconLink>
 //             </SocialIconsContainer>
 
 //             {/* Newsletter Button */}
-//             <NewsletterButton onClick={() => setIsModalOpen(true)}>
+//             {/* <NewsletterButton onClick={() => setIsModalOpen(true)}>
 //               Subscribe to Newsletter
-//             </NewsletterButton>
+//             </NewsletterButton> */}
 //           </FooterCol>
 //         </FooterInner>
 
@@ -473,10 +490,11 @@
 //         <BottomBarWrapper>
 //           <BottomBar>
 //             <Copyright>
-//               &copy; {currentYear} Enitz Global Limited (RC 9059086). All rights reserved.
+//               &copy; {currentYear} Majinfotek. All rights reserved.
 //             </Copyright>
-//             <LegalLinks>
-//               {/* Optional Legal Links */}
+//             <LegalLinks style={{textDecoration:"underline", fontStyle:"italic"}}>
+           
+//               <Link href="https://echobyteconcept.vercel.app/" target="_blank">Designed and Powered by Echobyte Concept</Link>
 //             </LegalLinks>
 //           </BottomBar>
 //         </BottomBarWrapper>
@@ -489,7 +507,7 @@
 //             <CloseButton onClick={() => setIsModalOpen(false)}>&times;</CloseButton>
 //             <ModalTitle>Join Our Newsletter</ModalTitle>
 //             <ModalSubtitle>
-//               Get updates on new product arrivals and exclusive discount offers directly to your inbox.
+//               Get insights on security best practices, smart technologies, and exclusive service updates directly to your inbox.
 //             </ModalSubtitle>
 
 //             {success ? (
@@ -526,7 +544,7 @@
 
 //       {/* Floating WhatsApp Icon with Pre-filled Text */}
 //       <WhatsAppFloat 
-//         href={`https://wa.me/2349047103037?text=${whatsappMessage}`} 
+//         href={`https://wa.me/2348126033123?text=${whatsappMessage}`} 
 //         target="_blank" 
 //         rel="noopener noreferrer"
 //         aria-label="Chat on WhatsApp"
@@ -545,26 +563,24 @@
 
 
 
-
-
 "use client";
 
 import { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import { primaryColoring, secondaryColoring } from "./Context";
 
-/* ================= COLORS (MAJINFOTEK THEME) ================= */
+/* ================= COLORS (SHEALUXE THEME) ================= */
 
-const primaryBlue = "#1c3ba4";
-const richPurple = "#8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
-// const Dark = "#0f172a";
+const primaryColor = primaryColoring; // #3D1B17 (Deep Brown)
+const secondaryColor = secondaryColoring; // #E2B04A (Gold)
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 const Dark = "#161616";
 const Border = "rgba(226, 232, 240, 0.15)";
 const White = "#ffffff";
 const TextMuted = "#94a3b8";
-const PrimaryAccent = "#8b5cf6";
+const PrimaryAccent = secondaryColor;
 
 /* ================= FOOTER STYLES ================= */
 
@@ -764,25 +780,6 @@ const WhatsAppFloat = styled.a`
 
 /* ================= NEWSLETTER & MODAL STYLES ================= */
 
-const NewsletterButton = styled.button`
-  background: ${ThemeGradient};
-  color: ${White};
-  border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  margin-top: 0.55rem;
-  width: fit-content;
-
-  &:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-  }
-`;
-
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -892,7 +889,7 @@ const SuccessMessage = styled.p`
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const whatsappMessage = encodeURIComponent(
-    "Hello Majinfotek, I just visited your website. I would like to inquire about your security and technology solutions."
+    "Hello Shealuxe, I just visited your website. I would like to inquire about your botanical products and formulation classes."
   );
 
   // Modal and Form state
@@ -925,7 +922,6 @@ export default function Footer() {
       setName("");
       setEmail("");
       
-      // Close modal automatically after 3 seconds on success
       setTimeout(() => {
         setIsModalOpen(false);
         setSuccess(false);
@@ -945,14 +941,13 @@ export default function Footer() {
           <FooterCol>
             <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <Logo>
-                <img src='/logo.png' alt='Enitz Limited Logo' style={{width:'50px', borderRadius:"10px"}}/>
-
-                <span>Majinfotek</span>
+                <img src='/logo.jpeg' alt='Shealuxe Logo' style={{width:'50px', borderRadius:"10px"}}/>
+                <span>Shealuxe</span>
               </Logo>
             </Link>
-            <p style={{ fontStyle: "italic", fontSize: "0.9rem", color: TextMuted, margin: 0 }}>Advanced Security & Technology Solutions</p>
+            <p style={{ fontStyle: "italic", fontSize: "0.9rem", color: TextMuted, margin: 0 }}>Pure Botanical Skincare & Organic Formulation Masterclass</p>
             <FooterText>
-              Majinfotek delivers world-class surveillance, access control, smart home integration, and enterprise IT infrastructure tailored for modern homes and businesses.
+              Shealuxe delivers premium, ethically sourced African shea butter products, organic hair care solutions, and expert-led formulation training for natural beauty enthusiasts.
             </FooterText>
           </FooterCol>
 
@@ -972,34 +967,22 @@ export default function Footer() {
           <FooterCol>
             <ColTitle>Get in Touch</ColTitle>
             <ContactInfo>
-              <p>Email: Majinfotek@gmail.com</p>
+              <p>Email: support@shealuxe.com</p>
               <p>Phone: +234 812 603 3123</p>
-              <p>Location: 27 Ribadu street by Norman willams off Awolowo road ikoyi Lagos</p>
+              <p>Location: Lagos, Nigeria</p>
             </ContactInfo>
           </FooterCol>
 
-          {/* Col 4: Social Media & Newsletter */}
+          {/* Col 4: Social Media */}
           <FooterCol>
             <ColTitle>Connect With Us</ColTitle>
             <FooterText>
-              Follow our channels for updates on cutting-edge security deployments and smart technology tips.
+              Follow our channels for updates on new organic skincare batches, beauty tips, and masterclass enrollments.
             </FooterText>
             <SocialIconsContainer>
-              {/* LinkedIn / Social placeholder */}
-              {/* <SocialIconLink 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-              </SocialIconLink> */}
-
               {/* Instagram */}
               <SocialIconLink 
-                href="https://www.instagram.com/majinfotek_ng?stkn=MmlqcHVycDdqYzF1" 
+                href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -1021,11 +1004,6 @@ export default function Footer() {
                 </svg>
               </SocialIconLink>
             </SocialIconsContainer>
-
-            {/* Newsletter Button */}
-            {/* <NewsletterButton onClick={() => setIsModalOpen(true)}>
-              Subscribe to Newsletter
-            </NewsletterButton> */}
           </FooterCol>
         </FooterInner>
 
@@ -1033,57 +1011,14 @@ export default function Footer() {
         <BottomBarWrapper>
           <BottomBar>
             <Copyright>
-              &copy; {currentYear} Majinfotek. All rights reserved.
+              &copy; {currentYear} Shealuxe. All rights reserved.
             </Copyright>
             <LegalLinks style={{textDecoration:"underline", fontStyle:"italic"}}>
-           
               <Link href="https://echobyteconcept.vercel.app/" target="_blank">Designed and Powered by Echobyte Concept</Link>
             </LegalLinks>
           </BottomBar>
         </BottomBarWrapper>
       </FooterContainer>
-
-      {/* Subscription Modal */}
-      {isModalOpen && (
-        <ModalOverlay onClick={() => setIsModalOpen(false)}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <CloseButton onClick={() => setIsModalOpen(false)}>&times;</CloseButton>
-            <ModalTitle>Join Our Newsletter</ModalTitle>
-            <ModalSubtitle>
-              Get insights on security best practices, smart technologies, and exclusive service updates directly to your inbox.
-            </ModalSubtitle>
-
-            {success ? (
-              <SuccessMessage>
-                🎉 Thank you for subscribing! We have received your details.
-              </SuccessMessage>
-            ) : (
-              <form onSubmit={handleSubscribe} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                <FormInput
-                  type="text"
-                  placeholder="Your Full Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-                <FormInput
-                  type="email"
-                  placeholder="Your Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                {errorMessage && (
-                  <p style={{ color: "#ef4444", fontSize: "0.85rem", margin: 0 }}>{errorMessage}</p>
-                )}
-                <SubmitButton type="submit" disabled={loading}>
-                  {loading ? "Subscribing..." : "Subscribe Now"}
-                </SubmitButton>
-              </form>
-            )}
-          </ModalContent>
-        </ModalOverlay>
-      )}
 
       {/* Floating WhatsApp Icon with Pre-filled Text */}
       <WhatsAppFloat 

@@ -642,11 +642,12 @@ import {
   Camera
 } from "lucide-react";
 import Swal from "sweetalert2";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 // --- MAJINFOTEK THEME & STYLES ---
-const brandCyan = '#8b5cf6';
-const brandDarkNavy = '#1c3ba4';
-const brandGradient = 'linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)';
+const brandCyan = secondaryColoring;
+const brandDarkNavy = primaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 
 // Animations
 const floatAnimation = keyframes`
@@ -1109,7 +1110,7 @@ export default function ContactUsPage() {
           Contact <HighlightSpan>Us</HighlightSpan>
         </MainTitle>
         <Subtitle>
-          We’d love to hear from you. Whether you have questions about our security systems, IT infrastructure, or need assistance, our support team is here to help.
+          We’d love to hear from you.
         </Subtitle>
       </HeaderContainer>
 
@@ -1120,12 +1121,14 @@ export default function ContactUsPage() {
           {/* Visual Showcase Card */}
           <ImageShowcaseCard>
             <img 
-              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" 
-              alt="Majinfotek technical support and office excellence" 
+              src="/h15.png" 
+              alt="shealuxe" 
             />
             <ImageOverlayText>
               <div>
-                <span>Majinfotek</span>
+                <span>
+                  shealuxe
+                </span>
                 <span>Customer Support Center</span>
               </div>
               <ImageBadgeTag>
@@ -1148,7 +1151,7 @@ export default function ContactUsPage() {
               </IconWrapper>
               <DetailContent>
                 <span>Location</span>
-                <span>27 Ribadu street by Norman willams off Awolowo road ikoyi Lagos</span>
+                <span>Lagos Nigeria</span>
               </DetailContent>
             </ContactDetailItem>
 
@@ -1162,13 +1165,13 @@ export default function ContactUsPage() {
               </DetailContent>
             </ContactDetailItem>
 
-            <ContactDetailItem as="a" href="mailto:majinfotek@gmail.com" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+            <ContactDetailItem as="a" href="" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
               <IconWrapper>
                 <Mail />
               </IconWrapper>
               <DetailContent>
                 <span>Email Support</span>
-                <span>majinfotek@gmail.com</span>
+                <span>mail@gmail.com</span>
               </DetailContent>
             </ContactDetailItem>
           </InfoCard>

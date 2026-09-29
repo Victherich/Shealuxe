@@ -390,11 +390,12 @@ import Swal from "sweetalert2";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebaseConfig";
 import { Sparkles, ShieldCheck, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 // --- MAJINFOTEK & MODERN BRAND THEME ---
-const brandCyan = '#8b5cf6';
-const brandDarkNavy = '#1c3ba4';
-const brandGradient = 'linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)';
+const brandCyan = secondaryColoring;
+const brandDarkNavy = primaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 
 // Animations
 const floatAnimation = keyframes`
@@ -806,7 +807,7 @@ export default function UserLogin() {
         <BrandingSide>
           <BrandLogo>
             <Sparkles className="w-5 h-5 text-purple-300" />
-            <span>MAJINFOTEK</span>
+            <span>SHEALUXE</span>
           </BrandLogo>
 
           <BrandingContent>

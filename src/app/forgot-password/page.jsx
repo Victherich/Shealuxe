@@ -317,11 +317,12 @@ import {
   CheckCircle2, 
   KeyRound 
 } from "lucide-react";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 // --- MAJINFOTEK BRAND THEME ---
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = "#8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 
 // Animations
 const floatAnimation = keyframes`
@@ -669,7 +670,7 @@ export default function ForgotPassword() {
         <BrandingSide>
           <BrandLogo>
             <Sparkles className="w-5 h-5 text-cyan-300" />
-            <span>MAJINFOTEK</span>
+            <span>SHEALUXE</span>
           </BrandLogo>
 
           <BrandingContent>

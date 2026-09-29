@@ -442,13 +442,13 @@ import { db, auth } from "@/firebaseConfig";
 import { doc, getDoc, setDoc, collection, addDoc, getDocs, query, where, deleteDoc } from "firebase/firestore";
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
-// 🎨 Theme Colors
-// const Primary = "#6366f1";
-// const Secondary = "#a855f7";
-const Primary = "#1c3ba4";
-const Secondary = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+// 🎨 ENITZ BRAND THEME COLORS
+const Primary = primaryColoring;
+const Secondary = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
+
 const Dark = "#0f172a";
 const Border = "#e5eaf2";
 const White = "#ffffff";

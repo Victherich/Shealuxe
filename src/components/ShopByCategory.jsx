@@ -16,13 +16,14 @@ import {
 // Import your initialized firebase db instance here (adjust path to match your project setup)
 import { db } from "@/firebaseConfig"; 
 import { collection, getDocs } from "firebase/firestore";
+import { primaryColoring, secondaryColoring } from "./Context";
 
 
 /* ================= THEME STYLES (MAJINFOTEK) ================= */
 const TextPrimary = "#0f172a";
 const TextMuted = "#475569";
 const BorderColor = "rgba(226, 232, 240, 0.9)";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)";
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 
 /* ================= ANIMATIONS ================= */
 const scrollInfinite = keyframes`

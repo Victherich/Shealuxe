@@ -507,11 +507,12 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 // 🎨 ENITZ BRAND THEME COLORS
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
@@ -853,13 +854,13 @@ const DashboardHome = () => {
               <MenuIcon>🛍️</MenuIcon>
             </MenuCard>
 
-              <MenuCard clickable onClick={() => router.push("/dashboard/manage-locations")}>
+              {/* <MenuCard clickable onClick={() => router.push("/dashboard/manage-locations")}>
               <MenuContent>
                 <MenuTitle>Manage Product Locations</MenuTitle>
                 <MenuDesc>Create, View, Update and Delete product locations</MenuDesc>
               </MenuContent>
               <MenuIcon>🛍️</MenuIcon>
-            </MenuCard>
+            </MenuCard> */}
 
             <MenuCard clickable onClick={() => router.push("/dashboard/manage-products")}>
               <MenuContent>

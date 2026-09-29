@@ -560,11 +560,12 @@ import {
 } from "firebase/firestore";
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
-// 🎨 NAVY & CYAN THEME COLORS & GRADIENTS
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+// 🎨 ENITZ BRAND THEME COLORS
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 const Dark = "#0f172a";
 const Border = "#e5eaf2";
 const White = "#ffffff";

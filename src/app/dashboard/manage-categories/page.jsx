@@ -20,11 +20,12 @@ import {
 } from "firebase/firestore";
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 // 🎨 UPDATED THEME COLORS
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
@@ -504,7 +505,7 @@ const handleSaveCategory = async (e) => {
         const data = new FormData();
         data.append("file", compressedBlob, "category.jpg");
         data.append("upload_preset", "bees_interior");
-        data.append("folder", "categories_majinfotek");
+        data.append("folder", "categories_shealuxe");
 
         const res = await fetch(
           "https://api.cloudinary.com/v1_1/aqxyleoh/image/upload",

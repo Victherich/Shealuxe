@@ -170,11 +170,11 @@ const htmlContent = `
           <style>
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
             .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid rgba(226, 232, 240, 0.9); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-            .header { background: linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%); padding: 25px; text-align: center; color: #ffffff; }
+            .header { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 25px; text-align: center; color: #ffffff; }
             .header h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-            .header p { margin: 5px 0 0; font-size: 13px; color: #e2e8f0; opacity: 0.95; }
+            .header p { margin: 5px 0 0; font-size: 13px; color: #cbd5e1; opacity: 0.95; }
             .content { padding: 20px; }
-            .info-box { background: #f8fafc; border-left: 4px solid #1c3ba4; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; }
+            .info-box { background: #f8fafc; border-left: 4px solid #1e293b; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; }
             .message-box { background: #f8fafc; padding: 15px; border-radius: 6px; font-size: 14px; color: #0f172a; line-height: 1.6; margin-top: 15px; border: 1px solid rgba(226, 232, 240, 0.9); }
             .footer { background: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #475569; border-top: 1px solid rgba(226, 232, 240, 0.9); }
           </style>
@@ -182,7 +182,7 @@ const htmlContent = `
         <body>
           <div class="container">
             <div class="header">
-              <h1>MAJINF0TEK</h1>
+              <h1>SHEALUXE</h1>
               <p>New Contact Form Submission</p>
             </div>
             <div class="content">
@@ -191,7 +191,7 @@ const htmlContent = `
                 <strong>Email:</strong> ${email} <br/>
                 <strong>Phone:</strong> ${phone || 'N/A'}
               </div>
-              <h3 style="font-size: 14px; color: #1c3ba4; margin-bottom: 5px;">Message:</h3>
+              <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 5px;">Message:</h3>
               <div class="message-box">
                 ${message.replace(/\n/g, '<br/>')}
               </div>
@@ -205,13 +205,12 @@ const htmlContent = `
     `;
 
 
-
     const mailOptions = {
       // Must use process.env.SMTP_USER as the actual email to avoid spam flags, 
       // but you can prepend the customer's name in the display string safely:
       from: `"${name} via Enitz" <${process.env.SMTP_USER}>`,
-      to: 'majinfotek@gmail.com', // The inbox receiving the leads
-      // to: 'victorndu393@gmail.com',
+      // to: 'majinfotek@gmail.com', // The inbox receiving the leads
+      to: 'victorndu393@gmail.com',
       replyTo: email,           // Clicking "Reply" will reply straight to the customer
       subject: `New Contact Inquiry: ${name}`,
       html: htmlContent,

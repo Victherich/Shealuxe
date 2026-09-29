@@ -750,10 +750,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { collection, doc, getDoc, setDoc, deleteDoc, query, where, getDocs } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import { useCart } from '@/components/CartContext';
+import { primaryColoring, secondaryColoring } from '@/components/Context';
 
 // --- ENITZ LIMITED THEME & STYLES ---
 // const brandCyan = '#00aeef';
-const brandDarkNavy = '#0b1b48';
+// const brandDarkNavy = '#0b1b48';
 // const brandGradient = 'linear-gradient(135deg, #00aeef 0%, #0b1b48 100%)';
 const cardBg = '#ffffff';
 const borderColor = '#e2e8f0';
@@ -763,9 +764,9 @@ const softBg = '#f8fafc';
 const successGreen = '#10b981';
 const dangerRed = '#ef4444';
 const brandAmber = '#f59e0b';
-const PrimaryNavy = "#1c3ba4";
-const brandCyan = " #8b5cf6";
-const brandGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+const PrimaryNavy = primaryColoring;
+const brandCyan = secondaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 
 const floatAnimation = keyframes`
   0% { transform: translateY(0px) rotate(0deg); }

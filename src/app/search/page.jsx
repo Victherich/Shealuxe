@@ -353,6 +353,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import Swal from "sweetalert2";
 import ProductCard from "@/components/ProductCard";
 import SearchBar from "@/components/SearchBar";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
 /* ================= THEME & COLORS ================= */
 
@@ -362,9 +363,9 @@ const borderColor = '#e2e8f0';
 const textMain = '#0f172a';
 const textMuted = '#475569';
 const softBg = '#f8fafc';
-const PrimaryNavy = "#1c3ba4";
-const brandCyan = " #8b5cf6";
-const brandGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+const PrimaryNavy = primaryColoring;
+const brandCyan = secondaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 
 /* ================= STYLED COMPONENTS ================= */
 

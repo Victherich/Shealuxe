@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import ProductCard from "@/components/ProductCard";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter, useParams } from "next/navigation";
+import { primaryColoring } from "@/components/Context";
 
 /* ================= THEME & COLORS ================= */
 
@@ -220,7 +221,7 @@ export default function DynamicCategoryPage() {
         title: "Please Login",
         text: "Please log in to manage your wishlist.",
         icon: "warning",
-        confirmButtonColor: "#1c3ba4",
+        confirmButtonColor: primaryColoring,
         background: "#ffffff",
         color: "#0f172a"
       });
@@ -267,7 +268,7 @@ export default function DynamicCategoryPage() {
           {currentCategoryName}
            {/* <span>Products</span> */}
         </SectionTitle>
-        <ResultsCount style={{ color: "#1c3ba4", cursor: "pointer", display: "flex", alignItems: "center", gap: "1px" }} onClick={() => router.push('/store')}>
+        <ResultsCount style={{ color: primaryColoring, cursor: "pointer", display: "flex", alignItems: "center", gap: "1px" }} onClick={() => router.push('/store')}>
         All Products<FaArrowRight />
         </ResultsCount>
       </SectionHeader>

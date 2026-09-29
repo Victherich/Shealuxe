@@ -522,10 +522,11 @@ import Swal from 'sweetalert2';
 import { auth, db } from '@/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { primaryColoring, secondaryColoring } from '@/components/Context';
 
-const primaryNavy = '#1c3ba4';
-const primaryCyan = '#8b5cf6';
-const brandGradient = 'linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%)';
+const primaryNavy = primaryColoring;
+const primaryCyan = secondaryColoring;
+const brandGradient = `linear-gradient(135deg, ${primaryColoring} 0%, ${secondaryColoring} 100%)`;
 const cardBg = '#ffffff';
 const borderColor = '#e2e8f0';
 const textMain = '#0f172a';

@@ -15,11 +15,12 @@ import {
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { primaryColoring, secondaryColoring } from "@/components/Context";
 
-// 🎨 UPDATED THEME COLORS
-const PrimaryNavy = "#1c3ba4";
-const PrimaryCyan = " #8b5cf6";
-const ThemeGradient = "linear-gradient(135deg, #1c3ba4 0%,  #8b5cf6 100%)";
+// 🎨 ENITZ BRAND THEME COLORS
+const PrimaryNavy = primaryColoring;
+const PrimaryCyan = secondaryColoring;
+const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
@@ -755,12 +756,12 @@ export default function ProductsCrudPage() {
       }
 
 // 🌟 Validation: Ensure at least one location is selected
-if (!form.locationIds || form.locationIds.length === 0) {
-  return Swal.fire({
-    icon: "warning",
-    text: "Please select at least one location for this product.",
-  });
-}
+// if (!form.locationIds || form.locationIds.length === 0) {
+//   return Swal.fire({
+//     icon: "warning",
+//     text: "Please select at least one location for this product.",
+//   });
+// }
 
       if (!imageFiles[0] && !existingImageUrls[0]) {
         return Swal.fire({
@@ -784,7 +785,7 @@ if (!form.locationIds || form.locationIds.length === 0) {
           const data = new FormData();
           data.append("file", compressedBlob, `product_${i}.jpg`);
           data.append("upload_preset", "bees_interior");
-          data.append("folder", "products_majinfotek");
+          data.append("folder", "products_shealuxe");
 
           const res = await fetch(
             "https://api.cloudinary.com/v1_1/aqxyleoh/image/upload",
@@ -855,7 +856,7 @@ if (!form.locationIds || form.locationIds.length === 0) {
         variations: variations.filter((v) => v.name.trim() !== "" && v.options.trim() !== ""),
         features: featuresList,
         youtubeLinks: youtubeLinksList,
-        locationIds: form.locationIds, // 🌟 Save multiple location IDs array
+        locationIds: form.locationIds|| [], // 🌟 Save multiple location IDs array
   locationId: form.locationIds[0] || "", // Optional fallback for single location dependencies
       };
 
@@ -1165,7 +1166,7 @@ if (!form.locationIds || form.locationIds.length === 0) {
                   </div>
 
                   {/* 🌟 Display Multiple Locations on Product Card */}
-<div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginTop: "4px" }}>
+{/* <div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginTop: "4px" }}>
   {(() => {
     const itemLocs = item.locationIds || (item.locationId ? [item.locationId] : item.location ? [item.location] : []);
     if (itemLocs.length === 0) return <span style={{ fontSize: "0.75rem", color: TextMuted, fontWeight: "600" }}>📍 No Location</span>;
@@ -1176,7 +1177,7 @@ if (!form.locationIds || form.locationIds.length === 0) {
       </span>
     ));
   })()}
-</div>
+</div> */}
 
                   {item.variations && item.variations.length > 0 && (
                     <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
@@ -1307,7 +1308,7 @@ if (!form.locationIds || form.locationIds.length === 0) {
 
             
 {/* 🌟 Product Locations Checkboxes (Multiple selection matching categories) */}
-<div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+{/* <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
   <label style={{ fontSize: "0.85rem", fontWeight: "700", color: Dark }}>
     Product Locations (Select at least one) <span style={{ color: Danger }}>*</span>
   </label>
@@ -1345,7 +1346,7 @@ if (!form.locationIds || form.locationIds.length === 0) {
       );
     })}
   </div>
-</div>
+</div> */}
 
               <StyledTextarea
                 placeholder="Product Description"

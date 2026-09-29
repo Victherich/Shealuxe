@@ -440,8 +440,7 @@ export async function POST(request) {
 
     // Loop through each recipient and send individually to prevent delivery drops or SMTP provider blocks
   
-  
-  const htmlContent = `
+ const htmlContent = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -449,11 +448,11 @@ export async function POST(request) {
           <style>
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
             .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid rgba(226, 232, 240, 0.9); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-            .header { background: linear-gradient(135deg, #1c3ba4 0%, #8b5cf6 100%); padding: 25px; text-align: center; color: #ffffff; }
+            .header { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 25px; text-align: center; color: #ffffff; }
             .header h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-            .header p { margin: 5px 0 0; font-size: 13px; color: #e2e8f0; opacity: 0.95; }
+            .header p { margin: 5px 0 0; font-size: 13px; color: #cbd5e1; opacity: 0.95; }
             .content { padding: 20px; }
-            .info-box { background: #f8fafc; border-left: 4px solid #1c3ba4; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
+            .info-box { background: #f8fafc; border-left: 4px solid #1e293b; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
             .table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
             .table th { background: #f8fafc; padding: 10px; text-align: left; font-size: 12px; font-weight: 700; color: #475569; border-bottom: 2px solid rgba(226, 232, 240, 0.9); }
             .totals { width: 100%; font-size: 13px; margin-bottom: 20px; }
@@ -464,7 +463,7 @@ export async function POST(request) {
         <body>
           <div class="container">
             <div class="header">
-              <h1>MAJINFOTEK</h1>
+              <h1>SHEALUXE</h1>
               <p>Order Confirmation & Summary</p>
             </div>
             <div class="content">
@@ -475,19 +474,19 @@ export async function POST(request) {
                 <strong>Order Status:</strong> ${orderStatus}
               </div>
 
-              <h3 style="font-size: 14px; color: #1c3ba4; margin-bottom: 8px;">Customer Information</h3>
+              <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Customer Information</h3>
               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
                 <strong>Name:</strong> ${accountInfo.name}<br/>
                 <strong>Email:</strong> ${accountInfo.email}<br/>
                 <strong>Phone:</strong> ${accountInfo.phone}
               </p>
 
-              <h3 style="font-size: 14px; color: #1c3ba4; margin-bottom: 8px;">Delivery Address</h3>
+              <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Delivery Address</h3>
               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
                 ${addressHtml}
               </p>
 
-              <h3 style="font-size: 14px; color: #1c3ba4; margin-bottom: 8px;">Order Items</h3>
+              <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Order Items</h3>
               <table class="table">
                 <thead>
                   <tr>
@@ -516,24 +515,23 @@ export async function POST(request) {
                 </tr>` : ''}
                 <tr>
                   <td style="font-size: 15px; font-weight: 800; color: #0f172a; border-top: 1px solid rgba(226, 232, 240, 0.9); padding-top: 10px;">Final Total:</td>
-                  <td style="text-align: right; font-size: 15px; font-weight: 800; color: #1c3ba4; border-top: 1px solid rgba(226, 232, 240, 0.9); padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                  <td style="text-align: right; font-size: 15px; font-weight: 800; color: #1e293b; border-top: 1px solid rgba(226, 232, 240, 0.9); padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>
               </table>
             </div>
             <div class="footer">
-              &copy; ${new Date().getFullYear()} Majinfotek. All rights reserved.
+              &copy; ${new Date().getFullYear()} Shealuxe. All rights reserved.
             </div>
           </div>
         </body>
       </html>
     `;
   
-  
     const emailPromises = recipients.map(async (recipientEmail) => {
       const mailOptions = {
-        from: `"Majinfotek" <${process.env.SMTP_USER}>`,
+        from: `"Shealuxe" <${process.env.SMTP_USER}>`,
         to: recipientEmail,
-        subject: `Order Confirmation #${orderNumber} - Majinfotek`,
+        subject: `Order Confirmation #${orderNumber} - Shealuxe`,
         html: htmlContent,
       };
       return transporter.sendMail(mailOptions);
