@@ -167,7 +167,7 @@ export default function GallerySection() {
       <GalleryGrid>
         <GalleryCard onClick={() => router.push(`/categories/tISacx7afRINCf8VyXUv`)}>
           <img 
-            src='/h3.png' 
+            src='/h3.jpeg' 
             alt="New Arrivals" 
           />
           <div className="overlay">
@@ -178,7 +178,7 @@ export default function GallerySection() {
 
         <GalleryCard onClick={() => router.push(`/categories/93nK8gGthAwQ5U7jq5sZ`)}>
           <img 
-            src="/h4.png" 
+            src="/h4.jpeg" 
             alt="Best Sellers" 
           />
           <div className="overlay">

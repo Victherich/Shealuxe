@@ -370,7 +370,7 @@ export default function SheaLuxeWelcome() {
 
           <HeroImageWrapper>
             <img 
-              src="/h10.png" 
+              src="/h10.jpeg" 
               alt="Natural organic skincare and whipped shea butter bottles" 
             />
           </HeroImageWrapper>
@@ -388,7 +388,7 @@ export default function SheaLuxeWelcome() {
           <ProductGrid>
             <ProductCard href="/products?category=body">
               <img 
-                src="/h11.png" 
+                src="/h11.jpeg" 
                 alt="Body Collection" 
               />
               <div className="content-overlay">

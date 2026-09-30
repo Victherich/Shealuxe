@@ -569,14 +569,14 @@ const proofItems = [
     id: 1,
     clientName: "Amina Yusuf",
     tag: "Skincare Batch Review",
-    image: "/h7.jpg",
+    image: "/h7.jpeg",
     description: "Freshly whipped organic shea butter packaging and quality check."
   },
   {
     id: 2,
     clientName: "Chioma Okoro",
     tag: "Masterclass Feedback",
-    image: "/h8.jpg",
+    image: "/h8.jpeg",
     description: "Student formulation session and cosmetic compounding results."
   },
   {
@@ -590,7 +590,7 @@ const proofItems = [
     id: 4,
     clientName: "Global Client Order",
     tag: "Export Quality Check",
-    image: "/h9.jpg",
+    image: "/h9.jpeg",
     description: "Bulk botanical skincare formulation ready for international dispatch."
   }
 ];

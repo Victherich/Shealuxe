@@ -971,7 +971,7 @@ export default function LandingPage() {
           <HeroVisual>
             <img 
               className="main-hero-img"
-              src="/h5.png"
+              src="/h5.jpeg"
               alt="Shealuxe Natural Skincare Experience" 
             />
             <div className="floating-badge">
@@ -1040,7 +1040,7 @@ export default function LandingPage() {
               <Award className="w-4 h-4 text-amber-600" /> Signature Collection
             </div>
             <img 
-              src="/h6.png"
+              src="/h6.jpeg"
               alt="Shealuxe Featured Product" 
             />
           </ImageWrapper>

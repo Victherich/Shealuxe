@@ -468,7 +468,7 @@
 //   return (
 //     <PageContainer>
 //       {/* <StoreHero>
-//         <HeroImage src="./shop.png" alt="Store Hero Banner" />
+//         <HeroImage src="./shop.jpeg" alt="Store Hero Banner" />
 //         <HeroContent>
 //           <HeroTitle>Shop Our Products</HeroTitle>
 //           <HeroSubtitle>
@@ -1107,7 +1107,7 @@ export default function MainStoreComponent() {
   return (
     <PageContainer id='store'>
       <StoreHero>
-        <HeroImage src="./shop.png" alt="Store Hero Banner" />
+        <HeroImage src="./shop.jpeg" alt="Store Hero Banner" />
         <HeroContent>
           <HeroTitle>Shop Our Products</HeroTitle>
      

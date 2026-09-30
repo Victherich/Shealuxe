@@ -359,12 +359,12 @@ const textMuted = "#f3e8e2";
 // Curated slides featuring high-end African botanical skincare, body care, and wellness
 const heroSlides = [
   {
-    image: "/h2.png", // Natural skincare / cosmetic bottles
+    image: "/h2.jpeg", // Natural skincare / cosmetic bottles
     badge: "Pure Botanical Heritage",
     subtitle: "Experience the transformative power of nature. Indulge your skin and explore a range of results-driven products crafted from Africa’s rich indigenous botanicals."
   },
   {
-    image: "/h1.png", // Luxury spa and organic body care
+    image: "/h1.jpeg", // Luxury spa and organic body care
     badge: "Body & Hair Collection",
     subtitle: "Your go-to destination for natural, luxurious skin and hair care products designed to inspire healthier living and radiant beauty."
   },

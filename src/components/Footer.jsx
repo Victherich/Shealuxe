@@ -968,8 +968,8 @@ export default function Footer() {
             <ColTitle>Get in Touch</ColTitle>
             <ContactInfo>
               <p>Email: support@shealuxe.com</p>
-              <p>Phone: +234 812 603 3123</p>
-              <p>Location: Lagos, Nigeria</p>
+              <p>Phone: +234 816 273 5776</p>
+              <p>Location: Ibadan, Oyo State, Nigeria</p>
             </ContactInfo>
           </FooterCol>
 
@@ -1022,7 +1022,7 @@ export default function Footer() {
 
       {/* Floating WhatsApp Icon with Pre-filled Text */}
       <WhatsAppFloat 
-        href={`https://wa.me/2348126033123?text=${whatsappMessage}`} 
+        href={`https://wa.me/2348162735776?text=${whatsappMessage}`} 
         target="_blank" 
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

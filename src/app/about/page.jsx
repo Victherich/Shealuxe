@@ -893,7 +893,7 @@ export default function AboutPage() {
 
           <HeroImageWrapper>
             <img 
-              src="/h15.png" 
+              src="/h15.jpeg" 
               alt="Natural organic shea butter and cosmetic products" 
             />
           </HeroImageWrapper>
@@ -905,7 +905,7 @@ export default function AboutPage() {
         <OriginContainer>
           <HeroImageWrapper>
             <img 
-              src="/h14.png" 
+              src="/h14.jpeg" 
               alt="Founder and herbal botanical tradition" 
             />
           </HeroImageWrapper>

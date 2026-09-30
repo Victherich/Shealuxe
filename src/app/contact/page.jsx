@@ -494,7 +494,7 @@
 //           {/* Visual Showcase Card */}
 //           <ImageShowcaseCard>
 //             <img 
-//               src="./contact.png" 
+//               src="./contact.jpeg" 
 //               alt="Customer support and retail showroom excellence" 
 //             />
 //             <ImageOverlayText>
@@ -1121,7 +1121,7 @@ export default function ContactUsPage() {
           {/* Visual Showcase Card */}
           <ImageShowcaseCard>
             <img 
-              src="/h15.png" 
+              src="/h15.jpeg" 
               alt="shealuxe" 
             />
             <ImageOverlayText>
@@ -1151,7 +1151,7 @@ export default function ContactUsPage() {
               </IconWrapper>
               <DetailContent>
                 <span>Location</span>
-                <span>Lagos Nigeria</span>
+                <span>Ibadan, Oyo State, Nigeria</span>
               </DetailContent>
             </ContactDetailItem>
 
@@ -1161,7 +1161,7 @@ export default function ContactUsPage() {
               </IconWrapper>
               <DetailContent>
                 <span>Direct Line</span>
-                <span>+234 812 603 3123</span>
+                <span>+234 816 273 5776</span>
               </DetailContent>
             </ContactDetailItem>
 

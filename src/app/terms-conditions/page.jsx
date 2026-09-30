@@ -298,11 +298,11 @@ export default function TermsAndConditionsPage() {
               <h3>SheaLuxe Support</h3>
               <div className="contact-detail">
                 <MapPin />
-                <span>Lagos, Nigeria</span>
+                <span>Ibadan, Oyo State, Nigeria</span>
               </div>
               <div className="contact-detail">
                 <Phone />
-                <span>+234 812 603 3123</span>
+                <span>+234 816 273 5776</span>
               </div>
               <div className="contact-detail">
                 <Mail />

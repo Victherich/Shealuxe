@@ -1379,7 +1379,7 @@ const HostingList = () => {
   const [user, setUser] = useState(null);
 
   // Replace with your actual client repository URL
-  const githubRepoUrl = "https://github.com/Victherich/Enitz-Global";
+  const githubRepoUrl = "https://github.com/Victherich/Shealuxe";
 
   useEffect(() => {
     const auth = getAuth();
