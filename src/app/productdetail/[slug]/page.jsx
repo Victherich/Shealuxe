@@ -1528,7 +1528,7 @@ const handleWhatsAppOrder = (e) => {
       `Hello, I would like to order this item:\n\n*Product:* ${product.name}\n*Link:* ${productUrl}\n*Price:* ₦${currentActivePrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}${tierText}${variationsText ? `\n*Variations:* ${variationsText}` : ''}`
     );
 
-    const phoneNumber = "2348126033123"; 
+    const phoneNumber = "2348162735776"; 
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
