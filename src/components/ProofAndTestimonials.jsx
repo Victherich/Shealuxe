@@ -590,7 +590,7 @@ const proofItems = [
     id: 4,
     clientName: "Global Client Order",
     tag: "Export Quality Check",
-    image: "/h9.jpeg",
+    image: "/h9.jpg",
     description: "Bulk botanical skincare formulation ready for international dispatch."
   }
 ];
