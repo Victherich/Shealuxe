@@ -1370,7 +1370,7 @@ export default function ProductsCrudPage() {
                     Single Price Option
                   </label>
 
-<label style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.85rem", cursor: "pointer" }}>
+{/* <label style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.85rem", cursor: "pointer" }}>
       <input
         type="radio"
         name="pricingType"
@@ -1378,7 +1378,7 @@ export default function ProductsCrudPage() {
         onChange={() => setForm({ ...form, pricingType: "singleqtytiered" })}
       />
       Single Qty Tiered (1 Qty & Price)
-    </label>
+    </label> */}
 
                   <label style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.85rem", cursor: "pointer" }}>
                     <input

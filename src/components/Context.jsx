@@ -243,15 +243,15 @@ const router = useRouter();
   const payWithPaystack = async (amount,currency,subaccountCode) => {
     const email = auth.currentUser?.email;
     const name = auth.currentUser?.displayName || "";
-    const nameParts = name.trim().split(/\s+/);
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : "";
+    // const nameParts = name.trim().split(/\s+/);
+    // const firstName = nameParts[0] || "";
+    // const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : "";
 
-    if (!email || !amount || !firstName || !lastName || !currency) {
+    if (!email || !amount || !name || !currency) {
       Swal.fire({
         icon: "warning",
         title: "Missing Information",
-        text: "Please provide your first name, last name, email, currency, and a valid amount before proceeding with the payment.",
+        text: "Please provide your Name, email, currency, and a valid amount before proceeding with the payment.",
       });
       return;
     }
@@ -276,8 +276,8 @@ const router = useRouter();
       status: "initialized",
       amount: amount,
       email,
-      firstname: firstName,
-      lastname: lastName,
+      firstname: name,
+      lastname:'',
       createdAt: new Date().toISOString(),
       paymentMethod: "Paystack",
       currency: currency,
@@ -315,8 +315,8 @@ const router = useRouter();
         key: "pk_live_afb3375b9a770a5a332904dcf1a26e77c2a5f170",
         amount: amount * 100,
         email,
-        firstname: firstName,
-        lastname: lastName,
+        firstname: name,
+        lastname: '',
         // subaccount: "ACCT_weypvhpue48sgcr",
         subaccount:subaccountCode,
       bearer: "subaccount",
