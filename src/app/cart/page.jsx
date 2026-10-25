@@ -1070,7 +1070,9 @@ export default function CartPage() {
 
                 <ItemTotal>₦{itemTotalCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</ItemTotal>
 
-                <RemoveButton onClick={() => removeFromCart(item.id, item.selectedColor, item.selectedSize)} title="Remove item">
+                <RemoveButton
+                // style={{width:"20px", textAlign:"right"}}
+                onClick={() => removeFromCart(item.id, item.selectedColor, item.selectedSize)} title="Remove item">
                   &times;
                 </RemoveButton>
               </CartCard>

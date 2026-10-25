@@ -505,7 +505,7 @@ const handleSaveCategory = async (e) => {
         const data = new FormData();
         data.append("file", compressedBlob, "category.jpg");
         data.append("upload_preset", "bees_interior");
-        data.append("folder", "categories_shealuxe");
+        data.append("folder", "categories_pinkles");
 
         const res = await fetch(
           "https://api.cloudinary.com/v1_1/aqxyleoh/image/upload",

@@ -7,7 +7,7 @@ import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 import { auth, db, paymentDb } from "@/firebaseConfig";
 import {useRouter} from "next/navigation";
 import { useCart } from "@/components/CartContext";
- export const primaryColoring = "#3D1B17"
+ export const primaryColoring = "#1E5A44"
  export const secondaryColoring = "#E2B04A"
 export const Context = createContext(null);
 
@@ -17,11 +17,20 @@ export function ContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [theme, setTheme] = useState("light");
+    const [showSearch, setShowSearch]=useState(false);
+
+
   
   const priceInNGN = { currency: "₦", amount: 100 };
   const priceInUSD = { currency: "$", amount: 2 };
 const router = useRouter();
   const [paymentSession, setPaymentSession] = useState(false);
+
+// const seller_email = "esomesther@gmail.com"
+
+const seller_email = "admin@pinklesnigerialimited.com"
+
+
 
   // Load from localStorage only after client-side mount
   useEffect(() => {
@@ -392,9 +401,12 @@ const router = useRouter();
       payWithPaystack,
       startPaymentPolling1,
       primaryColoring,
-      secondaryColoring
+      secondaryColoring,
+      setShowSearch,
+     showSearch,
+     seller_email
     }),
-    [showSubscriptionReminder, user, sidebarOpen, theme, paymentSession]
+    [showSubscriptionReminder, showSearch, user, sidebarOpen, theme, paymentSession]
   );
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

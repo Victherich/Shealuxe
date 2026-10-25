@@ -1,7 +1,5 @@
 
 
-
-
 // "use client";
 
 // import { useEffect, useState } from "react";
@@ -11,17 +9,18 @@
 // import styled from "styled-components";
 // import Swal from "sweetalert2";
 // import { usePathname } from "next/navigation";
+// import { primaryColoring, secondaryColoring } from "@/components/Context";
 
-// // 🎨 KINGSWORD BAG CRAFT THEME COLORS (Vibrant luxury palette)
-// const ThemePrimary = "#ec4899"; // Pink accent
-// const ThemeSecondary = "#06b6d4"; // Cyan accent
+
+// const PrimaryNavy = primaryColoring;
+// const PrimaryCyan = secondaryColoring;
+// const ThemeGradient = `linear-gradient(135deg, #11382b 0%, #11382b 100%)`;
 // const Dark = "#0f172a";
-// const Border = "rgba(226, 232, 240, 0.9)";
+// const Border = "#cbd5e1";
 // const White = "#ffffff";
-// const Gold = "#f59e0b";
 // const TextMuted = "#475569";
 // const LightBg = "#f8fafc";
-// const ThemeGradient = "linear-gradient(135deg, #ec4899 0%, #f59e0b 50%, #06b6d4 100%)";
+
 
 // /* ---------------- LAYOUT WRAPPER ---------------- */
 // const LayoutWrapper = styled.div`
@@ -38,13 +37,13 @@
 //   background: ${White};
 //   border-right: 1px solid ${Border};
 //   color: ${Dark};
-//   padding: 1.5rem 1.25rem;
+//   padding: 24px 20px;
 //   display: flex;
 //   flex-direction: column;
 //   justify-content: space-between;
 //   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 //   z-index: 200;
-//   box-shadow: 10px 0 30px rgba(15, 23, 42, 0.02);
+//   box-shadow: 10px 0 30px rgba(11, 27, 72, 0.03);
 
 //   @media (max-width: 768px) {
 //     position: fixed;
@@ -52,63 +51,61 @@
 //     left: 0;
 //     transform: translateX(${(props) => (props.$open ? "0" : "-100%")});
 //     height: 100vh;
-//     box-shadow: ${(props) => (props.$open ? "20px 0 50px rgba(15, 23, 42, 0.15)" : "none")};
+//     box-shadow: ${(props) => (props.$open ? "20px 0 50px rgba(11, 27, 72, 0.15)" : "none")};
 //   }
 // `;
 
 // const SidebarTop = styled.div`
 //   display: flex;
 //   flex-direction: column;
-//   gap: 1.5rem;
+//   gap: 24px;
 // `;
 
 // const BrandLogo = styled.h2`
-//   font-size: 1.2rem;
-//   font-weight: 900;
-//   letter-spacing: -0.02em;
-//   color: ${Dark};
-//   padding-bottom: 1rem;
+//   font-size: 1.25rem;
+//   font-weight: 800;
+//   letter-spacing: -0.5px;
+//   color: ${PrimaryNavy};
+//   padding-bottom: 16px;
 //   border-bottom: 1px solid ${Border};
 //   margin: 0;
 
 //   span {
-//     background: ${ThemeGradient};
-//     -webkit-background-clip: text;
-//     -webkit-text-fill-color: transparent;
+//     color: ${PrimaryCyan};
 //   }
 // `;
 
 // const NavLinks = styled.div`
 //   display: flex;
 //   flex-direction: column;
-//   gap: 0.5rem;
+//   gap: 8px;
 // `;
 
 // const MenuItem = styled.div`
-//   padding: 0.85rem 1rem;
+//   padding: 12px 16px;
 //   cursor: pointer;
-//   border-radius: 0.85rem;
+//   border-radius: 12px;
 //   font-size: 0.95rem;
 //   font-weight: 700;
 //   color: ${(props) => (props.$active ? White : TextMuted)};
 //   background: ${(props) => (props.$active ? ThemeGradient : "transparent")};
 //   display: flex;
 //   align-items: center;
-//   gap: 0.75rem;
-//   box-shadow: ${(props) => (props.$active ? "0 10px 20px -5px rgba(236, 72, 153, 0.4)" : "none")};
+//   gap: 12px;
+//   box-shadow: ${(props) => (props.$active ? "0 8px 20px rgba(0, 174, 239, 0.25)" : "none")};
 //   transition: all 0.25s ease;
 
 //   &:hover {
-//     background: ${(props) => (props.$active ? ThemeGradient : "rgba(236, 72, 153, 0.06)")};
-//     color: ${(props) => (props.$active ? White : ThemePrimary)};
+//     background: ${(props) => (props.$active ? ThemeGradient : "rgba(0, 174, 239, 0.06)")};
+//     color: ${(props) => (props.$active ? White : PrimaryNavy)};
 //     transform: translateX(3px);
 //   }
 // `;
 
 // const LogoutButton = styled.div`
-//   padding: 0.85rem 1rem;
+//   padding: 12px 16px;
 //   cursor: pointer;
-//   border-radius: 0.85rem;
+//   border-radius: 12px;
 //   font-size: 0.95rem;
 //   font-weight: 700;
 //   color: #ef4444;
@@ -116,7 +113,7 @@
 //   border: 1px solid rgba(239, 68, 68, 0.1);
 //   display: flex;
 //   align-items: center;
-//   gap: 0.75rem;
+//   gap: 12px;
 //   transition: all 0.25s ease;
 
 //   &:hover {
@@ -134,11 +131,11 @@
 // `;
 
 // const Topbar = styled.header`
-//   height: 0px;
+//   // height: 70px;
 //   background: rgba(255, 255, 255, 0.9);
 //   backdrop-filter: blur(12px);
 //   border-bottom: 1px solid ${Border};
-//   padding: 0 1.5rem;
+//   padding: 0 24px;
 //   display: flex;
 //   align-items: center;
 //   justify-content: space-between;
@@ -150,26 +147,26 @@
 // const TopbarLeft = styled.div`
 //   display: flex;
 //   align-items: center;
-//   gap: 1rem;
+//   gap: 16px;
 // `;
 
 // const TopbarRight = styled.div`
 //   display: flex;
 //   align-items: center;
-//   gap: 1rem;
+//   gap: 16px;
 // `;
 
 // const Content = styled.main`
 //   flex: 1;
-//   padding: 2rem;
+//   padding: 32px;
 //   background: ${LightBg};
 //   overflow-y: auto;
 //   display: flex;
 //   flex-direction: column;
-//   gap: 1.5rem;
+//   gap: 24px;
 
 //   @media (max-width: 768px) {
-//     padding: 1.25rem;
+//     padding: 20px;
 //   }
 // `;
 
@@ -184,7 +181,7 @@
 //     left: 0;
 //     width: 100vw;
 //     height: 100vh;
-//     background: rgba(15, 23, 42, 0.5);
+//     background: rgba(11, 27, 72, 0.4);
 //     backdrop-filter: blur(4px);
 //     z-index: 150;
 //   }
@@ -196,19 +193,19 @@
 //   height: 44px;
 //   background: ${White};
 //   border: 1px solid ${Border};
-//   border-radius: 0.85rem;
-//   color: ${Dark};
+//   border-radius: 10px;
+//   color: ${PrimaryNavy};
 //   font-size: 1.25rem;
 //   display: none;
 //   align-items: center;
 //   justify-content: center;
 //   cursor: pointer;
-//   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+//   box-shadow: 0 4px 12px rgba(11, 27, 72, 0.03);
 //   transition: all 0.2s ease;
 
 //   &:hover {
-//     border-color: ${ThemePrimary};
-//     color: ${ThemePrimary};
+//     border-color: ${PrimaryCyan};
+//     color: ${PrimaryCyan};
 //   }
 
 //   @media (max-width: 768px) {
@@ -220,21 +217,21 @@
 // const HomeButton = styled.button`
 //   width: 44px;
 //   height: 44px;
-//   border-radius: 0.85rem;
+//   border-radius: 10px;
 //   background: ${White};
-//   color: ${Dark};
+//   color: ${PrimaryNavy};
 //   border: 1px solid ${Border};
 //   font-size: 1.15rem;
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;
 //   cursor: pointer;
-//   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+//   box-shadow: 0 4px 12px rgba(11, 27, 72, 0.03);
 //   transition: all 0.2s ease;
 
 //   &:hover {
-//     border-color: ${ThemePrimary};
-//     color: ${ThemePrimary};
+//     border-color: ${PrimaryCyan};
+//     color: ${PrimaryCyan};
 //     transform: translateY(-2px);
 //   }
 // `;
@@ -246,9 +243,11 @@
 //   align-items: center;
 //   justify-content: center;
 //   background: ${LightBg};
-//   color: ${Dark};
-//   font-size: 1.2rem;
-//   font-weight: 700;
+//   color: ${PrimaryNavy};
+//   font-size: 1.1rem;
+//   font-weight: 600;
+//   padding: 24px;
+//   box-sizing: border-box;
 // `;
 
 // export default function DashboardLayout({ children }) {
@@ -285,7 +284,7 @@
 //       text: "You will be signed out of your account.",
 //       icon: "warning",
 //       showCancelButton: true,
-//       confirmButtonColor: ThemePrimary,
+//       confirmButtonColor: PrimaryNavy,
 //       cancelButtonColor: "#ef4444",
 //       confirmButtonText: "Yes, Sign Out",
 //     }).then((result) => {
@@ -313,7 +312,8 @@
 //       <Sidebar $open={sidebarOpen}>
 //         <SidebarTop>
 //           <BrandLogo>
-//             KINGSWORD <span>BAG CRAFT</span>
+//             PINKLES
+//             {/* <span>GLOBAL</span> */}
 //           </BrandLogo>
 
 //           <NavLinks>
@@ -376,30 +376,34 @@
 
 
 
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebaseConfig";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { usePathname } from "next/navigation";
+import {
+  LayoutDashboard,
+  Home,
+  Menu,
+  LogOut,
+  ChevronRight,
+} from "lucide-react";
 import { primaryColoring, secondaryColoring } from "@/components/Context";
 
-// 🎨 ENITZ BRAND THEME COLORS
-const PrimaryNavy = primaryColoring;
-const PrimaryCyan = secondaryColoring;
-const ThemeGradient = `linear-gradient(135deg, ${primaryColoring} 0%,  ${secondaryColoring} 100%)`;
+/* ================= 🎨 ENITZ BRAND THEME COLORS ================= */
+const PrimaryNavy = primaryColoring || "#0B1B48";
+const PrimaryCyan = secondaryColoring || "#00AEEF";
+const ThemeGradient = `linear-gradient(135deg, ${PrimaryNavy} 0%, ${PrimaryCyan} 100%)`;
 const Dark = "#0f172a";
 const Border = "#cbd5e1";
 const White = "#ffffff";
 const TextMuted = "#475569";
 const LightBg = "#f8fafc";
 
-
-/* ---------------- LAYOUT WRAPPER ---------------- */
+/* ================= 🌟 STYLED COMPONENTS ================= */
 const LayoutWrapper = styled.div`
   display: flex;
   min-height: 100vh;
@@ -408,19 +412,18 @@ const LayoutWrapper = styled.div`
   font-family: inherit;
 `;
 
-/* ---------------- SIDEBAR ---------------- */
 const Sidebar = styled.div`
   width: 280px;
   background: ${White};
   border-right: 1px solid ${Border};
   color: ${Dark};
-  padding: 24px 20px;
+  padding: 28px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 200;
-  box-shadow: 10px 0 30px rgba(11, 27, 72, 0.03);
+  box-shadow: 10px 0 30px rgba(15, 23, 42, 0.03);
 
   @media (max-width: 768px) {
     position: fixed;
@@ -428,78 +431,100 @@ const Sidebar = styled.div`
     left: 0;
     transform: translateX(${(props) => (props.$open ? "0" : "-100%")});
     height: 100vh;
-    box-shadow: ${(props) => (props.$open ? "20px 0 50px rgba(11, 27, 72, 0.15)" : "none")};
+    box-shadow: ${(props) =>
+      props.$open ? "20px 0 50px rgba(15, 23, 42, 0.15)" : "none"};
   }
 `;
 
 const SidebarTop = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 `;
 
 const BrandLogo = styled.h2`
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.3px;
   color: ${PrimaryNavy};
-  padding-bottom: 16px;
+  padding-bottom: 20px;
   border-bottom: 1px solid ${Border};
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
   span {
     color: ${PrimaryCyan};
+    font-weight: 700;
   }
 `;
 
 const NavLinks = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 `;
 
 const MenuItem = styled.div`
   padding: 12px 16px;
   cursor: pointer;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  font-weight: 700;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
   color: ${(props) => (props.$active ? White : TextMuted)};
   background: ${(props) => (props.$active ? ThemeGradient : "transparent")};
   display: flex;
   align-items: center;
-  gap: 12px;
-  box-shadow: ${(props) => (props.$active ? "0 8px 20px rgba(0, 174, 239, 0.25)" : "none")};
+  justify-content: space-between;
+  box-shadow: ${(props) =>
+    props.$active ? "0 4px 15px rgba(0, 174, 239, 0.25)" : "none"};
   transition: all 0.25s ease;
 
+  .item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
   &:hover {
-    background: ${(props) => (props.$active ? ThemeGradient : "rgba(0, 174, 239, 0.06)")};
+    background: ${(props) =>
+      props.$active ? ThemeGradient : "rgba(0, 174, 239, 0.06)"};
     color: ${(props) => (props.$active ? White : PrimaryNavy)};
-    transform: translateX(3px);
   }
 `;
 
 const LogoutButton = styled.div`
   padding: 12px 16px;
   cursor: pointer;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
   display: flex;
   align-items: center;
   gap: 12px;
   transition: all 0.25s ease;
 
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
   &:hover {
-    background: rgba(239, 68, 68, 0.12);
-    transform: translateY(-2px);
+    background: #fee2e2;
+    transform: translateY(-1px);
   }
 `;
 
-/* ---------------- MAIN CONTENT AREA ---------------- */
 const MainContentArea = styled.div`
   flex: 1;
   display: flex;
@@ -508,11 +533,11 @@ const MainContentArea = styled.div`
 `;
 
 const Topbar = styled.header`
-  // height: 70px;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid ${Border};
-  padding: 0 24px;
+  padding: 0 28px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -535,7 +560,7 @@ const TopbarRight = styled.div`
 
 const Content = styled.main`
   flex: 1;
-  padding: 32px;
+  // padding: 36px;
   background: ${LightBg};
   overflow-y: auto;
   display: flex;
@@ -543,11 +568,10 @@ const Content = styled.main`
   gap: 24px;
 
   @media (max-width: 768px) {
-    padding: 20px;
+    // padding: 20px;
   }
 `;
 
-/* ---------------- OVERLAY (click-away) ---------------- */
 const Overlay = styled.div`
   display: none;
 
@@ -558,27 +582,30 @@ const Overlay = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(11, 27, 72, 0.4);
+    background: rgba(15, 23, 42, 0.5);
     backdrop-filter: blur(4px);
     z-index: 150;
   }
 `;
 
-/* ---------------- HAMBURGER ---------------- */
 const Hamburger = styled.button`
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: ${White};
   border: 1px solid ${Border};
-  border-radius: 10px;
+  border-radius: 8px;
   color: ${PrimaryNavy};
-  font-size: 1.25rem;
   display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(11, 27, 72, 0.03);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
   transition: all 0.2s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 
   &:hover {
     border-color: ${PrimaryCyan};
@@ -590,30 +617,32 @@ const Hamburger = styled.button`
   }
 `;
 
-/* ---------------- HOME BUTTON ---------------- */
 const HomeButton = styled.button`
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   background: ${White};
   color: ${PrimaryNavy};
   border: 1px solid ${Border};
-  font-size: 1.15rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(11, 27, 72, 0.03);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
   transition: all 0.2s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
 
   &:hover {
     border-color: ${PrimaryCyan};
     color: ${PrimaryCyan};
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 `;
 
-/* ---------------- LOADING STATE ---------------- */
 const LoadingWrapper = styled.div`
   min-height: 100vh;
   display: flex;
@@ -621,12 +650,13 @@ const LoadingWrapper = styled.div`
   justify-content: center;
   background: ${LightBg};
   color: ${PrimaryNavy};
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   padding: 24px;
   box-sizing: border-box;
 `;
 
+/* ================= 🚀 COMPONENT ================= */
 export default function DashboardLayout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -649,7 +679,7 @@ export default function DashboardLayout({ children }) {
   if (loading) {
     return (
       <LoadingWrapper>
-        <p>Loading dashboard...</p>
+        <p>Loading your dashboard...</p>
       </LoadingWrapper>
     );
   }
@@ -689,8 +719,7 @@ export default function DashboardLayout({ children }) {
       <Sidebar $open={sidebarOpen}>
         <SidebarTop>
           <BrandLogo>
-            SHEALUXE
-            {/* <span>GLOBAL</span> */}
+            PINKLES <span>NIG LTD</span>
           </BrandLogo>
 
           <NavLinks>
@@ -701,7 +730,11 @@ export default function DashboardLayout({ children }) {
                 closeSidebar();
               }}
             >
-              📊 My Dashboard
+              <div className="item-left">
+                <LayoutDashboard />
+                <span>My Dashboard</span>
+              </div>
+              <ChevronRight size={16} />
             </MenuItem>
           </NavLinks>
         </SidebarTop>
@@ -712,7 +745,8 @@ export default function DashboardLayout({ children }) {
             closeSidebar();
           }}
         >
-          🚪 Sign Out
+          <LogOut />
+          <span>Sign Out</span>
         </LogoutButton>
       </Sidebar>
 
@@ -722,7 +756,7 @@ export default function DashboardLayout({ children }) {
         <Topbar>
           <TopbarLeft>
             <Hamburger onClick={() => setSidebarOpen(!sidebarOpen)}>
-              ☰
+              <Menu />
             </Hamburger>
           </TopbarLeft>
 
@@ -735,16 +769,14 @@ export default function DashboardLayout({ children }) {
                 }}
                 title="Return to Dashboard"
               >
-                🏠
+                <Home />
               </HomeButton>
             )}
           </TopbarRight>
         </Topbar>
 
         {/* CONTENT */}
-        <Content onClick={closeSidebar}>
-          {children}
-        </Content>
+        <Content onClick={closeSidebar}>{children}</Content>
       </MainContentArea>
     </LayoutWrapper>
   );

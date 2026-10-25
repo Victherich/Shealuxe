@@ -195,7 +195,7 @@ export default function SearchBar({
     <SearchSection>
       <SearchContentWrapper>
         <SearchHeader>
-          <SearchTitle>{title}</SearchTitle>
+          {/* <SearchTitle>{title}</SearchTitle> */}
           {/* <SearchSubtitle>{subtitle}</SearchSubtitle> */}
         </SearchHeader>
 

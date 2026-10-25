@@ -850,7 +850,7 @@ const GalleryContainer = styled.div`
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 480px;
+  // height: 480px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid ${borderColor};
@@ -870,7 +870,7 @@ const ImageWrapper = styled.div`
   }
 
   @media (max-width: 576px) {
-    height: 320px;
+    // height: 320px;
   }
 `;
 
@@ -1845,9 +1845,9 @@ const activePrice = product.amount;
                 {isWishlisted ? "❤️ Saved" : "🤍 Wishlist"}
               </WishlistButton>
 
-              <WhatsAppButton as="button" onClick={handleWhatsAppOrder}>
+              {/* <WhatsAppButton as="button" onClick={handleWhatsAppOrder}>
                 💬 Order on WhatsApp
-              </WhatsAppButton>
+              </WhatsAppButton> */}
             </ActionsRow>
 
             {/* ⭐ Product Reviews Section */}

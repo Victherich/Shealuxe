@@ -1,6 +1,7 @@
 
 
 
+
 // import { NextResponse } from 'next/server';
 // import nodemailer from 'nodemailer';
 
@@ -43,29 +44,49 @@
 //       orderStatus,
 //     } = payload;
 
- 
-
-// // Build items HTML table rows with exactly 2 columns: Image on left, stacked details & pricing on right
+   
 //     const itemsHtml = items
-//       .map(
-//         (item) => `
+//   .map((item) => {
+//     // 🌟 1. Generate HTML markup for variations if they exist
+//     let variationsHtml = '';
+//     if (item.variations && typeof item.variations === 'object' && Object.keys(item.variations).length > 0) {
+//       const badges = Object.entries(item.variations)
+//         .map(([key, value]) => `
+//           <span style="display: inline-block; font-size: 10px; color: #475569; background-color: #f1f5f9; border: 1px solid #cbd5e1; padding: 2px 6px; border-radius: 4px; font-weight: 600; text-transform: capitalize; margin-right: 4px; margin-bottom: 2px;">
+//             ${key}: <strong style="color: #0f172a;">${String(value)}</strong>
+//           </span>
+//         `)
+//         .join('');
+
+//       variationsHtml = `
+//         <tr>
+//           <td style="padding-bottom: 4px;">
+//             <div style="line-height: 1.4;">${badges}</div>
+//           </td>
+//         </tr>
+//       `;
+//     }
+
+//     // 🌟 2. Return the table row with the injected variationsHtml
+//     return `
 //       <tr>
-//         <td style="padding: 12px 10px; border-bottom: 1px solid #e5eaf2; vertical-align: top; width: 64px;">
+//         <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top; width: 64px;">
 //           ${item.image || item.imageUrl || item.img ? `
-//             <img src="${item.image || item.imageUrl || item.img}" alt="${item.name || 'Product'}" style="width: 56px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #e5eaf2; display: block;" />
+//             <img src="${item.image || item.imageUrl || item.img}" alt="${item.name || 'Product'}" style="width: 56px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1; display: block;" />
 //           ` : `
-//             <div style="width: 56px; height: 56px; background-color: #f1f5f9; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #64748b;">N/A</div>
+//             <div style="width: 56px; height: 56px; background-color: #f8fafc; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #475569;">N/A</div>
 //           `}
 //         </td>
-//         <td style="padding: 12px 10px; border-bottom: 1px solid #e5eaf2; vertical-align: top;">
+//         <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top;">
 //           <table style="width: 100%; border-collapse: collapse;">
 //             <tr>
 //               <td style="font-size: 14px; font-weight: 700; color: #0f172a; padding-bottom: 3px; line-height: 1.3;">
 //                 ${item.name || 'Product'}
 //               </td>
 //             </tr>
+//             ${variationsHtml}
 //             <tr>
-//               <td style="font-size: 11px; color: #64748b; font-family: monospace; padding-bottom: 3px;">
+//               <td style="font-size: 11px; color: #475569; font-family: monospace; padding-bottom: 3px;">
 //                 ID: ${item.id || 'N/A'}
 //               </td>
 //             </tr>
@@ -75,46 +96,47 @@
 //               </td>
 //             </tr>
 //             <tr>
-//               <td style="font-size: 14px; font-weight: 700; color: #ec4899; padding-top: 2px;">
+//               <td style="font-size: 14px; font-weight: 700; color: #0B1B48; padding-top: 2px;">
 //                 ₦${Number((item.amount || item.price || 0) * (item.quantity || 1)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 //               </td>
 //             </tr>
 //           </table>
 //         </td>
 //       </tr>
-//     `
-//       )
-//       .join('');
+//     `;
+//   })
+//   .join('');
 
 //     // Format delivery address text/HTML
 //     const addressHtml = typeof deliveryAddress === 'object' 
 //       ? `${deliveryAddress.fullName || accountInfo.name}<br/>${deliveryAddress.street || deliveryAddress.address || ''}, ${deliveryAddress.city || ''}, ${deliveryAddress.state || ''}<br/>Phone: ${deliveryAddress.phone || accountInfo.phone}`
 //       : deliveryAddress;
 
-//     const htmlContent = `
+   
+//  const htmlContent = `
 //       <!DOCTYPE html>
 //       <html>
 //         <head>
 //           <meta charset="utf-8">
 //           <style>
 //             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
-//             .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e5eaf2; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-//             .header { background: linear-gradient(135deg, #ec4899 0%, #f59e0b 50%, #06b6d4 100%); padding: 25px; text-align: center; color: #ffffff; }
+//             .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid rgba(226, 232, 240, 0.9); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+//             .header { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 25px; text-align: center; color: #ffffff; }
 //             .header h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-//             .header p { margin: 5px 0 0; font-size: 13px; color: #fdf2f8; opacity: 0.95; }
+//             .header p { margin: 5px 0 0; font-size: 13px; color: #cbd5e1; opacity: 0.95; }
 //             .content { padding: 20px; }
-//             .info-box { background: #f8fafc; border-left: 4px solid #06b6d4; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
+//             .info-box { background: #f8fafc; border-left: 4px solid #1e293b; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
 //             .table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-//             .table th { background: #f1f5f9; padding: 10px; text-align: left; font-size: 12px; font-weight: 700; color: #475569; border-bottom: 2px solid #e5eaf2; }
+//             .table th { background: #f8fafc; padding: 10px; text-align: left; font-size: 12px; font-weight: 700; color: #475569; border-bottom: 2px solid rgba(226, 232, 240, 0.9); }
 //             .totals { width: 100%; font-size: 13px; margin-bottom: 20px; }
 //             .totals td { padding: 6px 10px; }
-//             .footer { background: #f1f5f9; padding: 15px; text-align: center; font-size: 11px; color: #64748B; border-top: 1px solid #e5eaf2; }
+//             .footer { background: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #475569; border-top: 1px solid rgba(226, 232, 240, 0.9); }
 //           </style>
 //         </head>
 //         <body>
 //           <div class="container">
 //             <div class="header">
-//               <h1>KINGSWORD BAG CRAFT</h1>
+//               <h1>SHEALUXE</h1>
 //               <p>Order Confirmation & Summary</p>
 //             </div>
 //             <div class="content">
@@ -125,19 +147,19 @@
 //                 <strong>Order Status:</strong> ${orderStatus}
 //               </div>
 
-//               <h3 style="font-size: 14px; color: #ec4899; margin-bottom: 8px;">Customer Information</h3>
+//               <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Customer Information</h3>
 //               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
 //                 <strong>Name:</strong> ${accountInfo.name}<br/>
 //                 <strong>Email:</strong> ${accountInfo.email}<br/>
 //                 <strong>Phone:</strong> ${accountInfo.phone}
 //               </p>
 
-//               <h3 style="font-size: 14px; color: #ec4899; margin-bottom: 8px;">Delivery Address</h3>
+//               <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Delivery Address</h3>
 //               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
 //                 ${addressHtml}
 //               </p>
 
-//               <h3 style="font-size: 14px; color: #ec4899; margin-bottom: 8px;">Order Items</h3>
+//               <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Order Items</h3>
 //               <table class="table">
 //                 <thead>
 //                   <tr>
@@ -165,25 +187,24 @@
 //                   <td style="text-align: right; font-weight: 600; color: #10b981;">-₦${Number(discount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
 //                 </tr>` : ''}
 //                 <tr>
-//                   <td style="font-size: 15px; font-weight: 800; color: #0f172a; border-top: 1px solid #e5eaf2; padding-top: 10px;">Final Total:</td>
-//                   <td style="text-align: right; font-size: 15px; font-weight: 800; color: #ec4899; border-top: 1px solid #e5eaf2; padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+//                   <td style="font-size: 15px; font-weight: 800; color: #0f172a; border-top: 1px solid rgba(226, 232, 240, 0.9); padding-top: 10px;">Final Total:</td>
+//                   <td style="text-align: right; font-size: 15px; font-weight: 800; color: #1e293b; border-top: 1px solid rgba(226, 232, 240, 0.9); padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
 //                 </tr>
 //               </table>
 //             </div>
 //             <div class="footer">
-//               &copy; ${new Date().getFullYear()} Kingsword Bag Craft. All rights reserved.
+//               &copy; ${new Date().getFullYear()} Shealuxe. All rights reserved.
 //             </div>
 //           </div>
 //         </body>
 //       </html>
 //     `;
-
-//     // Loop through each recipient and send individually to prevent delivery drops or SMTP provider blocks
+  
 //     const emailPromises = recipients.map(async (recipientEmail) => {
 //       const mailOptions = {
-//         from: `"Kingsword Bag Craft" <${process.env.SMTP_USER}>`,
+//         from: `"Shealuxe" <${process.env.SMTP_USER}>`,
 //         to: recipientEmail,
-//         subject: `Order Confirmation #${orderNumber} - Kingsword Bag Craft`,
+//         subject: `Order Confirmation #${orderNumber} - Shealuxe`,
 //         html: htmlContent,
 //       };
 //       return transporter.sendMail(mailOptions);
@@ -197,6 +218,7 @@
 //     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
 //   }
 // }
+
 
 
 
@@ -241,206 +263,75 @@ export async function POST(request) {
       paymentType,
       paymentStatus,
       orderStatus,
+      paymentProofUrl, // Added payment proof URL support
     } = payload;
 
-    // Build items HTML table rows with exactly 2 columns: Image on left, stacked details & pricing on right
-    // const itemsHtml = items
-    //   .map(
-    //     (item) => `
-    //   <tr>
-    //     <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top; width: 64px;">
-    //       ${item.image || item.imageUrl || item.img ? `
-    //         <img src="${item.image || item.imageUrl || item.img}" alt="${item.name || 'Product'}" style="width: 56px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1; display: block;" />
-    //       ` : `
-    //         <div style="width: 56px; height: 56px; background-color: #f8fafc; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #475569;">N/A</div>
-    //       `}
-    //     </td>
-    //     <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top;">
-    //       <table style="width: 100%; border-collapse: collapse;">
-    //         <tr>
-    //           <td style="font-size: 14px; font-weight: 700; color: #0f172a; padding-bottom: 3px; line-height: 1.3;">
-    //             ${item.name || 'Product'}
-    //           </td>
-    //         </tr>
-    //         <tr>
-    //           <td style="font-size: 11px; color: #475569; font-family: monospace; padding-bottom: 3px;">
-    //             ID: ${item.id || 'N/A'}
-    //           </td>
-    //         </tr>
-    //         <tr>
-    //           <td style="font-size: 12px; color: #475569; padding-bottom: 6px;">
-    //             Qty: <strong>${item.quantity || 1}</strong>
-    //           </td>
-    //         </tr>
-    //         <tr>
-    //           <td style="font-size: 14px; font-weight: 700; color: #0B1B48; padding-top: 2px;">
-    //             ₦${Number((item.amount || item.price || 0) * (item.quantity || 1)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-    //           </td>
-    //         </tr>
-    //       </table>
-    //     </td>
-    //   </tr>
-    // `
-    //   )
-    //   .join('');
-
     const itemsHtml = items
-  .map((item) => {
-    // 🌟 1. Generate HTML markup for variations if they exist
-    let variationsHtml = '';
-    if (item.variations && typeof item.variations === 'object' && Object.keys(item.variations).length > 0) {
-      const badges = Object.entries(item.variations)
-        .map(([key, value]) => `
-          <span style="display: inline-block; font-size: 10px; color: #475569; background-color: #f1f5f9; border: 1px solid #cbd5e1; padding: 2px 6px; border-radius: 4px; font-weight: 600; text-transform: capitalize; margin-right: 4px; margin-bottom: 2px;">
-            ${key}: <strong style="color: #0f172a;">${String(value)}</strong>
-          </span>
-        `)
-        .join('');
+      .map((item) => {
+        let variationsHtml = '';
+        if (item.variations && typeof item.variations === 'object' && Object.keys(item.variations).length > 0) {
+          const badges = Object.entries(item.variations)
+            .map(([key, value]) => `
+              <span style="display: inline-block; font-size: 10px; color: #475569; background-color: #f1f5f9; border: 1px solid #cbd5e1; padding: 2px 6px; border-radius: 4px; font-weight: 600; text-transform: capitalize; margin-right: 4px; margin-bottom: 2px;">
+                ${key}: <strong style="color: #0f172a;">${String(value)}</strong>
+              </span>
+            `)
+            .join('');
 
-      variationsHtml = `
-        <tr>
-          <td style="padding-bottom: 4px;">
-            <div style="line-height: 1.4;">${badges}</div>
-          </td>
-        </tr>
-      `;
-    }
-
-    // 🌟 2. Return the table row with the injected variationsHtml
-    return `
-      <tr>
-        <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top; width: 64px;">
-          ${item.image || item.imageUrl || item.img ? `
-            <img src="${item.image || item.imageUrl || item.img}" alt="${item.name || 'Product'}" style="width: 56px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1; display: block;" />
-          ` : `
-            <div style="width: 56px; height: 56px; background-color: #f8fafc; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #475569;">N/A</div>
-          `}
-        </td>
-        <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top;">
-          <table style="width: 100%; border-collapse: collapse;">
+          variationsHtml = `
             <tr>
-              <td style="font-size: 14px; font-weight: 700; color: #0f172a; padding-bottom: 3px; line-height: 1.3;">
-                ${item.name || 'Product'}
+              <td style="padding-bottom: 4px;">
+                <div style="line-height: 1.4;">${badges}</div>
               </td>
             </tr>
-            ${variationsHtml}
-            <tr>
-              <td style="font-size: 11px; color: #475569; font-family: monospace; padding-bottom: 3px;">
-                ID: ${item.id || 'N/A'}
-              </td>
-            </tr>
-            <tr>
-              <td style="font-size: 12px; color: #475569; padding-bottom: 6px;">
-                Qty: <strong>${item.quantity || 1}</strong>
-              </td>
-            </tr>
-            <tr>
-              <td style="font-size: 14px; font-weight: 700; color: #0B1B48; padding-top: 2px;">
-                ₦${Number((item.amount || item.price || 0) * (item.quantity || 1)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    `;
-  })
-  .join('');
+          `;
+        }
 
-    // Format delivery address text/HTML
-    const addressHtml = typeof deliveryAddress === 'object' 
-      ? `${deliveryAddress.fullName || accountInfo.name}<br/>${deliveryAddress.street || deliveryAddress.address || ''}, ${deliveryAddress.city || ''}, ${deliveryAddress.state || ''}<br/>Phone: ${deliveryAddress.phone || accountInfo.phone}`
-      : deliveryAddress;
+        return `
+          <tr>
+            <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top; width: 64px;">
+              ${item.image || item.imageUrl || item.img ? `
+                <img src="${item.image || item.imageUrl || item.img}" alt="${item.name || 'Product'}" style="width: 56px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #cbd5e1; display: block;" />
+              ` : `
+                <div style="width: 56px; height: 56px; background-color: #f8fafc; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #475569;">N/A</div>
+              `}
+            </td>
+            <td style="padding: 12px 10px; border-bottom: 1px solid #cbd5e1; vertical-align: top;">
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="font-size: 14px; font-weight: 700; color: #0f172a; padding-bottom: 3px; line-height: 1.3;">
+                    ${item.name || item.title || 'Product'}
+                  </td>
+                </tr>
+                ${variationsHtml}
+                <tr>
+                  <td style="font-size: 11px; color: #475569; font-family: monospace; padding-bottom: 3px;">
+                    ID: ${item.id || 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-size: 12px; color: #475569; padding-bottom: 6px;">
+                    Qty: <strong>${item.quantity || 1}</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-size: 14px; font-weight: 700; color: #0B1B48; padding-top: 2px;">
+                    ₦${Number((item.amount || item.price || 0) * (item.quantity || 1)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        `;
+      })
+      .join('');
 
-    // const htmlContent = `
-    //   <!DOCTYPE html>
-    //   <html>
-    //     <head>
-    //       <meta charset="utf-8">
-    //       <style>
-    //         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
-    //         .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-    //         .header { background: linear-gradient(135deg, #0B1B48 0%, #00AEEF 100%); padding: 25px; text-align: center; color: #ffffff; }
-    //         .header h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-    //         .header p { margin: 5px 0 0; font-size: 13px; color: #e2e8f0; opacity: 0.95; }
-    //         .content { padding: 20px; }
-    //         .info-box { background: #f8fafc; border-left: 4px solid #00AEEF; padding: 12px 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
-    //         .table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    //         .table th { background: #f8fafc; padding: 10px; text-align: left; font-size: 12px; font-weight: 700; color: #475569; border-bottom: 2px solid #cbd5e1; }
-    //         .totals { width: 100%; font-size: 13px; margin-bottom: 20px; }
-    //         .totals td { padding: 6px 10px; }
-    //         .footer { background: #f8fafc; padding: 15px; text-align: center; font-size: 11px; color: #475569; border-top: 1px solid #cbd5e1; }
-    //       </style>
-    //     </head>
-    //     <body>
-    //       <div class="container">
-    //         <div class="header">
-    //           <h1>MAJINFOTEK</h1>
-    //           <p>Order Confirmation & Summary</p>
-    //         </div>
-    //         <div class="content">
-    //           <div class="info-box">
-    //             <strong>Order Number:</strong> ${orderNumber} <br/>
-    //             <strong>Payment Type:</strong> ${paymentType} <br/>
-    //             <strong>Payment Status:</strong> ${paymentStatus} <br/>
-    //             <strong>Order Status:</strong> ${orderStatus}
-    //           </div>
+    // Safe handling for optional delivery address
+    const addressHtml = deliveryAddress && typeof deliveryAddress === 'object' 
+      ? `${deliveryAddress.fullName || accountInfo?.name || 'Customer'}<br/>${deliveryAddress.street || deliveryAddress.address || ''}, ${deliveryAddress.city || ''}, ${deliveryAddress.state || ''}<br/>Phone: ${deliveryAddress.phone || accountInfo?.phone || 'N/A'}`
+      : 'Direct Service / No Physical Address Required';
 
-    //           <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Customer Information</h3>
-    //           <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
-    //             <strong>Name:</strong> ${accountInfo.name}<br/>
-    //             <strong>Email:</strong> ${accountInfo.email}<br/>
-    //             <strong>Phone:</strong> ${accountInfo.phone}
-    //           </p>
-
-    //           <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Delivery Address</h3>
-    //           <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
-    //             ${addressHtml}
-    //           </p>
-
-    //           <h3 style="font-size: 14px; color: #0B1B48; margin-bottom: 8px;">Order Items</h3>
-    //           <table class="table">
-    //             <thead>
-    //               <tr>
-    //                 <th style="width: 64px;">Image</th>
-    //                 <th>Product Details</th>
-    //               </tr>
-    //             </thead>
-    //             <tbody>
-    //               ${itemsHtml}
-    //             </tbody>
-    //           </table>
-              
-    //           <table class="totals">
-    //             <tr>
-    //               <td style="color: #475569;">Subtotal:</td>
-    //               <td style="text-align: right; font-weight: 600;">₦${Number(subtotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-    //             </tr>
-    //             <tr>
-    //               <td style="color: #475569;">Delivery Fee:</td>
-    //               <td style="text-align: right; font-weight: 600;">₦${Number(deliveryFee || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-    //             </tr>
-    //             ${discount ? `
-    //             <tr>
-    //               <td style="color: #10b981;">Discount ${promoCode ? `(${promoCode})` : ''}:</td>
-    //               <td style="text-align: right; font-weight: 600; color: #10b981;">-₦${Number(discount || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-    //             </tr>` : ''}
-    //             <tr>
-    //               <td style="font-size: 15px; font-weight: 800; color: #0f172a; border-top: 1px solid #cbd5e1; padding-top: 10px;">Final Total:</td>
-    //               <td style="text-align: right; font-size: 15px; font-weight: 800; color: #0B1B48; border-top: 1px solid #cbd5e1; padding-top: 10px;">₦${Number(finalTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-    //             </tr>
-    //           </table>
-    //         </div>
-    //         <div class="footer">
-    //           &copy; ${new Date().getFullYear()} Majinfotek. All rights reserved.
-    //         </div>
-    //       </div>
-    //     </body>
-    //   </html>
-    // `;
-
-    // Loop through each recipient and send individually to prevent delivery drops or SMTP provider blocks
-  
- const htmlContent = `
+    const htmlContent = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -463,7 +354,7 @@ export async function POST(request) {
         <body>
           <div class="container">
             <div class="header">
-              <h1>SHEALUXE</h1>
+              <h1>PINKLES</h1>
               <p>Order Confirmation & Summary</p>
             </div>
             <div class="content">
@@ -476,15 +367,22 @@ export async function POST(request) {
 
               <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Customer Information</h3>
               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
-                <strong>Name:</strong> ${accountInfo.name}<br/>
-                <strong>Email:</strong> ${accountInfo.email}<br/>
-                <strong>Phone:</strong> ${accountInfo.phone}
+                <strong>Name:</strong> ${accountInfo?.name || 'Valued Customer'}<br/>
+                <strong>Email:</strong> ${accountInfo?.email || 'N/A'}<br/>
+                <strong>Phone:</strong> ${accountInfo?.phone || 'N/A'}
               </p>
 
-              <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Delivery Address</h3>
+              <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Delivery / Service Details</h3>
               <p style="font-size: 13px; margin-top: 0; line-height: 1.5; color: #475569;">
                 ${addressHtml}
               </p>
+
+              ${paymentProofUrl ? `
+                <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Payment Proof</h3>
+                <p style="font-size: 13px; margin-top: 0;">
+                  <a href="${paymentProofUrl}" target="_blank" style="color: #2563eb; font-weight: 700; text-decoration: underline;">View Uploaded Transfer Receipt</a>
+                </p>
+              ` : ''}
 
               <h3 style="font-size: 14px; color: #1e293b; margin-bottom: 8px;">Order Items</h3>
               <table class="table">
@@ -520,18 +418,18 @@ export async function POST(request) {
               </table>
             </div>
             <div class="footer">
-              &copy; ${new Date().getFullYear()} Shealuxe. All rights reserved.
+              &copy; ${new Date().getFullYear()} Pinkles Nig Ltd. All rights reserved.
             </div>
           </div>
         </body>
       </html>
     `;
-  
+
     const emailPromises = recipients.map(async (recipientEmail) => {
       const mailOptions = {
-        from: `"Shealuxe" <${process.env.SMTP_USER}>`,
+        from: `"Pinkles" <${process.env.SMTP_USER}>`,
         to: recipientEmail,
-        subject: `Order Confirmation #${orderNumber} - Shealuxe`,
+        subject: `Order Confirmation #${orderNumber} - Pinkles`,
         html: htmlContent,
       };
       return transporter.sendMail(mailOptions);

@@ -785,7 +785,7 @@ export default function ProductsCrudPage() {
           const data = new FormData();
           data.append("file", compressedBlob, `product_${i}.jpg`);
           data.append("upload_preset", "bees_interior");
-          data.append("folder", "products_shealuxe");
+          data.append("folder", "products_pinkles");
 
           const res = await fetch(
             "https://api.cloudinary.com/v1_1/aqxyleoh/image/upload",

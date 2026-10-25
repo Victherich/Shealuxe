@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ContextProvider } from "@/components/Context";
 import { CartProvider } from "@/components/CartContext";
+import BookConsultationBanner from "@/components/BookConsultationBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,8 +21,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SHEALUXE LIMITED",
-  description: "Your go-to destination for natural, luxurious skin and hair care products.",
+  title: "PINKLES NG LTD | Empowering Brands. Building Legacies.",
+  description: "Empowering Brands. Building Legacies.",
    icons: {
     icon: "/favicon.ico",
   },
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
              <ContextProvider>
           <Header />
           {children}
+          <BookConsultationBanner/>
           <Footer />
           </ContextProvider>
           </CartProvider>

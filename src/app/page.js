@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroSection2 from '@/components/Hero';
+import HeroSection from '@/components/Hero';
 import LandingPageComponent from '@/components/LandingPageComponent';
 import TestimonialsSection from '@/components/TestimonialSection';
 
@@ -7,10 +7,14 @@ import FeaturedProducts from '@/components/FeaturedProducts';
 import SearchBar from '@/components/SearchBar';
 import NewArrivals from '@/components/NewArrivals';
 import BestSellers from '@/components/BestSellers';
-import GallerySection from '@/components/GallerySection';
+
 import ShopByCategory from '@/components/ShopByCategory';
-import ShopByLocation from '@/components/ShopByLocation';
-import SheaLuxeWelcome from '@/components/ShealuxeWelcome';
+import EcosystemDivisions from '@/components/EcosystemDivisions';
+import ConglomerateServices from '@/components/ConglomerateServices';
+import FeaturedHighlightsSection from '@/components/FeaturedHighlightsSection';
+import StatsAndTestimonials from '@/components/StatsAndTestimonials';
+import JournalAndSocialSection from '@/components/JournalAndSocialSection';
+import LeaveAReviewSection from '@/components/LeaveAReviewSection';
 
 
 
@@ -25,22 +29,29 @@ export default function CompleteLandingPage() {
   
   return (
     <>
-    <HeroSection2/>
-    <SheaLuxeWelcome/>
-    <SearchBar/>
-    <FeaturedProducts/>
-    <GallerySection/>
-    <ShopByCategory/>
-    {/* <ShopByLocation/> */}
-    <NewArrivals/>
-    <br/>
-    <br/>
-    <br/>
-    <BestSellers/>
+  
+    <HeroSection/>
+    <EcosystemDivisions/>
+<ConglomerateServices/>   
+<FeaturedHighlightsSection/> 
+<StatsAndTestimonials/>
+{/* <LeaveAReviewSection/> */}
+<JournalAndSocialSection/>
 
-    <LandingPageComponent/>
+    {/* <SearchBar/> */}
+    {/* <FeaturedProducts/> */}
+    {/* <GallerySection/> */}
+    {/* <ShopByCategory/> */}
 
- <TestimonialsSection/>
+    {/* <NewArrivals/> */}
+    {/* <br/> */}
+    {/* <br/> */}
+    {/* <br/> */}
+    {/* <BestSellers/> */}
+
+    {/* <LandingPageComponent/> */}
+
+ {/* <TestimonialsSection/> */}
 
     </>
 

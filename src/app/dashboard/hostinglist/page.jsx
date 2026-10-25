@@ -772,7 +772,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import PaystackPop from "@paystack/inline-js";
 import HostingTransactions from '@/components/HostingTransactions';
-import DomainManager from '@/components/DomainManager';
+
 
 // --- Styled Components (Strict Viewport Boundary, Non-Overflowing Theme) ---
 
