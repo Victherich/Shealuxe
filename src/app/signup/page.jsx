@@ -1161,7 +1161,7 @@ export default function UserSignup() {
       {/* SIGNUP CARD CONTAINER */}
       <AuthCard>
         {/* GOOGLE SIGN UP BUTTON */}
-        <GoogleButton type="button" onClick={handleGoogleSignUp}>
+        {/* <GoogleButton type="button" onClick={handleGoogleSignUp}>
           <svg viewBox="0 0 24 24">
             <path
               fill="#4285F4"
@@ -1181,7 +1181,7 @@ export default function UserSignup() {
             />
           </svg>
           Continue with Google
-        </GoogleButton>
+        </GoogleButton> */}
 
         <Divider>
           <span>OR</span>

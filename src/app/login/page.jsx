@@ -903,7 +903,7 @@ export default function UserLogin() {
       {/* LOGIN CARD CONTAINER */}
       <AuthCard>
         {/* GOOGLE SIGN IN BUTTON */}
-        <GoogleButton type="button" onClick={handleGoogleSignIn}>
+        {/* <GoogleButton type="button" onClick={handleGoogleSignIn}>
           <svg viewBox="0 0 24 24">
             <path
               fill="#4285F4"
@@ -923,7 +923,7 @@ export default function UserLogin() {
             />
           </svg>
           Continue with Google
-        </GoogleButton>
+        </GoogleButton> */}
 
         <Divider>
           <span>OR</span>
