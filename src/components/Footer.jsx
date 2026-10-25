@@ -1547,9 +1547,9 @@ export default function Footer() {
         <BottomBar>
           <div className="brand-logo-text">pinkles</div>
           <div className="legal-links">
-            <Link href="/terms-conditions">PRIVACY POLICY</Link>
-            <Link href="/terms-conditions">TERMS & CONDITIONS</Link>
-            <Link href="/dashboard">DASHBOARD</Link>
+            {/* <Link href="/terms-conditions">PRIVACY POLICY</Link> */}
+            <Link href="/terms-conditions" style={{textDecoration:"underline"}}>TERMS, CONDITIONS & PRIVACY POLICY</Link>
+            <Link href="/dashboard" style={{textDecoration:"underline"}}>DASHBOARD</Link>
           </div>
           <div className="copyright">
             COPYRIGHT © 2026 PINKLES NIGERIA LTD. ALL RIGHTS RESERVED.
