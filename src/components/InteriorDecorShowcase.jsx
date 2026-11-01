@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { db } from "@/firebaseConfig"; // Adjust path to your firebase config if needed
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import SecurePaymentSection from "./SecurePaymentSection";
+import GallerySection from "./GallerySection";
+import ConsultationModal from "./ConsultationModal";
 
 /* ================= COLORS & THEMING ================= */
 const GoldAccent = secondaryColoring || "#E2B04A";
@@ -573,6 +575,14 @@ export default function InteriorDecorShowcase() {
   const [paymentAmount, setPaymentAmount] = useState("");
   const [currency, setCurrency] = useState("₦");
   const [portfolioItems, setPortfolioItems] = useState([]);
+  // 1. Add these states inside your main parent component:
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectedConsultCategory, setSelectedConsultCategory] = useState("");
+
+const handleCardClick = (categoryName) => {
+  setSelectedConsultCategory(categoryName);
+  setIsModalOpen(true);
+};
 
   // Fetch portfolio items from Firestore on mount
   useEffect(() => {
@@ -742,21 +752,22 @@ const submitFormToApi = async (formData, successTitle, successText, resetFormCal
             A glimpse of recent projects across residential and commercial spaces. Click any design to enquire.
           </DescriptionText>
         </CenteredHeader>
-<PortfolioGrid>
+        
+{/* <PortfolioGrid>
           {portfolioItems.length === 0 ? (
             <p style={{ textAlign: "center", color: MutedText, padding: "2rem 0" }}>
               Loading portfolio designs...
             </p>
           ) : (
             <>
-              {/* Top Wide Image */}
+            
               {portfolioItems[0] && (
                 <FeaturedImageCard onClick={() => setSelectedItem(portfolioItems[0])}>
                   <img src={portfolioItems[0].image} alt={portfolioItems[0].title} />
                 </FeaturedImageCard>
               )}
 
-              {/* Render remaining items in pairs for the 2-Column grid rows */}
+     
               {Array.from({ length: Math.ceil((portfolioItems.length - 1) / 2) }).map((_, rowIndex) => {
                 const firstIndex = rowIndex * 2 + 1;
                 const secondIndex = rowIndex * 2 + 2;
@@ -780,40 +791,57 @@ const submitFormToApi = async (formData, successTitle, successText, resetFormCal
               })}
             </>
           )}
-        </PortfolioGrid>
+        </PortfolioGrid> */}
+
+        <GallerySection/>
       </SectionPadding>
 
       {/* 3. BOOK A DESIGN CONSULTATION */}
-      <SectionPadding style={{ paddingTop: 0 }}>
-        <CenteredHeader>
-          <SmallTag>INTERIOR CONSULTATION</SmallTag>
-          <MainTitle style={{ fontSize: "2rem" }}>
-            Book a Design Consultation
-          </MainTitle>
-          <DescriptionText>
-            Select a category and reserve a one-on-one consultation with our interior design team.
-          </DescriptionText>
+    <SectionPadding style={{ paddingTop: 0 }}>
+      <CenteredHeader>
+        <SmallTag>INTERIOR CONSULTATION</SmallTag>
+        <MainTitle style={{ fontSize: "2rem" }}>
+          Book a Design Consultation
+        </MainTitle>
+        <DescriptionText>
+          Select a category and reserve a one-on-one consultation with our interior design team.
+        </DescriptionText>
 
-          <ConsultationGrid>
-            <ConsultCard>
-              <div className="icon">🛋️</div>
-              <span>Custom Interior Design</span>
-            </ConsultCard>
-            <ConsultCard>
-              <div className="icon">🏛️</div>
-              <span>Total Interior Transformation</span>
-            </ConsultCard>
-            <ConsultCard>
-              <div className="icon">🛏️</div>
-              <span>Single Room Redesign</span>
-            </ConsultCard>
-            <ConsultCard>
-              <div className="icon">🏢</div>
-              <span>Commercial Space Design</span>
-            </ConsultCard>
-          </ConsultationGrid>
-        </CenteredHeader>
-      </SectionPadding>
+        <ConsultationGrid>
+          <ConsultCard
+            style={{ cursor: "pointer" }}
+            onClick={() => handleCardClick("Custom Interior Design")}
+          >
+            <div className="icon">🛋️</div>
+            <span>Custom Interior Design</span>
+          </ConsultCard>
+
+          <ConsultCard
+            style={{ cursor: "pointer" }}
+            onClick={() => handleCardClick("Total Interior Transformation")}
+          >
+            <div className="icon">🏛️</div>
+            <span>Total Interior Transformation</span>
+          </ConsultCard>
+
+          <ConsultCard
+            style={{ cursor: "pointer" }}
+            onClick={() => handleCardClick("Single Room Redesign")}
+          >
+            <div className="icon">🛏️</div>
+            <span>Single Room Redesign</span>
+          </ConsultCard>
+
+          <ConsultCard
+            style={{ cursor: "pointer" }}
+            onClick={() => handleCardClick("Commercial Space Design")}
+          >
+            <div className="icon">🏢</div>
+            <span>Commercial Space Design</span>
+          </ConsultCard>
+        </ConsultationGrid>
+      </CenteredHeader>
+    </SectionPadding>
 
       {/* 4. GREEN WHOLE-HOME TRANSFORMATION FORM */}
       <GreenSection>
@@ -973,6 +1001,15 @@ const submitFormToApi = async (formData, successTitle, successText, resetFormCal
           </ModalContent>
         </ModalOverlay>
       )}
+
+
+
+      {/* Modal Component */}
+    <ConsultationModal
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      selectedCategory={selectedConsultCategory}
+    />
     </PageContainer>
   );
 }

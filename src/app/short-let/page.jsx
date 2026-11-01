@@ -2874,33 +2874,46 @@ export default function ShortLetApartmentsPage() {
 
           <ValueGrid>
             <ValueCard>
-              <div className="icon-wrapper">
+                 <img src='/stay1.jpg' alt='stay'
+                style={{ width: "100%", marginBottom:"10px"}}
+                />
+              {/* <div className="icon-wrapper">
                 <CheckCircle2 />
-              </div>
+             
+              </div> */}
               <h4>Comfortable Stays</h4>
               <p>Well-presented, furnished apartments prepared for your visit.</p>
             </ValueCard>
 
             <ValueCard>
-              <div className="icon-wrapper">
+              {/* <div className="icon-wrapper">
                 <Shield />
-              </div>
+              </div> */}
+               <img src='/stay2.jpg' alt='stay'
+                style={{ width: "100%", marginBottom:"10px"}}
+                />
               <h4>Clear Information</h4>
               <p>Honest apartment details and media so you know what to expect.</p>
             </ValueCard>
 
             <ValueCard>
-              <div className="icon-wrapper">
+              {/* <div className="icon-wrapper">
                 <Clock />
-              </div>
+              </div> */}
+              <img src='/stay3.jpg' alt='stay'
+                style={{ width: "100%", marginBottom:"10px"}}
+                />
               <h4>Flexible Options</h4>
               <p>Suitable for families, couples and business travelers.</p>
             </ValueCard>
 
             <ValueCard>
-              <div className="icon-wrapper">
+              {/* <div className="icon-wrapper">
                 <PhoneCall />
-              </div>
+              </div> */}
+              <img src='/stay4.jpg' alt='stay'
+                style={{ width: "100%", marginBottom:"10px"}}
+                />
               <h4>Responsive Support</h4>
               <p>A friendly team ready to help with your enquiry.</p>
             </ValueCard>

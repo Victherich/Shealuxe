@@ -1183,9 +1183,9 @@ export default function UserSignup() {
           Continue with Google
         </GoogleButton> */}
 
-        <Divider>
+        {/* <Divider>
           <span>OR</span>
-        </Divider>
+        </Divider> */}
 
         {/* REGISTRATION FORM */}
         <Form onSubmit={handleSubmit}>

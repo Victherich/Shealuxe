@@ -1469,11 +1469,10 @@ export default function Footer() {
           <FooterColumn>
             <h3>Properties</h3>
             <ul>
-              <li><Link href="/properties">For Sale</Link></li>
-              <li><Link href="/properties">For Rent</Link></li>
-              <li><Link href="/properties">Short-Let</Link></li>
-              <li><Link href="/properties">Land</Link></li>
-              <li><Link href="/properties">Luxury Homes</Link></li>
+              {/* <li><Link href="/properties">For Sale</Link></li> */}
+              <li><Link href="/properties">Manage properties for shortlet</Link></li>
+              <li><Link href="/short-let">Short-Let</Link></li>
+           
             </ul>
           </FooterColumn>
 
@@ -1493,11 +1492,11 @@ export default function Footer() {
           <FooterColumn>
             <h3>Brands</h3>
             <ul>
-              <li><Link href="/ashakeade-closet">AshakeAde Closet</Link></li>
+              <li><Link href="/ashakeade-closet">ASHÉVON</Link></li>
               <li><Link href="/book-now">Pinkles Spa</Link></li>
               <li><Link href="/ashakeade-closet">New Arrivals</Link></li>
-              <li><Link href="/book-now">Book Appointment</Link></li>
-              <li><Link href="/ashakeade-closet">Gift Cards</Link></li>
+              <li><Link href="/book-appointment">Book Appointment</Link></li>
+              <li><Link href="/gift-cards">Gift Cards</Link></li>
             </ul>
           </FooterColumn>
         </LinksGrid>
@@ -1545,7 +1544,7 @@ export default function Footer() {
 
         {/* Bottom Copyright & Legal Bar */}
         <BottomBar>
-          <div className="brand-logo-text">pinkles</div>
+          {/* <div className="brand-logo-text">pinkles</div> */}
           <div className="legal-links">
             {/* <Link href="/terms-conditions">PRIVACY POLICY</Link> */}
             <Link href="/terms-conditions" style={{textDecoration:"underline"}}>TERMS, CONDITIONS & PRIVACY POLICY</Link>

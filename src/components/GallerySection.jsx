@@ -1118,6 +1118,233 @@ const Thumb = styled.img`
 `;
 
 /* ================= MAIN COMPONENT ================= */
+// export default function GallerySection() {
+//   const [activeGroup, setActiveGroup] = useState(null);
+//   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+//   const [galleryCategories, setGalleryCategories] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [currentPath, setCurrentPath] = useState("");
+
+//   // Safely check path after mount to prevent SSR window reference crashes
+//   useEffect(() => {
+//     if (typeof window !== "undefined") {
+//       setCurrentPath(window.location.pathname);
+//     }
+//   }, []);
+
+//   useEffect(() => {
+//     const fetchGallery = async () => {
+//       try {
+//         const querySnapshot = await getDocs(query(collection(db, "galleryImages")));
+//         const fetchedImages = [];
+//         querySnapshot.forEach((doc) => {
+//           fetchedImages.push({ id: doc.id, ...doc.data() });
+//         });
+
+//         // Base static category structure mapping
+//         const baseCategories = [
+//           { id: "properties", tag: "PROPERTIES", title: "Properties Gallery", subtitle: "Bold property imagery for the Properties page." },
+//           { id: "bedroom", tag: "BEDROOM", title: "Bedroom", subtitle: "Interior collection — Bedroom" },
+//           { id: "living-room", tag: "LIVING ROOM", title: "Living Room", subtitle: "Interior collection — Living Room" },
+//           { id: "wall-decor", tag: "WALL DÉCOR", title: "Wall Decor", subtitle: "Interior collection — Wall Decor" },
+//           { id: "dining-sets", tag: "DINING SETS", title: "Dining Sets", subtitle: "Interior collection — Dining Sets" },
+//           { id: "hallway", tag: "HALLWAY", title: "Hallway", subtitle: "Interior collection — Hallway" },
+//           { id: "tv-units", tag: "TV UNITS", title: "TV Units", subtitle: "Interior collection — TV Units" },
+//           { id: "centre-pieces", tag: "CENTRE PIECES", title: "Centre Pieces", subtitle: "Interior collection — Centre Pieces" },
+//           { id: "mirrors", tag: "MIRRORS", title: "Mirrors", subtitle: "Interior collection — Mirrors" },
+//           { id: "flowers-vases", tag: "FLOWERS AND FLOWER VASE", title: "Flowers and flower vase", subtitle: "Interior collection — Flowers and Flower vase" },
+//           { id: "kitchen", tag: "KITCHEN", title: "Kitchen", subtitle: "Interior collection — Kitchen" },
+//           { id: "chairs", tag: "CHAIRS", title: "Chairs", subtitle: "Interior collection — Chairs" },
+//         ];
+
+//         // Group fetched images by categoryId
+//         const structured = baseCategories.map((cat) => ({
+//           ...cat,
+//           images: fetchedImages.filter((img) => img.categoryId === cat.id),
+//         }));
+
+//         setGalleryCategories(structured);
+//       } catch (error) {
+//         console.error("Error fetching gallery:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchGallery();
+//   }, []);
+
+//   const openLightbox = (category, index) => {
+//     setActiveGroup(category);
+//     setActiveImageIndex(index);
+//   };
+
+//   const closeLightbox = () => {
+//     setActiveGroup(null);
+//     setActiveImageIndex(0);
+//   };
+
+//   const handlePrev = useCallback(() => {
+//     if (!activeGroup) return;
+//     setActiveImageIndex((prev) =>
+//       prev === 0 ? activeGroup.images.length - 1 : prev - 1
+//     );
+//   }, [activeGroup]);
+
+//   const handleNext = useCallback(() => {
+//     if (!activeGroup) return;
+//     setActiveImageIndex((prev) => (prev + 1) % activeGroup.images.length);
+//   }, [activeGroup]);
+
+//   // Keyboard navigation
+//   useEffect(() => {
+//     const handleKeyDown = (e) => {
+//       if (!activeGroup) return;
+//       if (e.key === "Escape") closeLightbox();
+//       if (e.key === "ArrowLeft") handlePrev();
+//       if (e.key === "ArrowRight") handleNext();
+//     };
+//     window.addEventListener("keydown", handleKeyDown);
+//     return () => window.removeEventListener("keydown", handleKeyDown);
+//   }, [activeGroup, handlePrev, handleNext]);
+
+//   return (
+//     <PageWrapper id="gallery">
+//       {/* PAGE HEADER */}
+//       {currentPath === '/gallery' && (
+//         <HeaderContainer>
+//           <br />
+//           <HeaderTag>SHOWCASE</HeaderTag>
+//           <MainHeading>Galleries & Collections</MainHeading>
+//           <SubText>
+//             A curated visual journey across our interior projects, properties and lifestyle work. Tap any image to view it, then tap Book Consultation to enquire about that design.
+//           </SubText>
+//         </HeaderContainer>
+//       )}
+
+//       {(currentPath === '/gallery' || currentPath === '/interior-decor') && (
+//         <>
+//           {loading ? (
+//             <div style={{ textAlign: "center", padding: "4rem 0", color: MutedText }}>
+//               Loading collections...
+//             </div>
+//           ) : (
+//             galleryCategories
+//               .filter((category) => category.images.length > 0)
+//               .map((category) => (
+//                 <ContentSection key={category.id} id={category.id}>
+//                   <CategoryHeader>
+//                     <span className="cat-tag">{category.tag}</span>
+//                     <h2>{category.title}</h2>
+//                     <p>{category.subtitle}</p>
+//                   </CategoryHeader>
+
+//                   <ImageGrid>
+//                     {category.images.map((img, idx) => (
+//                       <ImageCard
+//                         key={img.id}
+//                         onClick={() => openLightbox(category, idx)}
+//                       >
+//                         <img src={img.url} alt={img.title} loading="lazy" />
+//                         <div className="overlay">
+//                           <h3 className="card-title">{img.title}</h3>
+//                         </div>
+//                       </ImageCard>
+//                     ))}
+//                   </ImageGrid>
+//                 </ContentSection>
+//               ))
+//           )} 
+//         </>
+//       )}
+
+//       {currentPath === '/properties' && (
+//         <>
+//           {loading ? (
+//             <div style={{ textAlign: "center", padding: "4rem 0", color: MutedText }}>
+//               Loading collections...
+//             </div>
+//           ) : (
+//             galleryCategories.slice(0, 1)
+//               .filter((category) => category.images.length > 0)
+//               .map((category) => (
+//                 <ContentSection key={category.id} id={category.id}>
+//                   <ImageGrid>
+//                     {category.images.map((img, idx) => (
+//                       <ImageCard
+//                         key={img.id}
+//                         onClick={() => openLightbox(category, idx)}
+//                       >
+//                         <img src={img.url} alt={img.title} loading="lazy" />
+//                         <div className="overlay">
+//                           <h3 className="card-title">{img.title}</h3>
+//                         </div>
+//                       </ImageCard>
+//                     ))}
+//                   </ImageGrid>
+//                 </ContentSection>
+//               ))
+//           )}
+//         </>
+//       )}
+
+//       {/* LIGHTBOX MODAL */}
+//       {activeGroup && (
+//         <ModalOverlay>
+//           <ModalHeader>
+//             <div className="category-meta">
+//               <span className="tag">{activeGroup.tag}</span>
+//               <h3>{activeGroup.title}</h3>
+//             </div>
+//             <CloseButton onClick={closeLightbox}>✕</CloseButton>
+//           </ModalHeader>
+
+//           <ModalStage>
+//             <ArrowNav $left onClick={handlePrev}>
+//               ‹
+//             </ArrowNav>
+
+//             <ActiveImage
+//               src={activeGroup.images[activeImageIndex].url}
+//               alt={activeGroup.images[activeImageIndex].title}
+//             />
+
+//             <ArrowNav onClick={handleNext}>
+//               ›
+//             </ArrowNav>
+//           </ModalStage>
+
+//           <ModalFooter>
+//             <ImageInfoBar>
+//               <span className="title">
+//                 {activeGroup.images[activeImageIndex].title}
+//               </span>
+//               <span className="counter">
+//                 0{activeImageIndex + 1} / 0{activeGroup.images.length}
+//               </span>
+//             </ImageInfoBar>
+
+//             {/* THUMBNAIL PREVIEW BAR */}
+//             <ThumbnailsStrip>
+//               {activeGroup.images.map((img, idx) => (
+//                 <Thumb
+//                   key={img.id}
+//                   src={img.url}
+//                   $active={idx === activeImageIndex}
+//                   onClick={() => setActiveImageIndex(idx)}
+//                 />
+//               ))}
+//             </ThumbnailsStrip>
+//           </ModalFooter>
+//         </ModalOverlay>
+//       )}
+//     </PageWrapper>
+//   );
+// }
+
+
+/* ================= MAIN COMPONENT ================= */
 export default function GallerySection() {
   const [activeGroup, setActiveGroup] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -1223,7 +1450,7 @@ export default function GallerySection() {
         </HeaderContainer>
       )}
 
-      {currentPath === '/gallery' && (
+      {(currentPath === '/gallery' || currentPath === '/interior-decor') && (
         <>
           {loading ? (
             <div style={{ textAlign: "center", padding: "4rem 0", color: MutedText }}>
@@ -1231,7 +1458,13 @@ export default function GallerySection() {
             </div>
           ) : (
             galleryCategories
-              .filter((category) => category.images.length > 0)
+              // Filter out the 'properties' category if the current path is '/interior-decor'
+              .filter((category) => {
+                if (currentPath === '/interior-decor' && category.id === 'properties') {
+                  return false;
+                }
+                return category.images.length > 0;
+              })
               .map((category) => (
                 <ContentSection key={category.id} id={category.id}>
                   <CategoryHeader>

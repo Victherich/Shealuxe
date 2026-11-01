@@ -273,19 +273,19 @@ export default function TermsHeaderAndIntro() {
           <MetaGrid>
             <div>
               <span><strong>Company:</strong> Pinkles Nigeria Ltd</span>
-              <span><strong>CAC Registration No.:</strong> 8391820 (confirm against current CAC records before publication)</span>
+              <span><strong>CAC Registration No.:</strong> 8391820 </span>
             </div>
-            <div>
+            {/* <div>
               <span><strong>Effective date:</strong> 24 October 2026</span>
               <span><strong>Version:</strong> 1.0 — Draft for legal review and operational adoption</span>
-            </div>
+            </div> */}
           </MetaGrid>
         </HeroCard>
 
         {/* IMPORTANT NOTICE */}
-        <NoticeBox>
+        {/* <NoticeBox>
           <strong>IMPORTANT:</strong> This is a general compliance template, not a legal opinion or a guarantee of compliance. Nigerian federal law and state/local rules vary by service and location. Have a Nigerian legal practitioner review this document, fill in company contact details, verify licences and tailor service-specific contracts before publishing or relying on it.Pinkles Nigeria Ltd | Policies, Terms & Conditions and Privacy
-        </NoticeBox>
+        </NoticeBox> */}
 
         {/* DOCUMENT CONTROL AND HOW TO USE THIS POLICY */}
         <DocumentControlCard>

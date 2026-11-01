@@ -74,7 +74,7 @@ const heroSlides = [
 const consultancyServices = [
   {
     id: "land-purchase",
-    title: "Land Purchase Consultation",
+    title: "Conveyance Consultation",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
   },
   {

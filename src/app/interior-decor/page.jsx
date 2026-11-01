@@ -8,7 +8,7 @@ const page = () => {
     <div>
       <InteriorDecorHeroSection/>
       <InteriorDecorShowcase/>
-      <GallerySection/>
+      {/* <GallerySection/> */}
     </div>
   )
 }

@@ -165,7 +165,7 @@ export default function BookConsultationBanner() {
             fashion, wellness, business or legal advisory.
           </Description>
           <EmailLink href="mailto:niphdpinkles@gmail.com">
-            ✉️ niphdpinkles@gmail.com
+            ✉️ ngltdpinkles@gmail.com
           </EmailLink>
         </LeftContent>
 

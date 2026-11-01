@@ -115,21 +115,21 @@ const seminarSessions = [
     title: "Training for Health Professionals",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
   },
-  {
-    id: "networking-events",
-    title: "Social Networking Events",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "safeguarding",
-    title: "Safeguarding",
-    image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: "political-security",
-    title: "Political & Security Measures",
-    image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
-  },
+  // {
+  //   id: "networking-events",
+  //   title: "Social Networking Events",
+  //   image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
+  // },
+  // {
+  //   id: "safeguarding",
+  //   title: "Safeguarding",
+  //   image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+  // },
+  // {
+  //   id: "political-security",
+  //   title: "Political & Security Measures",
+  //   image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
+  // },
 ];
 
 /* ================= STYLED COMPONENTS ================= */
@@ -365,6 +365,20 @@ const HeaderBlock = styled.div`
 const ThreeColumnGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 580px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const TwoColumnGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 
   @media (max-width: 900px) {
@@ -1309,7 +1323,7 @@ export default function BusinessConsultingPage() {
           </p>
         </HeaderBlock>
 
-        <ThreeColumnGrid>
+        <TwoColumnGrid>
           {seminarSessions.map((session) => (
             <ImageCard key={session.id}>
               <img src={session.image} alt={session.title} />
@@ -1328,7 +1342,7 @@ export default function BusinessConsultingPage() {
               </div>
             </ImageCard>
           ))}
-        </ThreeColumnGrid>
+        </TwoColumnGrid>
       </SectionContainer>
 
       {/* 5. RESERVE YOUR SEMINAR PLACE FORM */}

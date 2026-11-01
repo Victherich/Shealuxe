@@ -925,9 +925,9 @@ export default function UserLogin() {
           Continue with Google
         </GoogleButton> */}
 
-        <Divider>
+        {/* <Divider>
           <span>OR</span>
-        </Divider>
+        </Divider> */}
 
         {/* EMAIL / PASSWORD FORM */}
         <Form onSubmit={handleSubmit}>

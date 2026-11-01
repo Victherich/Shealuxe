@@ -995,12 +995,13 @@ const WishlistHeartBtn = styled.button`
 `;
 
 const FashionProductTitle = styled.h4`
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   color: ${textMain};
   margin: 2px 0 4px 0;
   text-transform: lowercase;
   letter-spacing: 0.2px;
+  text-transform: uppercase;
 
   &::first-letter {
     text-transform: uppercase;
@@ -1342,7 +1343,7 @@ export default function MainStoreComponent() {
                     </WishlistHeartBtn>
                   </ImageContainer>
 
-                  <FashionProductTitle>{product.name}</FashionProductTitle>
+                  <FashionProductTitle>{product.name.toUpperCase()}</FashionProductTitle>
 
                   <PriceRow>
                     <CurrentPrice>
