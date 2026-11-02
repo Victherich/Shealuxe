@@ -197,8 +197,8 @@ export async function POST(request) {
 
     const mailOptions = {
       from: `"${senderName} via Pinkles" <${process.env.SMTP_USER}>`,
-      // to: 'admin@pinklesnigerialimited.com',
-        to: 'esomesther@gmail.com',
+      to: 'admin@pinklesnigerialimited.com',
+        // to: 'esomesther@gmail.com',
       replyTo: senderEmail,
       subject: `New Inquiry: ${formTitle} from ${senderName}`,
       html: htmlContent,
