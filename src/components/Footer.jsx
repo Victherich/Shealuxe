@@ -1447,7 +1447,7 @@ export default function Footer() {
               A premium Nigerian ecosystem bringing together property, hospitality, interior design, business consulting, media, fashion and beauty under one trusted brand.
             </p>
             <div className="contact-details">
-              <a href="tel:+2348084361466">📞 +234 808 436 1466</a>
+              <a href="tel:+447508873428">📞 +44 7508 873428</a>
               <a href="mailto:admin@pinklesnigerialimited.com">✉️ admin@pinklesnigerialimited.com</a>
               <a href="mailto:contact@pinklesnigerialimited.com">✉️ contact@pinklesnigerialimited.com</a>
               <span>📍 Victoria Island, Lagos, Nigeria</span>
